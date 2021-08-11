@@ -17,15 +17,19 @@ const Signup = () => {
   return (
     <>
       <center>
-        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <form className=" w-96 mt-24" onSubmit={handleSubmit(onSubmit)}>
+        <img
+            className="w-16 h-16 mb-4 "
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwTjoR2VIWLrwQywsGICEPAZpd1AR4T6PWUG6h2OdX1ZiZcBq7Lgdy5hJHpXyUut6r6BY&usqp=CAU"
+          />
           <h2>Signup</h2>
-          <hr style={{ width: "35%" }} />
+          
 
           <input
             placeholder="enter firstname"
             id="firstname"
             type="text"
-            className="form-control in"
+            className="form-control my-2 h-12 "
             {...register("firstname", { required: true })}
           />
           {errors.firstname && errors.firstname.type === "required" && (
@@ -35,7 +39,7 @@ const Signup = () => {
             placeholder="enter lastname"
             id="lastname"
             type="text"
-            className="form-control in"
+            className="form-control my-2 h-12 "
             {...register("lastname", { required: true })}
           />
           {errors.lastname && errors.lastname.type === "required" && (
@@ -45,7 +49,7 @@ const Signup = () => {
             placeholder="enter your email"
             id="email"
             type="email"
-            className="form-control in"
+            className="form-control my-2 h-12 "
             {...register("email", { required: true })}
           />
           {errors.email && errors.email.type === "required" && (
@@ -55,7 +59,7 @@ const Signup = () => {
             placeholder="enter your phone number"
             id="phone"
             type="tel"
-            className="form-control in"
+            className="form-control my-2 h-12 "
             {...register("phone", { required: true })}
           />
           {errors.phone && errors.phone.type === "required" && (
@@ -66,7 +70,7 @@ const Signup = () => {
             placeholder="enter username"
             id="username"
             type="text"
-            className="form-control in"
+            className="form-control my-2 h-12 "
             {...register("username", { required: true })}
           />
           {errors.username && errors.username.type === "required" && (
@@ -76,7 +80,7 @@ const Signup = () => {
             placeholder="enter password"
             id="password"
             type="password"
-            className="form-control in"
+            className="form-control my-2 h-12 "
             {...register("password", { required: true })}
           />
           {errors.password && errors.password.type === "required" && (
@@ -84,16 +88,16 @@ const Signup = () => {
           )}
           <br />
           <button
-            style={{ backgroundColor: "darkcyan" }}
+           
             type="submit"
-            className="btn btn-dark"
+            className="btn btn-warning w-96 mb-2"
           >
-            Submit
+            SIGN UP
           </button>
           <p>
-            Already have an account ?
-            <Link className="link" to="/signin">
-              &nbsp; signin
+            
+            <Link className="link-signup" to="/signin">
+              &nbsp; Already have an account ? signin
             </Link>
           </p>
         </form>

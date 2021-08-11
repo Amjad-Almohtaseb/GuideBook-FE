@@ -38,7 +38,7 @@ const Navbar = () => {
               onClick={handleSignout}
               className="btn btn-ghost btn-sm rounded-btn"
             >
-              <RiLogoutBoxRLine />
+              <RiLogoutBoxRLine className="mt-1" />
             </Link>
           ) : (
             ""
