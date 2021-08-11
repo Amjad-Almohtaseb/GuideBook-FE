@@ -11,6 +11,14 @@
 
   margin-left: 40%;
 }
+.link-signup{
+  text-decoration: none;
+
+  margin-left: 30%;
+}
+.link-signup:hover{
+  color: #b97400;
+}
 .link:hover {
   color: #b97400;
 }
