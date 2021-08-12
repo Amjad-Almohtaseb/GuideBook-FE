@@ -13,7 +13,7 @@ export const signup = (userData, history) => {
       message("success", "Your account has been successfully created!", 2500);
     } catch (error) {
       console.log(error.message);
-      message("An error has occured while creating your account", 2500);
+      message("error","An error has occured while creating your account", 2500);
     }
   };
 };
