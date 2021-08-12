@@ -22,3 +22,17 @@
 .link:hover {
   color: #b97400;
 }
+.text-nav{
+  font-family:cursive;
+  font-size: 14pt !important;
+}
+.bg-image{
+  margin: 0px;
+  background-image: url("https://images-ext-1.discordapp.net/external/nLavfkSrT7XgFyd3ac9S5QPBYkqbzikzqhvVFzAiTJw/https/miro.medium.com/max/2560/1%2A2SDFmeWqZqwgHhXBAw-pOA.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 650px;
+  opacity: 0.8;
+  
+}

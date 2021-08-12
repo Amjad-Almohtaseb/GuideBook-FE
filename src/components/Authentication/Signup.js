@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { signup } from "../../store/actions/authActions";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation  } from "react-router-dom";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -12,8 +12,12 @@ const Signup = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = (data) => dispatch(signup(data, history));
+  const type = useLocation().state.type;
+  const onSubmit = (data) =>{
+    if (type === "user") data.type = "user";
+   dispatch(signup(data, history))
+  };
+  
   return (
     <>
       <center>

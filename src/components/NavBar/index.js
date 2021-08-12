@@ -16,29 +16,30 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar mb-2 shadow-lg  bg-warning text-neutral-content rounded-box nav-txt">
+    <div className="navbar shadow-lg  bg-warning text-neutral-content rounded-box nav-txt">
       <Link to="/" className="flex-1 px-2 mx-2">
-        <span className="text-lg font-bold btn btn-ghost rounded-btn">
+        <span  className="text-3xl font-bold btn btn-ghost rounded-btn text-nav">
           Tourist Guide
         </span>
       </Link>
       <div className="flex-none hidden px-2 mx-2 lg:flex">
         <div className="flex items-stretch">
           <Link to={{ pathname: "/signup", state: { type: "tourguide" } }}>
-            <span className="btn btn-ghost btn-sm ">register as a guide</span>
+            <span className="btn btn-ghost btn-sm text-nav">register as a guide</span>
           </Link>
           <Link to={{ pathname: "/signup", state: { type: "user" } }}>
-            <span className="btn btn-ghost btn-sm ">signup</span>
+            <span className="btn btn-ghost btn-sm text-nav">signup</span>
           </Link>
+          {!user?
           <Link to="/signin">
-            <span className="btn btn-ghost btn-sm ">signin</span>
-          </Link>
+            <span className="btn btn-ghost btn-sm text-nav">signin</span>
+          </Link>:""}
           {user ? (
             <Link
               onClick={handleSignout}
               className="btn btn-ghost btn-sm rounded-btn"
             >
-              <RiLogoutBoxRLine className="mt-1" />
+              <RiLogoutBoxRLine size={25} className="mt-1" />
             </Link>
           ) : (
             ""
