@@ -1,6 +1,5 @@
 import { FETCH_CITIES } from "../actions/types";
 
-
 const initialState = {
   cities: [],
   loading: true,

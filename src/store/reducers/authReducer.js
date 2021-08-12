@@ -18,3 +18,17 @@ const authReducer = (state = initialState, action) => {
 };
 
 export default authReducer;
+
+/**
+ * @Octowl:
+ *
+ * How would it change things in the rest of the code if this was your reducer instead?
+ */
+const alternate_authReducer = (state = null, { type, payload }) => {
+  switch (type) {
+    case SET_USER:
+      return payload;
+    default:
+      return state;
+  }
+};

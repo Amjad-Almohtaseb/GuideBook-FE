@@ -1,9 +1,8 @@
 import { Redirect, Route, Switch } from "react-router";
 
 // Components
-
-import SignUp from "../Authentication/Signup";
 import SignIn from "../Authentication/Signin";
+import SignUp from "../Authentication/Signup";
 import Home from "../Home";
 
 const Routes = () => {
@@ -16,7 +15,7 @@ const Routes = () => {
         <SignIn />
       </Route>
       <Route path="/">
-        <Home/>
+        <Home />
       </Route>
     </Switch>
   );

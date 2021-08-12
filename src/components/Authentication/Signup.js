@@ -1,8 +1,9 @@
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { Link, useLocation } from "react-router-dom";
+
 import { signup } from "../../store/actions/authActions";
-import { useForm } from "react-hook-form";
-import { Link, useLocation  } from "react-router-dom";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -13,21 +14,20 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
   const type = useLocation().state.type;
-  const onSubmit = (data) =>{
+  const onSubmit = (data) => {
     if (type === "user") data.type = "user";
-   dispatch(signup(data, history))
+    dispatch(signup(data, history));
   };
-  
+
   return (
     <>
       <center>
         <form className=" w-96 mt-24" onSubmit={handleSubmit(onSubmit)}>
-        <img
+          <img
             className="w-16 h-16 mb-4 "
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwTjoR2VIWLrwQywsGICEPAZpd1AR4T6PWUG6h2OdX1ZiZcBq7Lgdy5hJHpXyUut6r6BY&usqp=CAU"
           />
           <h2>Signup</h2>
-          
 
           <input
             placeholder="enter firstname"
@@ -91,15 +91,10 @@ const Signup = () => {
             <span role="alert">password is required</span>
           )}
           <br />
-          <button
-           
-            type="submit"
-            className="btn btn-warning w-96 mb-2"
-          >
+          <button type="submit" className="btn btn-warning w-96 mb-2">
             SIGN UP
           </button>
           <p>
-            
             <Link className="link-signup" to="/signin">
               &nbsp; Already have an account ? signin
             </Link>

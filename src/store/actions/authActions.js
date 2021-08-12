@@ -1,7 +1,8 @@
-import { SET_USER } from "./types";
-import instance from "./instance";
 import decode from "jwt-decode";
 import Swal from "sweetalert2";
+
+import instance from "./instance";
+import { SET_USER } from "./types";
 
 //signup action
 export const signup = (userData, history) => {
@@ -13,7 +14,11 @@ export const signup = (userData, history) => {
       message("success", "Your account has been successfully created!", 2500);
     } catch (error) {
       console.log(error.message);
-      message("error","An error has occured while creating your account", 2500);
+      message(
+        "error",
+        "An error has occured while creating your account",
+        2500
+      );
     }
   };
 };
@@ -32,8 +37,8 @@ export const signin = (userData, history) => {
     }
   };
 };
-//signout action
 
+//signout action
 export const signout = (history) => {
   history.push("/");
   message("success", "See You Soon", 2500);
@@ -72,6 +77,14 @@ export const checkForToken = () => async (dispatch) => {
   }
   dispatch(setUser());
 };
+
+/**
+ * @Octowl:
+ *
+ * This function shouldn't be here.
+ * Create a `utils.js` file in your root directory and move this there.
+ * That way you can import it easily from anywhere in your component tree.
+ */
 export const message = (icon, message, timer) => {
   Swal.fire({
     icon: icon,
