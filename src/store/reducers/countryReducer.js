@@ -1,6 +1,5 @@
 import { FETCH_COUNTRIES } from "../actions/types";
 
-
 const initialState = {
   countries: [],
   loading: true,
