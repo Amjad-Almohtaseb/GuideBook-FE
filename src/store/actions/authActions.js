@@ -1,7 +1,9 @@
 import { SET_USER } from "./types";
 import instance from "./instance";
 import decode from "jwt-decode";
-import Swal from "sweetalert2";
+import {message} from "../../utlis"
+
+
 
 //signup action
 export const signup = (userData, history) => {
@@ -71,13 +73,4 @@ export const checkForToken = () => async (dispatch) => {
     }
   }
   dispatch(setUser());
-};
-export const message = (icon, message, timer) => {
-  Swal.fire({
-    icon: icon,
-    title: message,
-    timer: timer,
-    timerProgressBar: true,
-    showConfirmButton: false,
-  });
 };

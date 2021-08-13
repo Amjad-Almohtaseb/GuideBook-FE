@@ -1,15 +1,23 @@
 import React from "react";
+import BookingForm from "../Booking/BookingForm";
+import FavCities from "./FavCities";
+
 
 const Home = () => {
+
+
   return (
-    <>
-      <div className="card  image-full">
-    
-        <figure className="bg-image">  </figure>
-       
+       <>
+      <div className="card  image-full flex items-center ">
+
+        <figure className="bg-image"> 
+        <BookingForm/>
+        </figure>
+
+
       </div>
-      
-    </>
+      <FavCities/>
+      </>
   );
 };
 
