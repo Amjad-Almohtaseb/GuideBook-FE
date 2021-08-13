@@ -26,8 +26,9 @@ const Signup = () => {
             className="w-16 h-16 mb-4 "
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwTjoR2VIWLrwQywsGICEPAZpd1AR4T6PWUG6h2OdX1ZiZcBq7Lgdy5hJHpXyUut6r6BY&usqp=CAU"
           />
-          <h2>Signup</h2>
-          
+
+                  {type === "user"?<h4 className="text-color">Signup</h4>:<h4 className="text-color">Signup as a guide</h4>}
+
 
           <input
             placeholder="enter firstname"
@@ -91,16 +92,17 @@ const Signup = () => {
             <span role="alert">password is required</span>
           )}
           <br />
-          <button
-           
-            type="submit"
-            className="btn btn-warning w-96 mb-2"
-          >
+
+          <button type="submit" className="btn w-96 mb-2 button-color">‏‏
             SIGN UP
           </button>
           <p>
             
-            <Link className="link-signup" to="/signin">
+          <Link
+              style={{ color: "#14213d" }}
+              className="link-signup"
+              to="/signin"
+            >
               &nbsp; Already have an account ? signin
             </Link>
           </p>

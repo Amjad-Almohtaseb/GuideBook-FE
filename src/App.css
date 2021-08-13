@@ -1,8 +1,3 @@
-/* .in {
-  margin: 10px !important;
-  width: 300px !important;
-} */
-
 .nav-txt {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
 }
@@ -13,14 +8,15 @@
 }
 .link-signup{
   text-decoration: none;
-
+   
   margin-left: 30%;
 }
 .link-signup:hover{
-  color: #b97400;
+  color: #fca311 !important;
 }
+
 .link:hover {
-  color: #b97400;
+  color: #fca311 !important;
 }
 .text-nav{
   font-family:cursive;
@@ -34,5 +30,35 @@
   width: 100%;
   height: 650px;
   opacity: 0.8;
-  
+}
+
+.nav-text {
+  color:  #14213d !important;
+  background-color: #fca311 !important;
+}
+.button-color {
+  background-color: #14213d !important;
+  color: #fca311 !important;
+}
+.text-color {
+  color: #14213d !important;
+}
+
+
+.book-btn{
+  left: 41.5%;
+}
+
+.booking-form{
+  left: 32%;
+  border-radius: 10px;
+}
+
+
+
+.bg-card{
+  margin: 0px;
+  width: 100%;
+  height: 650px;
+  background-color: #E5E5E5 !important;
 }

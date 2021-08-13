@@ -1,17 +1,9 @@
 import { SET_USER } from "../actions/types";
 
-const initialState = {
-  user: null,
-};
-
-const authReducer = (state = initialState, action) => {
-  switch (action.type) {
+const authReducer = (state = null, { type, payload }) => {
+  switch (type) {
     case SET_USER:
-      return {
-        ...state,
-        user: action.payload,
-      };
-
+      return payload;
     default:
       return state;
   }
