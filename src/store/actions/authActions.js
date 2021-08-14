@@ -11,7 +11,10 @@ export const signup = (userData, history) => {
     try {
       const res = await instance.post("/signup", userData);
       dispatch(setUser(res.data.token));
+      if(userData.type ==="user")
       history.push("/main");
+       else 
+       history.push("/guideprofile");
       message("success", "Your account has been successfully created!", 2500);
     } catch (error) {
       console.log(error.message);

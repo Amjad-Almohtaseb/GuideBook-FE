@@ -5,23 +5,26 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRangePicker } from "react-date-range";
 import { useSelector } from "react-redux";
+import instance from "../../store/actions/instance";
+import { useHistory } from "react-router";
 
 const BookingForm = () => {
-
-  const countries = useSelector(state => state.countries.countries)
-  const cities = useSelector(state => state.cities.cities)
+  const history = useHistory();
+  const countries = useSelector((state) => state.countries.countries);
+  const cities = useSelector((state) => state.cities.cities);
 
   const [show, setShow] = useState(false);
+  const [result, setResult] = useState();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [groupSize, setGroupSize] = useState(1);
+  console.log(groupSize);
 
-  const [country, setCountry] = useState("Jordan");
-  const [city, setCity] = useState("");
-
+  const [countryId, setCountryId] = useState();
+  const [cityId, setCityId] = useState("");
 
   const handleSelect = (ranges) => {
     setStartDate(ranges.selection.startDate);
@@ -29,25 +32,50 @@ const BookingForm = () => {
     console.log(ranges.selection);
   };
 
+  let strStartDate =
+    startDate.toISOString().substr(0, 8) +
+    (+startDate.toISOString().substr(0, 10).slice(8) + 1).toString();
+
+  let strEndDate =
+    endDate.toISOString().substr(0, 8) +
+    (+endDate.toISOString().substr(0, 10).slice(8) + 1).toString();
+
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,
     key: "selection",
   };
 
-
   const handleCountry = (event) => {
-            setCountry(event.target.value)
-  }
+    setCountryId(event.target.value);
+  };
 
+  const dateRange = (startDate, endDate, steps = 1) => {
+    const dateArray = [];
+    let currentDate = new Date(startDate);
+
+    while (currentDate <= new Date(endDate)) {
+      dateArray.push(new Date(currentDate));
+      // Use UTC date to prevent problems with time zones and DST
+      currentDate.setUTCDate(currentDate.getUTCDate() + steps);
+    }
+    return dateArray.map((e) => e.toISOString().substr(0, 10));
+  };
   const handleCity = (event) => {
-    setCity(event.target.value)
-}
+    setCityId(event.target.value);
+  };
 
-  const handleSubmit = (event) => {
-        event.preventDefault()
-        console.log("tessssssssssst")
-  }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const res = await instance.post("/search", {
+      dates: dateRange(strStartDate, strEndDate),
+      city: cityId,
+      maxsize: groupSize,
+    });
+    setResult(res.data);
+    history.push("/signin");
+  };
+  console.log(result);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -63,59 +91,64 @@ const BookingForm = () => {
       </div>
       {show && (
         <div className=" absolute top-16 bg-white booking-form p-2">
-          <select className=" w-56"
-          onChange={handleCountry}
-          required
-        
-          >
+          <select className=" w-56" onChange={handleCountry} required>
             <option disabled="disabled" selected="selected">
               Choose the country *
             </option>
-            {countries.map(country=>(<option name={country.name} value={country.name} > {country.name} </option>))}
-            
+            {countries.map((country) => (
+              <option name={country.name} value={country._id}>
+                {country.name}
+              </option>
+            ))}
           </select>
 
-          <select 
-          className="  w-80 "
-            onChange={handleCity}
-            required
-          >
+          <select className="  w-80 " onChange={handleCity} required>
             <option disabled="disabled" selected="selected">
               Choose the city *
             </option>
-            {countries.find(cnt=>cnt.name === country).cities.map(city=><option>{city.name}</option>)}
-            
-          </select>  
-          <hr/>
+            {cities
+              .filter((city) => city.country === countryId)
+              .map((city) => (
+                <option name={city.name} value={city._id}>
+                  {city.name}
+                </option>
+              ))}
+          </select>
+          <hr />
+          <div className="flex justify-center">
+            <DateRangePicker
+              ranges={[selectionRange]}
+              minDate={new Date()}
+              rangeColors={["#fca311"]}
+              onChange={handleSelect}
+              showMonthAndYearPickers={false}
+            />
+          </div>
+          <div className="flex items-center border-b mb-4">
+            <h5 className="flex-grow ml-20 ">Group size</h5>
 
+            <UsersIcon className="h-5" />
+            <input
+              type="number"
+              className=" w-12 pl-2 text-lg outline-none text-yellow-500 "
+              min={1}
+              value={groupSize}
+              onChange={(e) => setGroupSize(e.target.value)}
+            />
+          </div>
 
-          <DateRangePicker
-            ranges={[selectionRange]}
-            minDate={new Date()}
-            rangeColors={["#fca311"]}
-            onChange={handleSelect}
-            showMonthAndYearPickers={false}
-            
-          />
-            <div className="flex items-center border-b mb-4">
-                <h5
-                className="flex-grow ml-20 "
-                >Group size</h5>
-
-                <UsersIcon className="h-5"/>
-                <input type="number"
-                className=" w-12 pl-2 text-lg outline-none text-yellow-500 "
-                min={1} 
-                value={groupSize}
-                onChange={(e) => setGroupSize(e.target.value)}
-                />
-                </div>
-                   
-                <button className="  bg-red-600 text-black font-bold py-2 px-4 rounded-full mb-3 ml-28 "
-                onClick={handleClose}
-                >Cancle </button>
-                <button  type="submit" className=" bg-yellow-500 text-black font-bold py-2 px-4 rounded-full ml-40 ">Search </button>
-
+          <button
+            className="  bg-red-600 text-black font-bold py-2 px-4 rounded-full mb-3 ml-28 "
+            onClick={handleClose}
+          >
+            Cancle{" "}
+          </button>
+          <button
+            type="submit"
+            className=" bg-yellow-500 text-black font-bold py-2 px-4 rounded-full ml-40 "
+          >
+            Search{" "}
+          </button>
         </div>
       )}
     </form>

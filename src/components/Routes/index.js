@@ -5,10 +5,14 @@ import { Redirect, Route, Switch } from "react-router";
 import SignUp from "../Authentication/Signup";
 import SignIn from "../Authentication/Signin";
 import Home from "../Home";
+import GuideProfile from "../Guide/GuideProfile";
 
 const Routes = () => {
   return (
     <Switch>
+      <Route exact path="/guideprofile">
+        <GuideProfile />
+      </Route>
       <Route path="/signup">
         <SignUp />
       </Route>
@@ -16,7 +20,7 @@ const Routes = () => {
         <SignIn />
       </Route>
       <Route path="/">
-        <Home/>
+        <Home />
       </Route>
     </Switch>
   );
