@@ -9,18 +9,19 @@ const FavCities = () => {
    if (cityLoading) return <Spinner/>
 
     return (
+      
         <div className="card flex bg-card  ">
 
-             <h3 className=" ml-16  my-8 "  >Most Visited Ceties</h3>
+             <h3 className=" ml-16  my-8 "  >Recommended Ceties</h3>
             
             <div className="flex flex-row ml-16 space-x-32">
-            {/* card */}
-            <div class="rounded overflow-hidden shadow-lg w-96">
-      <img className=" w-96 h-56 " src={cities[3].image} alt="Amman"/>
+                {/* card */}
+                <div class="rounded overflow-hidden shadow-lg w-96">
+      <img className=" w-96 h-56 " src="https://www.bmc-switzerland.com/media/catalog/category/BMC_Parent_Category_Header_Image_Mountain_All_Mountain_1.jpg" alt="Mountain"/>
       <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">{cities[3].name}</div>
+        <div class="font-bold text-xl mb-2">Mountain</div>
         <p class="text-gray-700 text-base">
-        {cities[3].description}
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
         </p>
       </div>
       <div class="px-6 pt-4 pb-2">
@@ -28,6 +29,8 @@ const FavCities = () => {
 
       </div>
     </div>
+
+
 
     
                 {/* card */}
@@ -44,6 +47,7 @@ const FavCities = () => {
 
       </div>
     </div>
+
                 {/* card */}
                 <div class="rounded overflow-hidden shadow-lg w-96">
       <img className=" w-96 h-56 " src="https://www.bmc-switzerland.com/media/catalog/category/BMC_Parent_Category_Header_Image_Mountain_All_Mountain_1.jpg" alt="Mountain"/>
@@ -58,9 +62,8 @@ const FavCities = () => {
 
       </div>
     </div>
-    </div>
-            
-            
+    </div>   
+    
         </div>
     )
 }
