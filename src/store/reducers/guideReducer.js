@@ -1,4 +1,4 @@
-import { FETCH_GUIDES } from "../actions/types";
+import { FETCH_GUIDES, UPDATE_GUIDE } from "../actions/types";
 
 const initialState = {
   guides: [],
@@ -13,6 +13,16 @@ const guideReducer = (state = initialState, action) => {
         guides: action.payload,
         loading: false,
       };
+
+      case UPDATE_GUIDE:
+        const { updatedGuide } = action.payload;
+        return {
+          ...state,
+          guides: state.guides.map((guide) =>
+            guide._id === updatedGuide.id ? updatedGuide : guide
+          ),
+  
+        };
 
     default:
       return state;

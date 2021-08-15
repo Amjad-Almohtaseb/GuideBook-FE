@@ -12,8 +12,8 @@ export const signup = (userData, history) => {
       const res = await instance.post("/signup", userData);
       dispatch(setUser(res.data.token));
       if(userData.type ==="user")
-      history.push("/main");
-       else 
+      history.push("/");
+       if(userData.type==="guide") 
        history.push("/guideprofile");
       message("success", "Your account has been successfully created!", 2500);
     } catch (error) {
@@ -29,7 +29,11 @@ export const signin = (userData, history) => {
     try {
       const res = await instance.post("/signin", userData);
       dispatch(setUser(res.data.token));
+      console.log(res.data)
+      if(userData.type ==="user")
       history.push("/");
+       if(userData.type==="guide") 
+       history.push("/guideprofile");
       message("success", "Welcome back!", 2500);
     } catch (error) {
       console.log(error.message);
