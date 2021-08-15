@@ -7,7 +7,6 @@ import "react-day-picker/lib/style.css";
 import DatePicker from "react-multi-date-picker";
 
 const GuideEdit = () => {
-  const [values, setValues] = useState();
 
 let array;
 const arrayOfDate=(values)=>{
@@ -20,7 +19,7 @@ const arrayOfDate=(values)=>{
         "-" +
         value.day.toString()
     );
-     
+
      array = dates.map((date) => {
       if (!+date.slice(5, 7)) {
         date = date.slice(0, 5) + "0" + date.slice(5, 9);
@@ -34,7 +33,7 @@ const arrayOfDate=(values)=>{
   } 
   return array;
 }
-  console.log(arrayOfDate(values))
+
 
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
@@ -48,19 +47,15 @@ const arrayOfDate=(values)=>{
     price: null,
     maxsize: null,
     description: "",
+    notAvailabeDates:[]
   });
+
   const handleChange = (event) => {
     setGuideInfo({ ...guideInfo, [event.target.name]: event.target.value });
-    console.log(event.target.value)
   };
-  console.log(values)
-  const handleCalendar = (r) => {
- 
-    console.log(values)
-    setValues(r)
-    setGuideInfo({ ...guideInfo, notAvailabeDates: arrayOfDate(values)});
 
-   
+  const handleCalendar = (r) => {
+    setGuideInfo({ ...guideInfo, notAvailabeDates: arrayOfDate(r)});
   };
   const resetForm = () => {
     setGuideInfo({
@@ -73,12 +68,11 @@ const arrayOfDate=(values)=>{
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // dispatch(updateUser(guideInfo,guideId));
     setShow(false);
     resetForm();
   };
-// console.log(guideInfo)
+
+
   return (
     <>
       <div
@@ -138,9 +132,8 @@ const arrayOfDate=(values)=>{
               <label className=" font-bold"> your holidays </label>
               <DatePicker
                 multiple
-                value={values}
-                
                 onChange={handleCalendar}//{setValues}
+                minDate={new Date()}
               />
             </div>
             <hr />

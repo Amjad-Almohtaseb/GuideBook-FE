@@ -1,9 +1,7 @@
 import { SET_USER } from "./types";
 import instance from "./instance";
 import decode from "jwt-decode";
-import {message} from "../../utlis"
-
-
+import { message } from "../../utlis";
 
 //signup action
 export const signup = (userData, history) => {
@@ -11,15 +9,18 @@ export const signup = (userData, history) => {
     try {
       const res = await instance.post("/signup", userData);
       dispatch(setUser(res.data.token));
-   //   dispatch()                        // new action in guideActions
-      if(userData.type ==="user")
-      history.push("/");
-       if(userData.type==="guide") 
-       history.push("/guideprofile");
+
+      if (userData.type === "user") window.location.assign("/");
+      if (userData.type === "guide") window.location.assign("/guideprofile");
+
       message("success", "Your account has been successfully created!", 2500);
     } catch (error) {
-      console.log(error);
-      message("error","An error has occured while creating your account", 2500);
+
+      message(
+        "error",
+        "An error has occured while creating your account",
+        2500
+      );
     }
   };
 };
@@ -30,14 +31,12 @@ export const signin = (userData, history) => {
     try {
       const res = await instance.post("/signin", userData);
       dispatch(setUser(res.data.token));
-      console.log(res.data)
-      if(userData.type ==="user")
-      history.push("/");
-       if(userData.type==="guide") 
-       history.push("/guideprofile");
+
+      if (userData.type === "user") history.push("/");
+      if (userData.type === "guide") history.push("/guideprofile");
       message("success", "Welcome back!", 2500);
     } catch (error) {
-      console.log(error.message);
+
       message("error", "Invalid username or password", 2500);
     }
   };

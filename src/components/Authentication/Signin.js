@@ -13,8 +13,6 @@ const Signin = () => {
    dispatch(fetchUser())
   }, [])
   const history = useHistory();
- 
-  // console.log(users)
   const {
     register,
     handleSubmit,
@@ -25,17 +23,12 @@ const Signin = () => {
   if(userLoading) return <Spinner/>
  
   const onSubmit = (data) =>{
-    console.log(data.username)
-    console.log(users)
+
     const userType= users.find(user=>user.username===data.username).type
     if(userType==="user") data.type = "user"
     else data.type="guide"
-    
-    
-    
     dispatch(signin(data, history));
   }
-    // const [password, setPassword] = useState(true)
   return (
     <>
       <center>

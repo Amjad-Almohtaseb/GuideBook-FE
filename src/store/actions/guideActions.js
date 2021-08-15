@@ -1,4 +1,4 @@
-import { FETCH_GUIDES, UPDATE_GUIDE } from "./types";
+import { FETCH_GUIDES, SEARCH_GUIDES, UPDATE_GUIDE } from "./types";
 import instance from "./instance";
 
 export const fetchGuides = () => {
@@ -26,6 +26,22 @@ export const updateGuide = (updatedGuide, guideId) => {
           updatedGuide: updatedGuide,
         },
       });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
+
+export const searchGuide = (searchInfo, history) => {
+  return async (dispatch) => {
+    try {
+
+      const res = await instance.post("/search");
+      dispatch({
+        type: SEARCH_GUIDES,
+        payload: res.data,
+      });
+        history.push("/guidelist");
     } catch (error) {
       console.log(error.message);
     }

@@ -8,18 +8,13 @@ const UserEdit = () => {
     const user = useSelector(state => state.user)
     const [profile, setProfile] = useState(
         {
-              phone:"",
-              gender:"",
-              image:"",
+
         }   
       );
   const [show, setShow] = useState(false);
-        console.log(profile)
   const resetForm = () => {
     setProfile({
-        phone:"",
-        gender:"",
-        image:"",
+
     });
   };
     const handleChange=(event)=>{

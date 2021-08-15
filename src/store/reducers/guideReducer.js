@@ -1,7 +1,8 @@
-import { FETCH_GUIDES, UPDATE_GUIDE } from "../actions/types";
+import { FETCH_GUIDES, SEARCH_GUIDES, UPDATE_GUIDE } from "../actions/types";
 
 const initialState = {
   guides: [],
+  foundguides:[],
   loading: true,
 };
 
@@ -22,6 +23,11 @@ const guideReducer = (state = initialState, action) => {
             guide._id === updatedGuide.id ? updatedGuide : guide
           ),
   
+        };
+        case SEARCH_GUIDES:
+        return {
+          ...state,
+          foundguides: action.payload
         };
 
     default:

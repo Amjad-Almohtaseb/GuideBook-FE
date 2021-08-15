@@ -7,7 +7,6 @@ import GuideItem from './GuideItem'
 
 const GuideList = () => {
     const location = useLocation()
-    console.log(location)
     return (
         <div>
    <GuideItem/>
