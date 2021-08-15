@@ -11,13 +11,14 @@ export const signup = (userData, history) => {
     try {
       const res = await instance.post("/signup", userData);
       dispatch(setUser(res.data.token));
+   //   dispatch()                        // new action in guideActions
       if(userData.type ==="user")
       history.push("/");
        if(userData.type==="guide") 
        history.push("/guideprofile");
       message("success", "Your account has been successfully created!", 2500);
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
       message("error","An error has occured while creating your account", 2500);
     }
   };

@@ -3,78 +3,82 @@
 import React, { useState } from "react";
 import { FaArrowCircleRight } from "@react-icons/all-files/fa/FaArrowCircleRight";
 import { useDispatch, useSelector } from "react-redux";
-import 'react-day-picker/lib/style.css';
-import DatePicker from "react-multi-date-picker"
-
-
+import "react-day-picker/lib/style.css";
+import DatePicker from "react-multi-date-picker";
 
 const GuideEdit = () => {
-    
-    const today = new Date()
-    const tomorrow = new Date()
-  
-    tomorrow.setDate(tomorrow.getDate() + 1)
-    const [values, setValues] = useState([today, tomorrow])
-   
-    // const date = values.map(value=> (value.year.toString()+"-"+(value.month.number.toString()))+"-"+(value.day.toString()) )
-//     const date = values.map(value=>  {
-//         if(value.month.number.toString().length==1) return value.year.toString()+"0"+value.month.number.toString()+"-"+(value.day.toString())
-//         if(value.day.toString().length==1)
-//         return value.year.toString()+"-"+(value.month.number.toString())+"-"+"0"+value.day.toString()
-//         //  (value.year.toString()+"-"+(value.month.number.toString()))+"-"+(value.day.toString())
-        
-//     })
-// const array=a.map(_a=>{
-//     if (!+_a.slice(5,7)){
-//         _a=_a.slice(0,5)+"0"+_a.slice(5,9)
-//     }
-     
-//     if (_a.length===9){
-//      _a=_a.slice(0,8)+"0"+_a[8]
-//      }
-//     return _a
-//     })
-    // console.log(array)
-// console.log(date)
-  const [show, setShow] = useState(false);
- const dispatch = useDispatch()
-    const user = useSelector(state => state.user)
-    const guides = useSelector(state => state.guides.guides)
-    const cities = useSelector(state => state.cities.cities)
-    const guideId = guides.find(guide=> guide.user.id=== user.id)._id
-    console.log(values)
-    const [guideInfo, setGuideInfo] = useState(
-        {
-              city:"",
-              price:null,
-              maxsize:null,
-              notAvailabeDates:[],
-              description:"",
-        }   
-      );
-      console.log(guideInfo)
-  const handleChange=(event)=>{
-    setGuideInfo({ ...guideInfo, [event.target.name]: event.target.value });
+  const [values, setValues] = useState();
 
+let array;
+const arrayOfDate=(values)=>{
+  if (values) {
+    const dates = values.map(
+      (value) =>
+        value.year.toString() +
+        "-" +
+        value.month.number.toString() +
+        "-" +
+        value.day.toString()
+    );
+     
+     array = dates.map((date) => {
+      if (!+date.slice(5, 7)) {
+        date = date.slice(0, 5) + "0" + date.slice(5, 9);
+      }
+
+      if (date.length === 9) {
+        date = date.slice(0, 8) + "0" + date[8];
+      }
+      return date;
+    });
+  } 
+  return array;
 }
-const resetForm = () => {
+  console.log(arrayOfDate(values))
+
+  const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const guides = useSelector((state) => state.guides.guides);
+  const cities = useSelector((state) => state.cities.cities);
+  const guideId = guides.find((guide) => guide.user.id === user.id)._id;
+ 
+  const [guideInfo, setGuideInfo] = useState({
+    city: "",
+    price: null,
+    maxsize: null,
+    description: "",
+  });
+  const handleChange = (event) => {
+    setGuideInfo({ ...guideInfo, [event.target.name]: event.target.value });
+    console.log(event.target.value)
+  };
+  console.log(values)
+  const handleCalendar = (r) => {
+ 
+    console.log(values)
+    setValues(r)
+    setGuideInfo({ ...guideInfo, notAvailabeDates: arrayOfDate(values)});
+
+   
+  };
+  const resetForm = () => {
     setGuideInfo({
-        city:"",
-        price:null,
-        maxsize:null,
-        notAvailabeDates:[],
-        description:"",
+      city: "",
+      price: null,
+      maxsize: null,
+      notAvailabeDates: [],
+      description: "",
     });
   };
-const handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    
-    // dispatch(updateUser(profile,guideId));
-    setShow(false)
+
+    // dispatch(updateUser(guideInfo,guideId));
+    setShow(false);
     resetForm();
   };
-
-  
+// console.log(guideInfo)
   return (
     <>
       <div
@@ -100,46 +104,55 @@ const handleSubmit = (event) => {
                 <option disabled="disabled" selected="selected">
                   Choose the city
                 </option>
-                {cities.map(city=>
-                <option name={city.name} value={city._id}>{city.name}</option>
-                )}
+                {cities.map((city) => (
+                  <option name={city.name} value={city._id}>
+                    {city.name}
+                  </option>
+                ))}
               </select>
             </div>
             <hr />
             <div className=" ml-36">
               <label className=" font-bold"> Price/person </label>
               <br />
-              <input type="number" name="price" value={guideInfo.price} onChange={handleChange} />
+              <input
+                type="number"
+                name="price"
+                value={guideInfo.price}
+                onChange={handleChange}
+              />
             </div>
             <hr />
             <div className=" ml-36">
               <label className=" font-bold"> max size </label>
-              <br />
-              <input type="number" name="maxsize" value={guideInfo.maxsize} onChange={handleChange} />
-            </div>
-            <hr />
-            <DatePicker 
-      multiple
-      value={values} 
-      onChange={setValues}
-    />
-          
- 
-            <div className=" ml-36">
-              <label className=" font-bold"> max size </label>
-              <br />
-              <textarea name="description" rows="4" cols="50" /*value={guideInfo.description}*/ onChange={handleChange} />
-            </div>
-            <hr />
-            <div className=" ml-36">
-              <label className=" font-bold"> Add your phone number </label>
               <br />
               <input
-                placeholder="+962-000000000"
-                type="tel"
-                name="phone"
-                className=" border-1"
+                type="number"
+                name="maxsize"
+                value={guideInfo.maxsize}
                 onChange={handleChange}
+              />
+            </div>
+            <hr />
+            <div className=" ml-36">
+              <label className=" font-bold"> your holidays </label>
+              <DatePicker
+                multiple
+                value={values}
+                
+                onChange={handleCalendar}//{setValues}
+              />
+            </div>
+            <hr />
+
+            <div className=" ml-36">
+              <label className=" font-bold"> Description </label>
+              <br />
+              <textarea
+                name="description"
+                rows="4"
+                cols="50"
+                /*value={guideInfo.description}*/ onChange={handleChange}
               />
             </div>
             <hr />

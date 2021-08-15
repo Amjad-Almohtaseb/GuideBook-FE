@@ -7,10 +7,14 @@ import SignIn from "../Authentication/Signin";
 import Home from "../Home";
 import GuideProfile from "../Guide/GuideProfile";
 import GuideList from "../Guide/GuideList";
+import GuideDetail from "../Guide/GuideDetail";
 
 const Routes = () => {
   return (
     <Switch>
+      <Route path="/guides/:guideSlug">
+        <GuideDetail/>
+      </Route>
       <Route path="/guidelist">
         <GuideList/>
       </Route>
