@@ -15,11 +15,11 @@ const Routes = () => {
       <Route path="/guides/:guideSlug">
         <GuideDetail/>
       </Route>
-      <Route path="/guidelist">
-        <GuideList/>
-      </Route>
       <Route exact path="/guideprofile">
         <GuideProfile />
+      </Route>
+      <Route path="/guidelist">
+        <GuideList/>
       </Route>
       <Route path="/signup">
         <SignUp />

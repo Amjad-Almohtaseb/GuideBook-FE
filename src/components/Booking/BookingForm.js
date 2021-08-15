@@ -4,11 +4,13 @@ import { SearchIcon, UsersIcon } from "@heroicons/react/solid";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRangePicker } from "react-date-range";
-import { useSelector } from "react-redux";
-import instance from "../../store/actions/instance";
+import { useSelector,useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { searchGuide } from "../../store/actions/guideActions";
+
 
 const BookingForm = () => {
+  const dispatch = useDispatch()
   const history = useHistory();
   const countries = useSelector((state) => state.countries.countries);
   const cities = useSelector((state) => state.cities.cities);
@@ -21,7 +23,6 @@ const BookingForm = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [groupSize, setGroupSize] = useState(1);
-  console.log(groupSize);
 
   const [countryId, setCountryId] = useState();
   const [cityId, setCityId] = useState("");
@@ -29,7 +30,6 @@ const BookingForm = () => {
   const handleSelect = (ranges) => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
-    console.log(ranges.selection);
   };
 
   let strStartDate =
@@ -64,22 +64,17 @@ const BookingForm = () => {
   const handleCity = (event) => {
     setCityId(event.target.value);
   };
-// move it to redux
-  const handleSubmit = async (event) => {
+
+  // move it to redux
+  const handleSubmit = (event) => {
     event.preventDefault();
-    try{
-    const res = await instance.post("/search", {
-      dates: dateRange(strStartDate, strEndDate),
-      city: cityId,
-      maxsize: groupSize,
-    });
-    setResult(res.data);
-    history.push({pathname:"/guidelist",state:{name:res.data}});
-  } catch(error){
-    console.log(error.message)
-  }
+    dispatch(searchGuide(
+        {
+          dates: dateRange(strStartDate, strEndDate),
+          city: cityId,
+          maxsize: groupSize},history)
+    );  
   };
-  console.log(result);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -126,7 +121,6 @@ const BookingForm = () => {
               rangeColors={["#fca311"]}
               onChange={handleSelect}
               showMonthAndYearPickers={false}
-              
             />
           </div>
           <div className="flex items-center border-b mb-4">

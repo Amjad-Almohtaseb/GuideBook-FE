@@ -21,17 +21,18 @@ export const fetchUser = () => {
 export const updateUser = (updatedUser,userId) => {
     return async(dispatch)=>{
     try {
-        console.log(updatedUser)
+    
         const formData= new FormData();
         for(const key in updatedUser)
            formData.append(key,updatedUser[key])
-        await instance.put(`/user/${userId}`,formData)
+      let res = await instance.put(`/user/${userId}`,formData)
         dispatch({
             type: UPDATE_USER,
             payload: {
-                updatedUser:updatedUser,
+                updatedUser:res.data,
             }
         })
+
     } catch (error) {
         console.log(error.message)
     }
