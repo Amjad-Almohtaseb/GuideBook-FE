@@ -1,36 +1,41 @@
-import React, { useEffect } from "react";
-import UserEdit from "../User/UserEdit";
-import { useDispatch, useSelector } from "react-redux";
-import { Spinner } from "react-bootstrap";
-import GuideEdit from "./GuideEdit";
-import { fetchGuides } from "../../store/actions/guideActions";
+import React from 'react'
 
-const GuideProfile = () => {
-const dispatch = useDispatch()
- 
-  const guideLoading = useSelector((state) => state.guides.loading);
-  const guides = useSelector((state) => state.guides.guides);
-  const user = useSelector((state) => state.user);
-  
-  if (guideLoading) return <Spinner />;
-  const guide = guides.find((guide) => guide.user.id === user.id);
-  console.log(guide)
-  
+const GuideDetail = () => {
+    const guide = {
+        user:{username:"amjad",
+        firstname:"amjad",
+        lastname:"amjad",
+        email:"@c.com",
+        phone:"00000000",
+        gender:"male",
+        image:
+        "https://149351115.v2.pressablecdn.com/wp-content/uploads/2020/02/iStock-1163542789-945x630.jpg",
+    },
+    city: "madba",
+    price: 5,
+    maxsize: 5,
+    rating: "⭐⭐⭐⭐⭐",
+    // rating: 4,
 
-  return (
-    <>
-      <div className="card  flex flex-row profile-card ">
+    discription:
+      "hghg khgbj k jhvd lllll knf cdsp imm mmfmuu ihfdkn jhvsuyd dhdwlksd dsldjnmb m powdmn dmjb  lllll knf cdsp imm mmfmuu ihfdkn lllll knf cdsp imm mmfmuu isp imm mmfmuu ihfdknugdyghdb m kwndjk  m mlm mmmml lllll knf cdsp imm mmfmuu ihfdkn  ihfdknugdyghdb m kwndjk  m mlm mmmml lllll knf cdsp imm mmfmuu  ihfdknugdyghdb m kwndjk  m mlm mmmml lllll knf cdsp imm mmfmuu",
+    notAvailabeDates: [],
+  
+    }
+    return (
+        <>
+             <div className="card  flex flex-row profile-card ">
         <div className="rounded overflow-hidden shadow-lg w-96 border-yellow-400  border-1 ml-4 mt-3 card1-p ">
           <img
             className=" w-96 h-56 rounded mx-auto "
-            src={guide ? guide.user.image:""}
+            // src={guide ? guide.user.image:""}
             alt="Mountain"
           />
           <div className="px-6 py-4 text-center">
             <div>
               username:{" "}
               <p className=" font-semibold text-xl mb-3">
-                @{ guide?.user.username || user.username}
+              @username
               </p>
             </div>
 
@@ -59,11 +64,10 @@ const dispatch = useDispatch()
               </div>
             )}
           </div>
-          <UserEdit />
+         
         </div>
-
-        {/* card2 */}
-        {(guide.city || guide.price || guide.maxsize || guide.rating) && (
+          {/* card2 */}
+          {(guide.city || guide.price || guide.maxsize || guide.rating) && (
           <div
             className="rounded overflow-hidden shadow-lg border-yellow-400  border-1 ml-4 mt-3 guide-card
      w-44 text-center  "
@@ -100,21 +104,10 @@ const dispatch = useDispatch()
           </div>
         )}
 
-        {/* card 3 */}
-        {guide.discription && (
-          <div className="rounded overflow-hidden shadow-lg border-yellow-400  border-1 ml-4 mt-3 guide-card text-center bio pt-4  ">
-            {guide.discription && (
-              <span>
-                discription:
-                <p className="  text-xl mb-2 px-6 ">{guide.discription}</p>
-              </span>
-            )}
-          </div>
-        )}
-        <GuideEdit />
-      </div>
-    </>
-  );
-};
+        </div>
+        
+        </>
+    )
+}
 
-export default GuideProfile;
+export default GuideDetail

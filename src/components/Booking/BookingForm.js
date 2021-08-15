@@ -64,7 +64,7 @@ const BookingForm = () => {
   const handleCity = (event) => {
     setCityId(event.target.value);
   };
-
+// move it to redux
   const handleSubmit = async (event) => {
     event.preventDefault();
     try{
@@ -74,7 +74,7 @@ const BookingForm = () => {
       maxsize: groupSize,
     });
     setResult(res.data);
-    history.push({pathname:"/guidelist",state:{name:"hiiii"}});
+    history.push({pathname:"/guidelist",state:{name:res.data}});
   } catch(error){
     console.log(error.message)
   }

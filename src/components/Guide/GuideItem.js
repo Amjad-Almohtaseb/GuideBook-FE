@@ -2,10 +2,11 @@
 
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const GuideItem = () => {
     return (
-        <>
+        <Link to="/guides/:guideSlug">
            <div className="card mb-3 absolute flex ml-10 mt-4 max-w-xl" >
   <div className="row no-gutters">
     <div className="col-md-4">
@@ -26,7 +27,7 @@ const GuideItem = () => {
     </div>
   </div>
 </div> 
-        </>
+        </Link>
     )
 }
 

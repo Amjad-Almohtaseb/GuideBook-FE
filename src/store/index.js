@@ -7,7 +7,7 @@ import { fetchCountries } from "./actions/countryActions";
 import { fetchCities } from "./actions/cityActions";
 import { fetchUser } from "./actions/userActions";
 
-const composeEnhancers = window.REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(thunk))
