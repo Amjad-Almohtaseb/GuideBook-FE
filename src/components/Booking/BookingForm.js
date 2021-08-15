@@ -74,7 +74,7 @@ const BookingForm = () => {
       maxsize: groupSize,
     });
     setResult(res.data);
-    history.push("/guidelist");
+    history.push({pathname:"/guidelist",state:{name:"hiiii"}});
   } catch(error){
     console.log(error.message)
   }
