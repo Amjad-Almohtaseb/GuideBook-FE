@@ -1,20 +1,40 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { signin } from "../../store/actions/authActions";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
+import { fetchUser } from "../../store/actions/userActions";
 
 const Signin = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+   dispatch(fetchUser())
+  }, [])
+  const history = useHistory();
+ 
+  // console.log(users)
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const onSubmit = (data) => dispatch(signin(data, history));
-
+  const users = useSelector(state => state.users.users)
+  const userLoading = useSelector(state=> state.users.loading)
+  if(userLoading) return <Spinner/>
+ 
+  const onSubmit = (data) =>{
+    console.log(data.username)
+    console.log(users)
+    const userType= users.find(user=>user.username===data.username).type
+    if(userType==="user") data.type = "user"
+    else data.type="guide"
+    
+    
+    
+    dispatch(signin(data, history));
+  }
     // const [password, setPassword] = useState(true)
   return (
     <>
@@ -55,7 +75,7 @@ const Signin = () => {
             SIGN IN
           </button>
           <p>
-          <Link style={{ color: "#14213d" }} className="link" to="/signup">
+          <Link style={{ color: "#14213d" }} className="link" to={{pathname:"/signup",state:{type:"user"}}}>
               &nbsp; Don't have an account? signup
             </Link>
           </p>

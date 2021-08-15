@@ -15,6 +15,7 @@ const Signup = () => {
   const type = useLocation().state.type;
   const onSubmit = (data) =>{
     if (type === "user") data.type = "user";
+    else data.type= "guide"
    dispatch(signup(data, history))
   };
   

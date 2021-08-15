@@ -67,13 +67,17 @@ const BookingForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    try{
     const res = await instance.post("/search", {
       dates: dateRange(strStartDate, strEndDate),
       city: cityId,
       maxsize: groupSize,
     });
     setResult(res.data);
-    history.push("/signin");
+    history.push("/guidelist");
+  } catch(error){
+    console.log(error.message)
+  }
   };
   console.log(result);
 
@@ -122,6 +126,7 @@ const BookingForm = () => {
               rangeColors={["#fca311"]}
               onChange={handleSelect}
               showMonthAndYearPickers={false}
+              
             />
           </div>
           <div className="flex items-center border-b mb-4">

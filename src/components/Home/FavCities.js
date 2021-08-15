@@ -12,7 +12,7 @@ const FavCities = () => {
       
         <div className="card flex bg-card  ">
 
-             <h3 className=" ml-16  my-8 "  >Recommended Ceties</h3>
+             <h3 className=" ml-16  my-8 "  >Recommended Cities</h3>
             
             <div className="flex flex-row ml-16 space-x-32">
                 {/* card */}
