@@ -17,13 +17,15 @@ export const fetchGuides = () => {
 };
 
 export const updateGuide = (updatedGuide, guideId) => {
+  
   return async (dispatch) => {
+    console.log(guideId)
     try {
-      await instance.put(`/guide/${guideId}`, updatedGuide);
+     const res = await instance.put(`/guide/${guideId}`, updatedGuide);
       dispatch({
         type: UPDATE_GUIDE,
         payload: {
-          updatedGuide: updatedGuide,
+          updatedGuide: res.data,
         },
       });
     } catch (error) {

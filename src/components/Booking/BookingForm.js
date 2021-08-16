@@ -16,7 +16,6 @@ const BookingForm = () => {
   const cities = useSelector((state) => state.cities.cities);
 
   const [show, setShow] = useState(false);
-  const [result, setResult] = useState();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 

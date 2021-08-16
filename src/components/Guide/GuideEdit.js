@@ -5,49 +5,51 @@ import { FaArrowCircleRight } from "@react-icons/all-files/fa/FaArrowCircleRight
 import { useDispatch, useSelector } from "react-redux";
 import "react-day-picker/lib/style.css";
 import DatePicker from "react-multi-date-picker";
+import { updateGuide } from "../../store/actions/guideActions";
 
-const GuideEdit = () => {
+const GuideEdit = ({ guide }) => {
+  console.log(guide);
 
-let array;
-const arrayOfDate=(values)=>{
-  if (values) {
-    const dates = values.map(
-      (value) =>
-        value.year.toString() +
-        "-" +
-        value.month.number.toString() +
-        "-" +
-        value.day.toString()
-    );
+  let array;
+  const arrayOfDate = (values) => {
+    if (values) {
+      const dates = values.map(
+        (value) =>
+          value.year.toString() +
+          "-" +
+          value.month.number.toString() +
+          "-" +
+          value.day.toString()
+      );
 
-     array = dates.map((date) => {
-      if (!+date.slice(5, 7)) {
-        date = date.slice(0, 5) + "0" + date.slice(5, 9);
-      }
+      array = dates.map((date) => {
+        if (!+date.slice(5, 7)) {
+          date = date.slice(0, 5) + "0" + date.slice(5, 9);
+        }
 
-      if (date.length === 9) {
-        date = date.slice(0, 8) + "0" + date[8];
-      }
-      return date;
-    });
-  } 
-  return array;
-}
-
+        if (date.length === 9) {
+          date = date.slice(0, 8) + "0" + date[8];
+        }
+        return date;
+      });
+    }
+    return array;
+  };
 
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const guides = useSelector((state) => state.guides.guides);
   const cities = useSelector((state) => state.cities.cities);
-  const guideId = guides.find((guide) => guide.user.id === user.id)._id;
- 
+  const guideId = guides.find((guide) => guide.user._id === user.id)._id;
+  console.log(guideId);
+
   const [guideInfo, setGuideInfo] = useState({
-    city: "",
-    price: null,
-    maxsize: null,
-    description: "",
-    notAvailabeDates:[]
+    city: guide.city._id,
+    price: guide.price,
+    maxsize: guide.maxsize,
+    description: guide.description,
+    notAvailabeDates: guide.notAvailabeDates,
   });
 
   const handleChange = (event) => {
@@ -55,8 +57,9 @@ const arrayOfDate=(values)=>{
   };
 
   const handleCalendar = (r) => {
-    setGuideInfo({ ...guideInfo, notAvailabeDates: arrayOfDate(r)});
+    setGuideInfo({ ...guideInfo, notAvailabeDates: arrayOfDate(r) });
   };
+
   const resetForm = () => {
     setGuideInfo({
       city: "",
@@ -66,12 +69,13 @@ const arrayOfDate=(values)=>{
       description: "",
     });
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(updateGuide(guideInfo, guideId));
     setShow(false);
     resetForm();
   };
-
 
   return (
     <>
@@ -89,11 +93,13 @@ const arrayOfDate=(values)=>{
         <form onSubmit={handleSubmit}>
           <div className=" absolute top-16 bg-white booking-form ml-20 p-2">
             <div className=" ml-36">
+              <label className=" font-bold"> Your city </label>
               <select
                 name="city"
                 className=" w-44 "
-                required
                 onChange={handleChange}
+                value={guideInfo.city}
+                // required
               >
                 <option disabled="disabled" selected="selected">
                   Choose the city
@@ -107,24 +113,28 @@ const arrayOfDate=(values)=>{
             </div>
             <hr />
             <div className=" ml-36">
-              <label className=" font-bold"> Price/person </label>
+              <label className=" font-bold"> price/person </label>
               <br />
               <input
                 type="number"
                 name="price"
                 value={guideInfo.price}
                 onChange={handleChange}
+                min={1}
+                required
               />
             </div>
             <hr />
             <div className=" ml-36">
-              <label className=" font-bold"> max size </label>
+              <label className=" font-bold"> max group size </label>
               <br />
               <input
                 type="number"
                 name="maxsize"
                 value={guideInfo.maxsize}
                 onChange={handleChange}
+                min={1}
+                required
               />
             </div>
             <hr />
@@ -132,8 +142,9 @@ const arrayOfDate=(values)=>{
               <label className=" font-bold"> your holidays </label>
               <DatePicker
                 multiple
-                onChange={handleCalendar}//{setValues}
+                onChange={handleCalendar} //{setValues}
                 minDate={new Date()}
+                value={guideInfo.notAvailabeDates}
               />
             </div>
             <hr />
@@ -145,7 +156,8 @@ const arrayOfDate=(values)=>{
                 name="description"
                 rows="4"
                 cols="50"
-                /*value={guideInfo.description}*/ onChange={handleChange}
+                onChange={handleChange}
+                value={guideInfo.description}
               />
             </div>
             <hr />
