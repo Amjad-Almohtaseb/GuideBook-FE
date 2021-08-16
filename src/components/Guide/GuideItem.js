@@ -10,27 +10,29 @@ const GuideItem = ({ guide }) => {
         <div className="row no-gutters">
           <div className="col-md-4">
             <img
-              className="card-img"
-              src="https://cdn1.vectorstock.com/i/1000x1000/32/10/young-man-avatar-character-vector-14213210.jpg"
-              alt="guide-image"
+              className="card-img h-48 border-1 border-yellow-500"
+              src={guide.user.image}
+              alt={guide.user.username}
             />
           </div>
           <div className="col-md-8 ">
             <div className="card-body">
-              <h4 className="card-title absolute top-10 ">
+              <h4 className="card-title absolute top-10 text-gray-700 ">
                 @{guide.user.username}{" "}
               </h4>
 
               <p className="card-text absolute left-3/4 top-10 text-blue-600">
                 <h4>${guide.price}/person</h4>
               </p>
-              <hr className=" relative right-3 top-20" />
-              <h5 className="card-title absolute top-32">Max group size</h5>
-              <h5 className="card-title right-72 absolute top-40">
+              <hr className=" relative right-3 top-16" />
+              <h6 className="card-title absolute bottom-10 text-gray-700">Max group size</h6>
+              <h5 className="card-title left-64 absolute bottom-2 text-gray-700">
                 {guide.maxsize}
               </h5>
 
-              <p className="card-text absolute right-4 top-3/4 text-blue-600">
+              <h6 className="card-title absolute bottom-10 text-gray-700 left-3/4  ml-9">Rating</h6>
+              <p className="card-text absolute right-4 -bottom-2 text-blue-600">
+
                 <h5>⭐⭐⭐⭐⭐</h5>
               </p>
               <p className="card-text">

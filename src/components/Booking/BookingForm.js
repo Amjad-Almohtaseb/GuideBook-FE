@@ -48,7 +48,7 @@ const BookingForm = () => {
   const handleCountry = (event) => {
     setCountryId(event.target.value);
   };
-
+  // genrate dates between startDate and endDate as an array then convert the format for this "yyyy-mm-dd"  
   const dateRange = (startDate, endDate, steps = 1) => {
     const dateArray = [];
     let currentDate = new Date(startDate);
@@ -64,7 +64,7 @@ const BookingForm = () => {
     setCityId(event.target.value);
   };
 
-  // move it to redux
+
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(searchGuide(

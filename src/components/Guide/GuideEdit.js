@@ -38,6 +38,7 @@ const GuideEdit = ({ guide }) => {
 
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
+  
   const user = useSelector((state) => state.user);
   const guides = useSelector((state) => state.guides.guides);
   const cities = useSelector((state) => state.cities.cities);
@@ -84,7 +85,7 @@ const GuideEdit = ({ guide }) => {
         onClick={() => setShow(true)}
       >
         <span className=" flex-grow pl-5 bg-transparent outline-none text-lg text-gray-600 ">
-          Fill The Form To Start Your Job
+          { guide.city&& guide.price ? "Edit Your Information":"Fill The Form To Start Your Job"}
         </span>
 
         <FaArrowCircleRight className="hidden md:inline-flex h-8 bg-yellow-500 text-white rounded-full p-2  md:mx-2 w-10" />

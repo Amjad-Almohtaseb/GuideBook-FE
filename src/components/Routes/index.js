@@ -8,10 +8,14 @@ import Home from "../Home";
 import GuideProfile from "../Guide/GuideProfile";
 import GuideList from "../Guide/GuideList";
 import GuideDetail from "../Guide/GuideDetail";
+import BookingSummary from "../Booking/BookingSummary";
 
 const Routes = () => {
   return (
     <Switch>
+      <Route path ="/bookings">
+        <BookingSummary/>
+      </Route>
       <Route path="/guides/:guideSlug">
         <GuideDetail/>
       </Route>
