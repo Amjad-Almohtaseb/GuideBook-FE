@@ -38,7 +38,7 @@ export const searchGuide = (searchInfo, history) => {
   return async (dispatch) => {
     try {
 
-      const res = await instance.post("/search");
+      const res = await instance.post("/search",searchInfo);
       dispatch({
         type: SEARCH_GUIDES,
         payload: res.data,

@@ -1,23 +1,20 @@
 import React from "react";
 import UserEdit from "../User/UserEdit";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Spinner } from "react-bootstrap";
 import GuideEdit from "./GuideEdit";
 
-
 const GuideProfile = () => {
-const dispatch = useDispatch()
- 
   const guideLoading = useSelector((state) => state.guides.loading);
   const userLoading = useSelector((state) => state.users.loading);
   const guides = useSelector((state) => state.guides.guides);
   const myuser = useSelector((state) => state.user);
   const users = useSelector((state) => state.users.users);
 
-  
-  if (guideLoading || userLoading ) return <Spinner />;
+  if (guideLoading || userLoading) return <Spinner />;
   const user = users.find((user) => user.id === myuser.id);
   const guide = guides.find((guide) => guide.user._id === user._id);
+  console.log(guide);
 
   // console.log(guide)
 
@@ -33,9 +30,7 @@ const dispatch = useDispatch()
           <div className="px-6 py-4 text-center">
             <div>
               username:{" "}
-              <p className=" font-semibold text-xl mb-3">
-                @{user.username}
-              </p>
+              <p className=" font-semibold text-xl mb-3">@{user.username}</p>
             </div>
 
             <div>
@@ -49,35 +44,32 @@ const dispatch = useDispatch()
             {user.phone && (
               <div>
                 phone:
-                <p className=" font-semibold text-xl mb-3">
-                  {user.phone}
-                </p>
+                <p className=" font-semibold text-xl mb-3">{user.phone}</p>
               </div>
             )}
             {user.gender && (
               <div>
                 gender:
-                <p className=" font-semibold text-xl mb-3">
-                  {user.gender}
-                </p>
+                <p className=" font-semibold text-xl mb-3">{user.gender}</p>
               </div>
             )}
           </div>
           <UserEdit />
         </div>
 
-
         {/* card2 */}
-        {(guide.city.name || guide.price || guide.maxsize || guide.rating) && (
+        {(guide.price || guide.maxsize || guide.rating) && (
           <div
             className="rounded overflow-hidden shadow-lg border-yellow-400  border-1 ml-4 mt-3 guide-card
      w-44 text-center  "
           >
             <div className="px-6 py-4 ">
-              {guide.city.name && (
+              {guide.city && guide.city.name && (
                 <div>
                   city:
-                  <p className=" font-semibold text-xl mb-2">{guide.city.name}</p>
+                  <p className=" font-semibold text-xl mb-2">
+                    {guide.city.name}
+                  </p>
                 </div>
               )}
 
