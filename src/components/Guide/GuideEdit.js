@@ -45,7 +45,7 @@ const GuideEdit = ({ guide }) => {
   console.log(guideId);
 
   const [guideInfo, setGuideInfo] = useState({
-    city: guide.city._id,
+    // city: guide.city._id,
     price: guide.price,
     maxsize: guide.maxsize,
     description: guide.description,
