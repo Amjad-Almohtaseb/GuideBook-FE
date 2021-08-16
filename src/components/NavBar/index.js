@@ -11,7 +11,6 @@ import { signout } from "../../store/actions/authActions";
 const Navbar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const users  = useSelector(state => state.users.users)
   const user = useSelector((state) => state.user);
   const handleSignout = () => {
     dispatch(signout(history));

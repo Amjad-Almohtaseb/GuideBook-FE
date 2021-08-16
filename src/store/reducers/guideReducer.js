@@ -17,10 +17,11 @@ const guideReducer = (state = initialState, action) => {
 
       case UPDATE_GUIDE:
         const { updatedGuide } = action.payload;
+       console.log(updatedGuide)
         return {
           ...state,
           guides: state.guides.map((guide) =>
-            guide._id === updatedGuide.id ? updatedGuide : guide
+            guide._id === updatedGuide._id ? updatedGuide : guide
           ),
   
         };

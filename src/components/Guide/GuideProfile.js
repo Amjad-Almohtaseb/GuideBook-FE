@@ -17,9 +17,9 @@ const dispatch = useDispatch()
   
   if (guideLoading || userLoading ) return <Spinner />;
   const user = users.find((user) => user.id === myuser.id);
-  const guide = guides.find((guide) => guide.user.id === user.id);
+  const guide = guides.find((guide) => guide.user._id === user._id);
 
-  
+  // console.log(guide)
 
   return (
     <>
@@ -68,16 +68,16 @@ const dispatch = useDispatch()
 
 
         {/* card2 */}
-        {(guide.city || guide.price || guide.maxsize || guide.rating) && (
+        {(guide.city.name || guide.price || guide.maxsize || guide.rating) && (
           <div
             className="rounded overflow-hidden shadow-lg border-yellow-400  border-1 ml-4 mt-3 guide-card
      w-44 text-center  "
           >
             <div className="px-6 py-4 ">
-              {guide.city && (
+              {guide.city.name && (
                 <div>
                   city:
-                  <p className=" font-semibold text-xl mb-2">{guide.city}</p>
+                  <p className=" font-semibold text-xl mb-2">{guide.city.name}</p>
                 </div>
               )}
 
@@ -106,17 +106,17 @@ const dispatch = useDispatch()
         )}
 
         {/* card 3 */}
-        {guide.discription && (
+        {guide.description && (
           <div className="rounded overflow-hidden shadow-lg border-yellow-400  border-1 ml-4 mt-3 guide-card text-center bio pt-4  ">
-            {guide.discription && (
+            {guide.description && (
               <span>
                 discription:
-                <p className="  text-xl mb-2 px-6 ">{guide.discription}</p>
+                <p className="  text-xl mb-2 px-6 ">{guide.description}</p>
               </span>
             )}
           </div>
         )}
-        <GuideEdit />
+        <GuideEdit guide={guide} />
       </div>
     </>
   );
