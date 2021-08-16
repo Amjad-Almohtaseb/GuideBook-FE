@@ -10,11 +10,12 @@ const GuideProfile = () => {
   const guides = useSelector((state) => state.guides.guides);
   const myuser = useSelector((state) => state.user);
   const users = useSelector((state) => state.users.users);
-
-  if (guideLoading || userLoading) return <Spinner />;
+  
+  if (userLoading) return <Spinner />;
   const user = users.find((user) => user.id === myuser.id);
+  if (guideLoading) return <Spinner />;
   const guide = guides.find((guide) => guide.user._id === user._id);
-  console.log(guide);
+  console.log(myuser);
 
   // console.log(guide)
 
@@ -58,7 +59,7 @@ const GuideProfile = () => {
         </div>
 
         {/* card2 */}
-        {(guide.price || guide.maxsize || guide.rating) && (
+        {guide&&(guide.price || guide.maxsize || guide.rating) && (
           <div
             className="rounded overflow-hidden shadow-lg border-yellow-400  border-1 ml-4 mt-3 guide-card
      w-44 text-center  "
@@ -73,7 +74,7 @@ const GuideProfile = () => {
                 </div>
               )}
 
-              {guide.price && (
+              { guide.price && (
                 <div>
                   price/person:
                   <p className=" font-semibold text-xl mb-2">{guide.price} $</p>
@@ -98,7 +99,7 @@ const GuideProfile = () => {
         )}
 
         {/* card 3 */}
-        {guide.description && (
+        {guide&& guide.description && (
           <div className="rounded overflow-hidden shadow-lg border-yellow-400  border-1 ml-4 mt-3 guide-card text-center bio pt-4  ">
             {guide.description && (
               <span>

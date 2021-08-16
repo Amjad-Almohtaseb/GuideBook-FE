@@ -1,9 +1,10 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 
 const GuideDetail = () => {
+  const history=useHistory()
   const guideLoading = useSelector((state) => state.guides.loading);
   const guides = useSelector((state) => state.guides.guides);
 
@@ -56,7 +57,7 @@ const GuideDetail = () => {
             )}
             <button
               className="btn btn-warning w-36 mt-2"
-              onClick={() => alert("to do")}
+              onClick={() => history.push("/bookings")}
             >
               book
             </button>

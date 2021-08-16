@@ -21,7 +21,7 @@ export const updateGuide = (updatedGuide, guideId) => {
   return async (dispatch) => {
     console.log(guideId)
     try {
-     const res = await instance.put(`/guide/${guideId}`, updatedGuide);
+     let res = await instance.put(`/guide/${guideId}`, updatedGuide);
       dispatch({
         type: UPDATE_GUIDE,
         payload: {

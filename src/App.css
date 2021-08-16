@@ -6,23 +6,23 @@
 
   margin-left: 40%;
 }
-.link-signup{
+.link-signup {
   text-decoration: none;
-   
+
   margin-left: 30%;
 }
-.link-signup:hover{
+.link-signup:hover {
   color: #fca311 !important;
 }
 
 .link:hover {
   color: #fca311 !important;
 }
-.text-nav{
-  font-family:cursive;
+.text-nav {
+  font-family: cursive;
   font-size: 14pt !important;
 }
-.bg-image{
+.bg-image {
   margin: 0px;
   background-image: url("https://images-ext-1.discordapp.net/external/nLavfkSrT7XgFyd3ac9S5QPBYkqbzikzqhvVFzAiTJw/https/miro.medium.com/max/2560/1%2A2SDFmeWqZqwgHhXBAw-pOA.png");
   background-repeat: no-repeat;
@@ -33,7 +33,7 @@
 }
 
 .nav-text {
-  color:  #14213d !important;
+  color: #14213d !important;
   background-color: #fca311 !important;
 }
 .button-color {
@@ -44,51 +44,58 @@
   color: #14213d !important;
 }
 
-
-.book-btn{
+.book-btn {
   left: 41.5%;
 }
 
-.booking-form{
+.booking-form {
   left: 32%;
   border-radius: 10px;
 }
 
-
-
-.bg-card{
+.bg-card {
   margin: 0px;
   width: 100%;
   height: 650px;
-  background-color: #E5E5E5 !important;
+  background-color: #e5e5e5 !important;
 }
 
-.profile-card{
+.profile-card {
   margin: 0px;
   width: 100%;
   height: 743px;
-  background-color: #E5E5E5 !important;
+  background-color: #e5e5e5 !important;
 }
-.guide-card{
-
+.guide-card {
   width: 72%;
   height: 45%;
-
 }
 
-.bio{
-
+.bio {
   max-width: 59.35%;
- overflow-wrap:break-word ;
- letter-spacing: 1px;
-
+  overflow-wrap: break-word;
+  letter-spacing: 1px;
 }
 
-.guide-btn{
-  top:88% !important;
+.guide-btn {
+  top: 88% !important;
   left: 80%;
-
 }
 .card1-p {
   max-height: 87.5% !important;
+}
+
+.guides {
+  border-bottom: none;
+  width: 700px;
+
+  margin-top: 0.25%;
+  min-height: 720px;
+  max-height: 720px;
+  overflow-y: scroll;
+
+  border-right: 1px double goldenrod;
+}
+::-webkit-scrollbar {
+  width: 0;
 }
