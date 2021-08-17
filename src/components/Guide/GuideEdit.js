@@ -8,8 +8,8 @@ import DatePicker from "react-multi-date-picker";
 import { updateGuide } from "../../store/actions/guideActions";
 
 const GuideEdit = ({ guide }) => {
-  console.log(guide);
 
+  //to get this format "yyyy-mm-dd" from calendar
   let array;
   const arrayOfDate = (values) => {
     if (values) {
@@ -38,11 +38,13 @@ const GuideEdit = ({ guide }) => {
 
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
-  
+
   const user = useSelector((state) => state.user);
   const guides = useSelector((state) => state.guides.guides);
   const cities = useSelector((state) => state.cities.cities);
   const guideId = guides.find((guide) => guide.user._id === user.id)._id;
+  console.log(guides);
+
   console.log(guideId);
 
   const [guideInfo, setGuideInfo] = useState({
@@ -85,7 +87,9 @@ const GuideEdit = ({ guide }) => {
         onClick={() => setShow(true)}
       >
         <span className=" flex-grow pl-5 bg-transparent outline-none text-lg text-gray-600 ">
-          { guide.city&& guide.price ? "Edit Your Information":"Fill The Form To Start Your Job"}
+          {guide.city && guide.price
+            ? "Edit Your Information"
+            : "Fill The Form To Start Your Job"}
         </span>
 
         <FaArrowCircleRight className="hidden md:inline-flex h-8 bg-yellow-500 text-white rounded-full p-2  md:mx-2 w-10" />

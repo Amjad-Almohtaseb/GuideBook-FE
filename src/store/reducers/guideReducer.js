@@ -8,6 +8,12 @@ const initialState = {
 
 const guideReducer = (state = initialState, action) => {
   switch (action.type) {
+    // case TEST:
+    //   return {
+    //     ...state.guides,
+    //     user: action.payload,
+    //   };
+
     case FETCH_GUIDES:
       return {
         ...state,
@@ -25,6 +31,7 @@ const guideReducer = (state = initialState, action) => {
         ),
       
       };
+      
     case SEARCH_GUIDES:
       return {
         ...state,

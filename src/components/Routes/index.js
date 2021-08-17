@@ -13,17 +13,17 @@ import BookingSummary from "../Booking/BookingSummary";
 const Routes = () => {
   return (
     <Switch>
-      <Route path ="/bookings">
-        <BookingSummary/>
+      <Route path="/bookings">
+        <BookingSummary />
       </Route>
       <Route path="/guides/:guideSlug">
-        <GuideDetail/>
+        <GuideDetail />
       </Route>
       <Route exact path="/guideprofile">
         <GuideProfile />
       </Route>
       <Route path="/guidelist">
-        <GuideList/>
+        <GuideList />
       </Route>
       <Route path="/signup">
         <SignUp />

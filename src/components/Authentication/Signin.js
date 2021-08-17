@@ -5,12 +5,12 @@ import { signin } from "../../store/actions/authActions";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
-import { fetchUser } from "../../store/actions/userActions";
+import { fetchUsers } from "../../store/actions/userActions";
 
 const Signin = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-   dispatch(fetchUser())
+   dispatch(fetchUsers())
   }, [])
   const history = useHistory();
   const {

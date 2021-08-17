@@ -1,13 +1,13 @@
 import instance from "./instance";
-import { FETCH_USER, UPDATE_USER } from "./types";
+import { FETCH_USERS, UPDATE_USER } from "./types";
 
-export const fetchUser = () => {
+export const fetchUsers = () => {
     return async (dispatch) => {
       try {
         const res = await instance.get("/users");
   
         dispatch({
-          type: FETCH_USER,
+          type: FETCH_USERS,
           payload: res.data,
         });
       } catch (error) {
