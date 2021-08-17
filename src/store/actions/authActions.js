@@ -1,16 +1,18 @@
-import { SET_USER } from "./types";
+import { SET_USER, UPDATE_USER } from "./types";
 import instance from "./instance";
 import decode from "jwt-decode";
 import { message } from "../../utlis";
+import { fetchGuides, updateUserInsideGuide } from "./guideActions";
 
 //signup action
 export const signup = (userData, history) => {
   return async (dispatch) => {
     try {
       const res = await instance.post("/signup", userData);
+      console.log(res);
+      await dispatch(fetchGuides());
 
       dispatch(setUser(res.data.token));
-
       if (userData.type === "user") history.push("/");
       if (userData.type === "guide") history.push("/guideprofile");
       // if (userData.type === "guide") history.push("/");
@@ -80,4 +82,22 @@ export const checkForToken = () => async (dispatch) => {
     }
   }
   dispatch(setUser());
+};
+export const updateUser = (updatedUser, userId) => {
+  return async (dispatch) => {
+    try {
+      const formData = new FormData();
+      for (const key in updatedUser) formData.append(key, updatedUser[key]);
+      let res = await instance.put(`/user/${userId}`, formData);
+
+      dispatch({
+        type: UPDATE_USER,
+        payload: {
+          updatedUser: res.data,
+        },
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 };

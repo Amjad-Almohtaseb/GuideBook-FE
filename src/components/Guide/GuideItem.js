@@ -6,11 +6,11 @@ const GuideItem = ({ guide }) => {
   console.log(guide);
   return (
     <Link to={`/guides/${guide.user.slug}`}>
-      <div className="card mb-3 absolute flex ml-10 mt-4 max-w-xl">
+      <div className="card mb-3 absolute flex ml-10 mt-4 max-w-xl p-3">
         <div className="row no-gutters">
           <div className="col-md-4">
             <img
-              className="card-img h-48 border-1 border-yellow-500"
+              className="card-img h-40 border-1 "
               src={guide.user.image}
               alt={guide.user.username}
             />
