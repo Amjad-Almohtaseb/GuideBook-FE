@@ -5,7 +5,7 @@ import { checkForToken } from "../store/actions/authActions";
 import { fetchGuides } from "./actions/guideActions";
 import { fetchCountries } from "./actions/countryActions";
 import { fetchCities } from "./actions/cityActions";
-import { fetchUser } from "./actions/userActions";
+import { fetchUsers } from "./actions/userActions";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
@@ -16,5 +16,5 @@ store.dispatch(checkForToken());
 store.dispatch(fetchGuides())
 store.dispatch(fetchCountries())
 store.dispatch(fetchCities())
-store.dispatch(fetchUser())
+// store.dispatch(fetchUsers())
 export default store;

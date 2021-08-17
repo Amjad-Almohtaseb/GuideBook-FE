@@ -48,7 +48,7 @@ const BookingForm = () => {
   const handleCountry = (event) => {
     setCountryId(event.target.value);
   };
-  // genrate dates between startDate and endDate as an array then convert the format for this "yyyy-mm-dd"  
+  // generate dates between startDate and endDate as an array then convert the format for this "yyyy-mm-dd"  
   const dateRange = (startDate, endDate, steps = 1) => {
     const dateArray = [];
     let currentDate = new Date(startDate);

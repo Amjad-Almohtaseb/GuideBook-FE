@@ -1,23 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import UserEdit from "../User/UserEdit";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "react-bootstrap";
 import GuideEdit from "./GuideEdit";
+import { fetchGuides } from "../../store/actions/guideActions";
 
 const GuideProfile = () => {
+ const dispatch = useDispatch()
+ 
+
+
+  useEffect(() => {
+    dispatch(fetchGuides())
+    }, [])
+    
   const guideLoading = useSelector((state) => state.guides.loading);
-  const userLoading = useSelector((state) => state.users.loading);
   const guides = useSelector((state) => state.guides.guides);
-  const myuser = useSelector((state) => state.user);
-  const users = useSelector((state) => state.users.users);
-  
-  if (userLoading) return <Spinner />;
-  const user = users.find((user) => user.id === myuser.id);
+  const user = useSelector((state) => state.user);
+
   if (guideLoading) return <Spinner />;
   const guide = guides.find((guide) => guide.user._id === user._id);
-  console.log(myuser);
-
+   
+  console.log(guides)
+  // console.log(user);
   // console.log(guide)
+
 
   return (
     <>
@@ -109,7 +116,9 @@ const GuideProfile = () => {
             )}
           </div>
         )}
-        <GuideEdit guide={guide} />
+
+        <GuideEdit guide={guide}  />
+
       </div>
     </>
   );

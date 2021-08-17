@@ -1,4 +1,4 @@
-import { FETCH_USER, UPDATE_USER } from "../actions/types";
+import {FETCH_USERS, UPDATE_USER } from "../actions/types";
 
 
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_USER:
+    case FETCH_USERS:
       return {
         ...state,
         users: action.payload,

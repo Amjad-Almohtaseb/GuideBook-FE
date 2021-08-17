@@ -1,6 +1,7 @@
 import React from 'react'
 
 const BookingSummary = () => {
+  //dummy data
   const  booking = {
         tourestname:"ahmad",
         guidename:"ahmad",

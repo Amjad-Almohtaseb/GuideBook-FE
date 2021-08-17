@@ -8,14 +8,15 @@ export const signup = (userData, history) => {
   return async (dispatch) => {
     try {
       const res = await instance.post("/signup", userData);
+
       dispatch(setUser(res.data.token));
 
-      if (userData.type === "user") window.location.assign("/");
-      if (userData.type === "guide") window.location.assign("/guideprofile");
+      if (userData.type === "user") history.push("/");
+      if (userData.type === "guide") history.push("/guideprofile");
+      // if (userData.type === "guide") history.push("/");
 
       message("success", "Your account has been successfully created!", 2500);
     } catch (error) {
-
       message(
         "error",
         "An error has occured while creating your account",
@@ -36,7 +37,6 @@ export const signin = (userData, history) => {
       if (userData.type === "guide") history.push("/guideprofile");
       message("success", "Welcome back!", 2500);
     } catch (error) {
-
       message("error", "Invalid username or password", 2500);
     }
   };
@@ -53,10 +53,10 @@ const setUser = (token) => {
   if (token) {
     localStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-
+    const decodedToken = decode(token);
     return {
       type: SET_USER,
-      payload: decode(token),
+      payload: decodedToken,
     };
   } else {
     localStorage.removeItem("myToken");
