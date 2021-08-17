@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <div
       style={{ backgroundColor: "#fca311" }}
-      className="navbar shadow-lg text-neutral-content rounded-box nav-txt"
+      className="navbar shadow-lg text-neutral-content rounded-box nav-txt fixed"
     >
       <Link to="/" className="flex-1 px-2 mx-2">
         <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav">

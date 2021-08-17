@@ -1,8 +1,8 @@
-import {FETCH_USERS, UPDATE_USER } from "../actions/types";
-
+import { FETCH_USERS } from "../actions/types";
 
 const initialState = {
   users: [],
+
   loading: true,
 };
 
@@ -14,15 +14,7 @@ const userReducer = (state = initialState, action) => {
         users: action.payload,
         loading: false,
       };
-      case UPDATE_USER:
-      const { updatedUser } = action.payload;
-      return {
-        ...state,
-        users: state.users.map((user) =>
-          user._id === updatedUser._id ? updatedUser : user
-        ),
 
-      };
     default:
       return state;
   }

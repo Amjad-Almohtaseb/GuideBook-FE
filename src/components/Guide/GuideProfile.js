@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import UserEdit from "../User/UserEdit";
 import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "react-bootstrap";
@@ -6,25 +6,13 @@ import GuideEdit from "./GuideEdit";
 import { fetchGuides } from "../../store/actions/guideActions";
 
 const GuideProfile = () => {
- const dispatch = useDispatch()
- 
+  const dispatch = useDispatch();
 
-
-  useEffect(() => {
-    dispatch(fetchGuides())
-    }, [])
-    
   const guideLoading = useSelector((state) => state.guides.loading);
   const guides = useSelector((state) => state.guides.guides);
   const user = useSelector((state) => state.user);
-
   if (guideLoading) return <Spinner />;
   const guide = guides.find((guide) => guide.user._id === user._id);
-   
-  console.log(guides)
-  // console.log(user);
-  // console.log(guide)
-
 
   return (
     <>
@@ -32,33 +20,39 @@ const GuideProfile = () => {
         <div className="rounded overflow-hidden shadow-lg w-96 border-yellow-400  border-1 ml-4 mt-3 card1-p ">
           <img
             className=" w-96 h-56 rounded mx-auto "
-            src={user.image}
+            src={guide.user.image}
             alt="Mountain"
           />
           <div className="px-6 py-4 text-center">
             <div>
               username:{" "}
-              <p className=" font-semibold text-xl mb-3">@{user.username}</p>
+              <p className=" font-semibold text-xl mb-3">
+                @{guide.user.username}
+              </p>
             </div>
 
             <div>
               fullname:{" "}
-              <p className=" font-semibold text-xl mb-3">{`${user.firstname}  ${user.lastname}`}</p>
+              <p className=" font-semibold text-xl mb-3">{`${guide.user.firstname}  ${guide.user.lastname}`}</p>
             </div>
             <div>
               e-mail:{" "}
-              <p className=" font-semibold text-xl mb-3">{user.email}</p>
+              <p className=" font-semibold text-xl mb-3">{guide.user.email}</p>
             </div>
-            {user.phone && (
+            {guide.user.phone && (
               <div>
                 phone:
-                <p className=" font-semibold text-xl mb-3">{user.phone}</p>
+                <p className=" font-semibold text-xl mb-3">
+                  {guide.user.phone}
+                </p>
               </div>
             )}
-            {user.gender && (
+            {guide.user.gender && (
               <div>
                 gender:
-                <p className=" font-semibold text-xl mb-3">{user.gender}</p>
+                <p className=" font-semibold text-xl mb-3">
+                  {guide.user.gender}
+                </p>
               </div>
             )}
           </div>
@@ -66,7 +60,7 @@ const GuideProfile = () => {
         </div>
 
         {/* card2 */}
-        {guide&&(guide.price || guide.maxsize || guide.rating) && (
+        {guide && (guide.price || guide.maxsize || guide.rating) && (
           <div
             className="rounded overflow-hidden shadow-lg border-yellow-400  border-1 ml-4 mt-3 guide-card
      w-44 text-center  "
@@ -81,7 +75,7 @@ const GuideProfile = () => {
                 </div>
               )}
 
-              { guide.price && (
+              {guide.price && (
                 <div>
                   price/person:
                   <p className=" font-semibold text-xl mb-2">{guide.price} $</p>
@@ -106,7 +100,7 @@ const GuideProfile = () => {
         )}
 
         {/* card 3 */}
-        {guide&& guide.description && (
+        {guide && guide.description && (
           <div className="rounded overflow-hidden shadow-lg border-yellow-400  border-1 ml-4 mt-3 guide-card text-center bio pt-4  ">
             {guide.description && (
               <span>
@@ -117,8 +111,7 @@ const GuideProfile = () => {
           </div>
         )}
 
-        <GuideEdit guide={guide}  />
-
+        <GuideEdit guide={guide} />
       </div>
     </>
   );

@@ -16,5 +16,5 @@ store.dispatch(checkForToken());
 store.dispatch(fetchGuides())
 store.dispatch(fetchCountries())
 store.dispatch(fetchCities())
-// store.dispatch(fetchUsers())
+store.dispatch(fetchUsers())
 export default store;

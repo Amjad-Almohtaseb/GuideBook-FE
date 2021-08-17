@@ -8,7 +8,6 @@ import DatePicker from "react-multi-date-picker";
 import { updateGuide } from "../../store/actions/guideActions";
 
 const GuideEdit = ({ guide }) => {
-
   //to get this format "yyyy-mm-dd" from calendar
   let array;
   const arrayOfDate = (values) => {
@@ -43,9 +42,6 @@ const GuideEdit = ({ guide }) => {
   const guides = useSelector((state) => state.guides.guides);
   const cities = useSelector((state) => state.cities.cities);
   const guideId = guides.find((guide) => guide.user._id === user.id)._id;
-  console.log(guides);
-
-  console.log(guideId);
 
   const [guideInfo, setGuideInfo] = useState({
     // city: guide.city._id,
@@ -77,7 +73,6 @@ const GuideEdit = ({ guide }) => {
     event.preventDefault();
     dispatch(updateGuide(guideInfo, guideId));
     setShow(false);
-    resetForm();
   };
 
   return (
