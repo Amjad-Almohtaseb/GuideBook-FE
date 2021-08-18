@@ -86,15 +86,14 @@
 }
 
 .guides {
+  left: 55%;
   border-bottom: none;
   width: 700px;
-
   margin-top: 0.25%;
   min-height: 720px;
   max-height: 720px;
   overflow-y: scroll;
-
-  border-right: 1px double goldenrod;
+  border-left: 1px double goldenrod;
 }
 ::-webkit-scrollbar {
   width: 0;

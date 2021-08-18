@@ -21,11 +21,6 @@ export const updateGuide = (updatedGuide, guideId) => {
   return async (dispatch) => {
     try {
       let res = await instance.put(`/guide/${guideId}`, updatedGuide);
-      // res.data.user= updatedGuide.user
-      // res.data.user = {}
-
-      console.log(res.data);
-
       dispatch({
         type: UPDATE_GUIDE,
         payload: {
@@ -42,9 +37,10 @@ export const searchGuide = (searchInfo, history) => {
   return async (dispatch) => {
     try {
       const res = await instance.post("/search", searchInfo);
+      const guidesList = res.data
       dispatch({
         type: SEARCH_GUIDES,
-        payload: res.data,
+        payload:{ guidesList,searchInfo}
       });
       history.push("/guidelist");
     } catch (error) {
