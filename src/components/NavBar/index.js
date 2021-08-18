@@ -38,15 +38,15 @@ const Navbar = () => {
                   register as a guide
                 </span>
               </Link>
-              <Link to={{ pathname: "/signup", state: { type: "user" } }}>
+              {/* <Link to={{ pathname: "/signup", state: { type: "user" } }}>
                 <span className="btn btn-ghost btn-sm text-nav">signup</span>
-              </Link>
+              </Link> */}
               <Link to="/signin">
                 <span className="btn btn-ghost btn-sm text-nav">signin</span>
               </Link>
             </>
           )}
-       {/* userInfo must be here */}
+          {/* userInfo must be here */}
           {user && (
             <Link
               onClick={handleSignout}
