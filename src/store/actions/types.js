@@ -13,3 +13,7 @@ export const FETCH_COUNTRIES = "FETCH_COUNTRIES";
 
 //cities
 export const FETCH_CITIES = "FETCH_CITIES";
+
+//booking
+export const FETCH_BOOKING = "FETCH_BOOKING";
+export const NEW_BOOKING = "NEW_BOOKING";
