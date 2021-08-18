@@ -9,7 +9,6 @@ export const signup = (userData, history) => {
   return async (dispatch) => {
     try {
       const res = await instance.post("/signup", userData);
-      console.log(res);
       await dispatch(fetchGuides());
 
       dispatch(setUser(res.data.token));

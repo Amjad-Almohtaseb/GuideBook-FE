@@ -59,7 +59,7 @@ const GuideDetail = () => {
               className="btn btn-warning w-36 mt-2"
               onClick={() => history.push("/bookings")}
             >
-              book
+              BOOK
             </button>
           </div>
         </div>
@@ -101,7 +101,22 @@ const GuideDetail = () => {
               )}
             </div>
           </div>
+        
+
         )}
+
+                   {/* card 3 */}
+        {guide && guide.description && (
+          <div className="rounded overflow-hidden shadow-lg border-yellow-400  border-1 ml-4 mt-3 guide-card text-center bio pt-4  ">
+            {guide.description && (
+              <span>
+                discription:
+                <p className="  text-xl mb-2 px-6 ">{guide.description}</p>
+              </span>
+            )}
+          </div>
+        )}
+
       </div>
     </>
   );

@@ -34,6 +34,8 @@ const BookingSummary = () => {
       <td>{booking.from}</td>
       <td>{booking.to}</td>
       <td>{booking.groupsize}</td>
+
+      {/* front end */}
       <td>{booking.price}</td>
       <td>{booking.status}</td>
       

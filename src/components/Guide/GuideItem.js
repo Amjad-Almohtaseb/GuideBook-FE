@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const GuideItem = ({ guide }) => {
-  console.log(guide);
   return (
     <Link to={`/guides/${guide.user.slug}`}>
       <div className="card mb-3 absolute flex ml-10 mt-4 max-w-xl p-3">
@@ -18,7 +17,9 @@ const GuideItem = ({ guide }) => {
           <div className="col-md-8 ">
             <div className="card-body">
               <h4 className="card-title absolute top-10 text-gray-700 ">
-                @{guide.user.username}{" "}
+                {/* @{guide.user.username} */}
+                {guide.user.firstname}
+                
               </h4>
 
               <p className="card-text absolute left-3/4 top-10 text-blue-600">

@@ -9,6 +9,7 @@ const initialState = {
   guides: [],
   foundguides: [],
   loading: true,
+  searchInfo: {},
 };
 
 const guideReducer = (state = initialState, action) => {
@@ -28,7 +29,6 @@ const guideReducer = (state = initialState, action) => {
 
     case UPDATE_GUIDE:
       const { updatedGuide } = action.payload;
-      console.log(updatedGuide);
       return {
         ...state,
         guides: state.guides.map((guide) =>
@@ -39,7 +39,17 @@ const guideReducer = (state = initialState, action) => {
     case SEARCH_GUIDES:
       return {
         ...state,
-        foundguides: action.payload,
+        foundguides: action.payload.guidesList,
+        searchInfo: action.payload.searchInfo,
+      };
+    case UPDATE_USER:
+      return {
+        ...state,
+        guides: state.guides.map((guide) =>
+          guide.user._id === action.payload.updatedUser._id
+            ? { ...guide, user: action.payload.updatedUser }
+            : guide
+        ),
       };
     case UPDATE_USER:
       console.log(action.payload);
