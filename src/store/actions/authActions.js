@@ -2,7 +2,7 @@ import { SET_USER, UPDATE_USER } from "./types";
 import instance from "./instance";
 import decode from "jwt-decode";
 import { message } from "../../utlis";
-import { fetchGuides, updateUserInsideGuide } from "./guideActions";
+import { fetchGuides } from "./guideActions";
 
 //signup action
 export const signup = (userData, history) => {

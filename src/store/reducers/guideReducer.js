@@ -51,16 +51,6 @@ const guideReducer = (state = initialState, action) => {
             : guide
         ),
       };
-    case UPDATE_USER:
-      console.log(action.payload);
-      return {
-        ...state,
-        guides: state.guides.map((guide) =>
-          guide.user._id === action.payload.updatedUser._id
-            ? { ...guide, user: action.payload.updatedUser }
-            : guide
-        ),
-      };
 
     default:
       return state;

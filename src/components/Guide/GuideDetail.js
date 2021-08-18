@@ -1,17 +1,33 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
+import { newBooking } from "../../store/actions/bookingActions";
 
 const GuideDetail = () => {
-  const history=useHistory()
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const searchInfo = useSelector((state) => state.guides.searchInfo);
   const guideLoading = useSelector((state) => state.guides.loading);
   const guides = useSelector((state) => state.guides.guides);
 
   const guideSlug = useParams().guideSlug;
   if (guideLoading) return <Spinner />;
   const guide = guides.find((guide) => guide.user.slug === guideSlug);
-
+  console.log(searchInfo);
+  const handleBooking = (searchInfo) => {
+    dispatch(
+      newBooking(
+        {
+          guide: guide._id,
+          cityName: guide.city.name,
+          choosenDates: searchInfo.dates,
+          groupSize: +searchInfo.maxsize,
+        },
+        history
+      )
+    );
+  };
   return (
     <>
       <div className="card  flex flex-row profile-card ">
@@ -57,7 +73,7 @@ const GuideDetail = () => {
             )}
             <button
               className="btn btn-warning w-36 mt-2"
-              onClick={() => history.push("/bookings")}
+              onClick={() => handleBooking(searchInfo)}
             >
               BOOK
             </button>
@@ -101,11 +117,9 @@ const GuideDetail = () => {
               )}
             </div>
           </div>
-        
-
         )}
 
-                   {/* card 3 */}
+        {/* card 3 */}
         {guide && guide.description && (
           <div className="rounded overflow-hidden shadow-lg border-yellow-400  border-1 ml-4 mt-3 guide-card text-center bio pt-4  ">
             {guide.description && (
@@ -116,7 +130,6 @@ const GuideDetail = () => {
             )}
           </div>
         )}
-
       </div>
     </>
   );
