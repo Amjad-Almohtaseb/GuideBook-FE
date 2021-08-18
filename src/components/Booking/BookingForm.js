@@ -4,13 +4,12 @@ import { SearchIcon, UsersIcon } from "@heroicons/react/solid";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRangePicker } from "react-date-range";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { searchGuide } from "../../store/actions/guideActions";
 
-
 const BookingForm = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const history = useHistory();
   const countries = useSelector((state) => state.countries.countries);
   const cities = useSelector((state) => state.cities.cities);
@@ -48,7 +47,7 @@ const BookingForm = () => {
   const handleCountry = (event) => {
     setCountryId(event.target.value);
   };
-  // generate dates between startDate and endDate as an array then convert the format for this "yyyy-mm-dd"  
+  // generate dates between startDate and endDate as an array then convert the format for this "yyyy-mm-dd"
   const dateRange = (startDate, endDate, steps = 1) => {
     const dateArray = [];
     let currentDate = new Date(startDate);
@@ -64,15 +63,18 @@ const BookingForm = () => {
     setCityId(event.target.value);
   };
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(searchGuide(
+    dispatch(
+      searchGuide(
         {
           dates: dateRange(strStartDate, strEndDate),
           city: cityId,
-          maxsize: groupSize},history)
-    );  
+          maxsize: groupSize,
+        },
+        history
+      )
+    );
   };
 
   return (

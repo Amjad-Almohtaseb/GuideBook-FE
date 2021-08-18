@@ -10,12 +10,13 @@ const GuideDetail = () => {
   const searchInfo = useSelector((state) => state.guides.searchInfo);
   const guideLoading = useSelector((state) => state.guides.loading);
   const guides = useSelector((state) => state.guides.guides);
+  const user = useSelector((state) => state.user);
 
   const guideSlug = useParams().guideSlug;
   if (guideLoading) return <Spinner />;
   const guide = guides.find((guide) => guide.user.slug === guideSlug);
   console.log(searchInfo);
-  const handleBooking = (searchInfo) => {
+  const handleBooking = () => {
     dispatch(
       newBooking(
         {
@@ -71,12 +72,21 @@ const GuideDetail = () => {
                 </p>
               </div>
             )}
-            <button
-              className="btn btn-warning w-36 mt-2"
-              onClick={() => handleBooking(searchInfo)}
-            >
-              BOOK
-            </button>
+            {user ? (
+              <button
+                className="btn btn-warning w-36 mt-2"
+                onClick={() => handleBooking()}
+              >
+                BOOK
+              </button>
+            ) : (
+              <button
+                className="btn btn-warning w-36 mt-2"
+                onClick={() => history.push("/signin")}
+              >
+                BOOK
+              </button>
+            )}
           </div>
         </div>
         {/* card2 */}

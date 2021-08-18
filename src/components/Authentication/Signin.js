@@ -10,25 +10,24 @@ import { fetchUsers } from "../../store/actions/userActions";
 const Signin = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-   dispatch(fetchUsers())
-  }, [])
+    dispatch(fetchUsers());
+  }, []);
   const history = useHistory();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const users = useSelector(state => state.users.users)
-  const userLoading = useSelector(state=> state.users.loading)
-  if(userLoading) return <Spinner/>
- 
-  const onSubmit = (data) =>{
+  const users = useSelector((state) => state.users.users);
+  const userLoading = useSelector((state) => state.users.loading);
+  if (userLoading) return <Spinner />;
 
-    const userType= users.find(user=>user.username===data.username).type
-    if(userType==="user") data.type = "user"
-    else data.type="guide"
+  const onSubmit = (data) => {
+    const userType = users.find((user) => user.username === data.username).type;
+    if (userType === "user") data.type = "user";
+    else data.type = "guide";
     dispatch(signin(data, history));
-  }
+  };
   return (
     <>
       <center>
@@ -57,18 +56,21 @@ const Signin = () => {
             type="password"
             className="form-control h-12"
             {...register("password", { required: true })}
-            
           />
 
           {errors.password && errors.password.type === "required" && (
             <span role="alert"> password is required</span>
           )}
           <br />
-          <button className="btn button-color w-96 mb-2" type="submit">‏
-            SIGN IN
+          <button className="btn button-color w-96 mb-2" type="submit">
+            ‏ SIGN IN
           </button>
           <p>
-          <Link style={{ color: "#14213d" }} className="link" to={{pathname:"/signup",state:{type:"user"}}}>
+            <Link
+              style={{ color: "#14213d" }}
+              className="link"
+              to={{ pathname: "/signup", state: { type: "user", counter: -2 } }}
+            >
               &nbsp; Don't have an account? signup
             </Link>
           </p>

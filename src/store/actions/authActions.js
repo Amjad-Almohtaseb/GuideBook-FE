@@ -5,17 +5,19 @@ import { message } from "../../utlis";
 import { fetchGuides } from "./guideActions";
 
 //signup action
-export const signup = (userData, history) => {
+export const signup = (userData, history, counter = -1) => {
   return async (dispatch) => {
     try {
       const res = await instance.post("/signup", userData);
       await dispatch(fetchGuides());
 
       dispatch(setUser(res.data.token));
-      if (userData.type === "user") history.push("/");
+      if (userData.counter) counter = userData.counter;
+      if (userData.type === "user") javascript: history.go(counter);
       if (userData.type === "guide") history.push("/guideprofile");
-      // if (userData.type === "guide") history.push("/");
 
+      // if (lastLocation) history.push(lastLocation);
+      // else history.push("/");
       message("success", "Your account has been successfully created!", 2500);
     } catch (error) {
       message(
@@ -33,8 +35,7 @@ export const signin = (userData, history) => {
     try {
       const res = await instance.post("/signin", userData);
       dispatch(setUser(res.data.token));
-
-      if (userData.type === "user") history.push("/");
+      if (userData.type === "user") javascript: history.go(-1);
       if (userData.type === "guide") history.push("/guideprofile");
       message("success", "Welcome back!", 2500);
     } catch (error) {
