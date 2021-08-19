@@ -5,7 +5,6 @@ export const fetchGuides = () => {
   return async (dispatch) => {
     try {
       const res = await instance.get("/guides");
-      console.log(res.data);
 
       dispatch({
         type: FETCH_GUIDES,
@@ -37,10 +36,13 @@ export const searchGuide = (searchInfo, history) => {
   return async (dispatch) => {
     try {
       const res = await instance.post("/search", searchInfo);
-      const guidesList = res.data
+      const guidesList = res.data;
+      window.localStorage.setItem("searchInfo", JSON.stringify(searchInfo));
+      window.localStorage.setItem("searchGuides", JSON.stringify(res.data));
+
       dispatch({
         type: SEARCH_GUIDES,
-        payload:{ guidesList,searchInfo}
+        payload: { guidesList, searchInfo },
       });
       history.push("/guidelist");
     } catch (error) {
