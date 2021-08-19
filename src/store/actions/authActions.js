@@ -5,7 +5,7 @@ import { message } from "../../utlis";
 import { fetchGuides } from "./guideActions";
 
 //signup action
-export const signup = (userData, history, counter = -1) => {
+export const signup = (userData, history, slug , counter = -1) => {
   return async (dispatch) => {
     try {
       const res = await instance.post("/signup", userData);
@@ -101,3 +101,6 @@ export const updateUser = (updatedUser, userId) => {
     }
   };
 };
+
+
+

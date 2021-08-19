@@ -78,12 +78,12 @@ const GuideEdit = ({ guide }) => {
   return (
     <>
       <div
-        className="  flex items-center md:border-2 rounded-full py-2 md:shadow-sm  w-80 absolute bg-white top-60 cursor-pointer guide-btn"
+        className="  flex items-center md:border-2 rounded-full py-2 md:shadow-sm  w-80 absolute bg-white cursor-pointer guide-btn"
         onClick={() => setShow(true)}
       >
         <span className=" flex-grow pl-5 bg-transparent outline-none text-lg text-gray-600 ">
           {guide.city && guide.price
-            ? "Edit Your Information"
+            ? "Edit Your Work Information"
             : "Fill The Form To Start Your Job"}
         </span>
 
@@ -91,9 +91,9 @@ const GuideEdit = ({ guide }) => {
       </div>
       {show && (
         <form onSubmit={handleSubmit}>
-          <div className=" absolute top-16 bg-white booking-form ml-20 p-2">
+          <div className=" absolute top-16 bg-gray-800 guide-form ml-20 p-2 z-10  border-yellow-400 border-2 border-double ">
             <div className=" ml-36">
-              <label className=" font-bold"> Your city </label>
+              <label className=" font-bold text-white "> Your City </label> <br/>
               <select
                 name="city"
                 className=" w-44 "
@@ -101,8 +101,8 @@ const GuideEdit = ({ guide }) => {
                 value={guideInfo.city}
                 // required
               >
-                <option disabled="disabled" selected="selected">
-                  Choose the city
+                <option disabled="disabled" selected="selected" >
+                  Choose The City
                 </option>
                 {cities.map((city) => (
                   <option name={city.name} value={city._id}>
@@ -111,9 +111,9 @@ const GuideEdit = ({ guide }) => {
                 ))}
               </select>
             </div>
-            <hr />
+            <hr className=" bg-yellow-400" />
             <div className=" ml-36">
-              <label className=" font-bold"> price/person </label>
+              <label className=" font-bold text-white "> Price/Person </label>
               <br />
               <input
                 type="number"
@@ -124,9 +124,9 @@ const GuideEdit = ({ guide }) => {
                 required
               />
             </div>
-            <hr />
+            <hr className=" bg-yellow-400" />
             <div className=" ml-36">
-              <label className=" font-bold"> max group size </label>
+              <label className=" font-bold text-white "> Max Group Size </label>
               <br />
               <input
                 type="number"
@@ -137,42 +137,43 @@ const GuideEdit = ({ guide }) => {
                 required
               />
             </div>
-            <hr />
+            <hr className=" bg-yellow-400" />
             <div className=" ml-36">
-              <label className=" font-bold"> your holidays </label>
+              <label className=" font-bold text-white "> Your Holidays </label><br/>
               <DatePicker
                 multiple
                 onChange={handleCalendar} //{setValues}
                 minDate={new Date()}
                 value={guideInfo.notAvailabeDates}
+                
               />
             </div>
-            <hr />
+            <hr className=" bg-yellow-400" />
 
             <div className=" ml-36">
-              <label className=" font-bold"> Description </label>
+              <label className=" font-bold text-white " > Description </label>
               <br />
               <textarea
                 name="description"
                 rows="4"
-                cols="50"
+                cols="30"
                 onChange={handleChange}
                 value={guideInfo.description}
               />
             </div>
-            <hr />
+            <hr className=" bg-yellow-400" />
 
             <button
-              className="  bg-red-600 text-black font-bold py-2 px-4 rounded-full mb-3 ml-20 "
+              className="  bg-red-600 font-bold py-2 px-4 rounded-full mb-3 ml-20 text-white "
               onClick={() => setShow(false)}
             >
-              Cancle{" "}
+              CANCLE
             </button>
             <button
               type="submit"
-              className=" bg-yellow-500 text-black font-bold py-2 px-4 rounded-full ml-20 w-24 "
+              className=" bg-yellow-500 text-white  font-bold py-2 px-4 rounded-full ml-32 w-24 "
             >
-              Edit{" "}
+              EDIT
             </button>
           </div>
         </form>
