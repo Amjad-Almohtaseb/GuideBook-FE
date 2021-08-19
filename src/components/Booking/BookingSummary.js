@@ -13,8 +13,7 @@ const BookingSummary = () => {
   const summary = booking[booking.length-1]
   const guideName = guides.find(guide=> guide._id=== summary.guide._id).user.fullname
   let today = new Date().toISOString().substr(0, 10);
-  console.log(summary)
-  console.log(guides)
+ 
   //dummy data
   // const  booking = {
   //       tourestname:"ahmad",

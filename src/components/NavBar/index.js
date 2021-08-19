@@ -46,7 +46,11 @@ const Navbar = () => {
               </Link>
             </>
           )}
-          {/* userInfo must be here */}
+         <Link to={`/user/${user.slug}`}>
+         <span className="btn btn-ghost btn-sm text-nav">
+                 My Profile
+                </span>
+         </Link>
           {user && (
             <Link
               onClick={handleSignout}

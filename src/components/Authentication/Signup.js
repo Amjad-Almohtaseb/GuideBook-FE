@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation } from "react-router-dom";
 
 const Signup = () => {
+
   const dispatch = useDispatch();
   const history = useHistory();
   const {

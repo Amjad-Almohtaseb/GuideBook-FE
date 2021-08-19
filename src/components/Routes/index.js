@@ -9,6 +9,7 @@ import GuideProfile from "../Guide/GuideProfile";
 import GuideList from "../Guide/GuideList";
 import GuideDetail from "../Guide/GuideDetail";
 import BookingSummary from "../Booking/BookingSummary";
+import UserProfile from "../User/UserProfile";
 
 const Routes = () => {
   return (
@@ -19,6 +20,9 @@ const Routes = () => {
       <Route path="/guides/:guideSlug">
         <GuideDetail />
       </Route>
+      <Routes>
+        <UserProfile path="/user/:userSlug" />
+      </Routes>
       <Route exact path="/guideprofile">
         <GuideProfile />
       </Route>
