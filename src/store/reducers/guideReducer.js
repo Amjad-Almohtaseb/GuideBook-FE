@@ -7,19 +7,14 @@ import {
 
 const initialState = {
   guides: [],
-  foundguides: [],
+  foundguides: JSON.parse(window.localStorage.getItem("searchGuides")) || [],
+
   loading: true,
-  searchInfo: {},
+  searchInfo: JSON.parse(window.localStorage.getItem("searchInfo")) || {},
 };
 
 const guideReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case TEST:
-    //   return {
-    //     ...state.guides,
-    //     user: action.payload,
-    //   };
-
     case FETCH_GUIDES:
       return {
         ...state,

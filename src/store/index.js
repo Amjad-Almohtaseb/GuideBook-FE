@@ -6,6 +6,7 @@ import { fetchGuides } from "./actions/guideActions";
 import { fetchCountries } from "./actions/countryActions";
 import { fetchCities } from "./actions/cityActions";
 import { fetchUsers } from "./actions/userActions";
+import { fetchBooking } from "./actions/bookingActions";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
@@ -17,5 +18,5 @@ store.dispatch(fetchGuides());
 store.dispatch(fetchCountries());
 store.dispatch(fetchCities());
 store.dispatch(fetchUsers());
-
+store.dispatch(fetchBooking());
 export default store;
