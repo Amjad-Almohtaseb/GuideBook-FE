@@ -26,7 +26,7 @@ const UserEdit = () => {
   return (
     <>
       <FaUserEdit
-        className=" ml-2 cursor-pointer  "
+        className=" ml-6 mt-4 cursor-pointer  "
         size={28}
         onClick={() => setShow(true)}
       />

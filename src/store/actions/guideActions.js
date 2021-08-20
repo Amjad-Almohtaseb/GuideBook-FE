@@ -37,8 +37,8 @@ export const searchGuide = (searchInfo, history) => {
     try {
       const res = await instance.post("/search", searchInfo);
       const guidesList = res.data;
-      window.localStorage.setItem("searchInfo", JSON.stringify(searchInfo));
-      window.localStorage.setItem("searchGuides", JSON.stringify(res.data));
+     window.localStorage.setItem("searchInfo", JSON.stringify(searchInfo));
+     window.localStorage.setItem("searchGuides", JSON.stringify(res.data));
 
       dispatch({
         type: SEARCH_GUIDES,
