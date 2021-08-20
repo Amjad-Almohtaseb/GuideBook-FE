@@ -133,3 +133,35 @@ body{
 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
 } */
+.user-card-p{
+  width: 95%;
+  height: 87%;
+}
+.user-table{
+  max-height: 37.5%;
+  background-color: white;
+  overflow-y: scroll;
+  top: 50%;
+  width: 94%;
+ 
+
+  
+}
+.guide-card-summary{
+  /* box-shadow:0px 0px 0px 3px gray inset; */
+  left: 25%;
+  top:50px;
+  
+}
+.tourist-card-summary{
+  left: 51%;
+  bottom:205.8px;
+}
+.done-card-summary{
+  width: 784px;
+  bottom:190px;
+  left:25%;
+  height: 140px;
+  flex-direction: row !important;
+  justify-content: space-evenly;
+}

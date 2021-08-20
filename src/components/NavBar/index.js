@@ -46,11 +46,11 @@ const Navbar = () => {
               </Link>
             </>
           )}
-         <Link to={`/user/${user.slug}`}>
+         {user&&<Link to={`/user/${user.slug}`}>
          <span className="btn btn-ghost btn-sm text-nav">
                  My Profile
                 </span>
-         </Link>
+         </Link>}
           {user && (
             <Link
               onClick={handleSignout}

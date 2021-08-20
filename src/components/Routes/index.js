@@ -17,12 +17,12 @@ const Routes = () => {
       <Route path="/bookings">
         <BookingSummary />
       </Route>
+      <Route path="/user/:userSlug">
+        <UserProfile  />
+      </Route>
       <Route path="/guides/:guideSlug">
         <GuideDetail />
       </Route>
-      <Routes>
-        <UserProfile path="/user/:userSlug" />
-      </Routes>
       <Route exact path="/guideprofile">
         <GuideProfile />
       </Route>

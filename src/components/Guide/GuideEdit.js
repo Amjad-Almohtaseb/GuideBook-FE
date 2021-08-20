@@ -1,4 +1,3 @@
-// still under work
 
 import React, { useState } from "react";
 import { FaArrowCircleRight } from "@react-icons/all-files/fa/FaArrowCircleRight";
