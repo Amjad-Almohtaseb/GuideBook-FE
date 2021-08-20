@@ -46,7 +46,12 @@ const Navbar = () => {
               </Link>
             </>
           )}
-         {user&&<Link to={`/user/${user.slug}`}>
+         {user&&user.type==="user"&&<Link to={`/user/${user.slug}`}>
+         <span className="btn btn-ghost btn-sm text-nav">
+                 My Profile
+                </span>
+         </Link>}
+         {user&&user.type==="guide"&&<Link to="/guideprofile">
          <span className="btn btn-ghost btn-sm text-nav">
                  My Profile
                 </span>
