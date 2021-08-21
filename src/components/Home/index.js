@@ -2,24 +2,18 @@ import React from "react";
 import BookingForm from "../Booking/BookingForm";
 import FavCities from "./FavCities";
 
-
 const Home = () => {
-
-
   return (
-       <>
+    <>
       <div className="card  image-full flex items-center ">
-
-        <figure className="bg-image"> 
-        <BookingForm/>
+        <figure className="bg-image">
+          <BookingForm />
         </figure>
-
-
       </div>
-      
-      <FavCities/>
-       {/* daisyui */}
-      
+
+      <FavCities />
+      {/* daisyui */}
+
       {/* <div class="navbar mb-2 shadow-lg bg-warning text-neutral-content rounded-box">
   <div class="flex-1 px-2 mx-2">
     <span class="text-lg font-bold">
@@ -66,8 +60,8 @@ const Home = () => {
     </button>
   </div>
 </div> */}
-{/* test */}
-      </>
+      {/* test */}
+    </>
   );
 };
 
