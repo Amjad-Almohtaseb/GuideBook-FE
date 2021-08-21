@@ -26,13 +26,13 @@ const UserEdit = () => {
   return (
     <>
       <FaUserEdit
-        className=" ml-6 mt-4 cursor-pointer  "
+        className=" cursor-pointer  ml-2 mt-2 "
         size={28}
         onClick={() => setShow(true)}
       />
       {show && (
         <form onSubmit={handleSubmit}>
-          <div className=" absolute top-16   bg-gray-800 booking-form ml-20 p-2 z-10  border-yellow-400 border-2 border-double">
+          <div className=" absolute top-16  bg-gray-800 booking-form ml-20 p-2 z-10  border-yellow-400 border-2 border-double">
             <div className=" ml-36">
               <label className=" font-bold text-white "> Edit Picture </label>
               <br />
@@ -77,7 +77,7 @@ const UserEdit = () => {
               type="submit"
               className=" bg-yellow-500 text-white font-bold py-2 px-4 rounded-full ml-20 w-24 "
             >
-              EDIT
+              SAVE
             </button>
           </div>
         </form>

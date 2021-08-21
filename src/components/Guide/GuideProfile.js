@@ -3,7 +3,11 @@ import UserEdit from "../User/UserEdit";
 import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "react-bootstrap";
 import GuideEdit from "./GuideEdit";
-
+import { MdEmail } from "@react-icons/all-files/md/MdEmail";
+import { MdSmartphone} from "@react-icons/all-files/md/MdSmartphone";
+import { AiFillDollarCircle } from "@react-icons/all-files/ai/AiFillDollarCircle";
+import { HiUserGroup } from "@react-icons/all-files/hi/HiUserGroup";
+import { ImLocation2 } from "@react-icons/all-files/im/ImLocation2";
 
 const GuideProfile = () => {
  
@@ -54,31 +58,31 @@ const GuideProfile = () => {
           />
           <div className="px-6 py-2 text-center">
             <div>
-              username{" "}
+              Username{" "}
               <p className=" font-semibold text-xl mb-3">
                 @{guide.user.username}
               </p>
             </div>
 
             <div>
-              fullname{" "}
+              Fullname{" "}
               <p className=" font-semibold text-xl mb-3">{`${guide.user.firstname}  ${guide.user.lastname}`}</p>
             </div>
             <div>
-              e-mail{" "}
-              <p className=" font-semibold text-xl mb-3">{guide.user.email}</p>
+  
+              <p className=" font-semibold text-xl mb-3"><MdEmail size={20} className=" inline" /> {guide.user.email}</p>
             </div>
             {guide.user.phone && (
               <div>
-                phone
+               
                 <p className=" font-semibold text-xl mb-3">
-                  {guide.user.phone}
+                <MdSmartphone size={20} className=" inline" /> {guide.user.phone}
                 </p>
               </div>
             )}
             {guide.user.gender && (
               <div>
-                gender
+                Gender
                 <p className=" font-semibold text-xl mb-3">
                   {guide.user.gender}
                 </p>
@@ -113,7 +117,7 @@ const GuideProfile = () => {
         </div>}
 
         {/* card2 */}
-        {guide && (guide.price || guide.maxsize || guide.rating) && (
+        {guide && (guide.price || guide.maxsize>1 || guide.rating) && (
           <div
             className=" absolute rounded overflow-hidden shadow-md   border-1 ml-4 mt-3 guide-card
      w-44 text-center  "
@@ -121,30 +125,33 @@ const GuideProfile = () => {
             <div className="px-6 py-4 ">
               {guide.city && guide.city.name && (
                 <div>
-                  city:
+                  City
                   <p className=" font-semibold text-xl mb-2">
-                    {guide.city.name}
+                    <ImLocation2 size={22} className="inline mb-1"/>
+                     {guide.city.name}
                   </p>
                 </div>
               )}
 
               {guide.price && (
                 <div>
-                  price/person:
-                  <p className=" font-semibold text-xl mb-2">{guide.price} $</p>
+                  Price/person
+                  
+                  <p className=" font-semibold text-xl mb-2"><AiFillDollarCircle size={20} className=" inline mb-1"/> {guide.price} </p>
                 </div>
               )}
 
               {guide.maxsize && (
                 <div>
-                  max group size:
-                  <p className=" font-semibold text-xl mb-2">{guide.maxsize}</p>
+                  Max group size
+                  <p className=" font-semibold text-xl mb-2">
+                   <HiUserGroup size={20} className=" inline mb-1" /> {guide.maxsize}</p>
                 </div>
               )}
 
               {guide.rating && (
                 <div>
-                  your rating:
+                  Your rating
                   <p className=" font-semibold text-xl mb-2">{guide.rating}</p>
                 </div>
               )}
@@ -157,7 +164,7 @@ const GuideProfile = () => {
           <div className=" absolute rounded overflow-hidden shadow-md  border-1 ml-4 mt-3 text-justify bio pt-4  ">
             {guide.description && (
               <span>
-               <span className=" ml-56 capitalize font-bold">description:</span> 
+               <span className=" ml-56 capitalize font-bold">description</span> 
                 <p className="  text-xl mb-2 pr-8 pl-56 des-text mt-2 ">{guide.description}</p>
               </span>
             )}

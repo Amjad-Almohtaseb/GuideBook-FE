@@ -54,8 +54,8 @@ const Map = () => {
 
   // for city
   const [viewport, setViewport] = useState({
-    width: "55%",
-    height: "725px",
+    width: "115%",
+    height: "663px",
     latitude: center.latitude,
     longitude: center.longitude,
     zoom: 11,

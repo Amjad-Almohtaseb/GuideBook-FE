@@ -5,18 +5,18 @@ import { Link } from "react-router-dom";
 const GuideItem = ({ guide }) => {
   return (
     <Link to={`/guides/${guide.user.slug}`}>
-      <div className="card mb-3 absolute flex ml-10 mt-4 max-w-xl p-3">
+      <div className="card  absolute flex  max-w-xl p-3 mx-auto personal-card">
         <div className="row no-gutters">
           <div className="col-md-4">
             <img
-              className="card-img h-40 border-1 "
+              className="card-img h-40 "
               src={guide.user.image}
               alt={guide.user.username}
             />
           </div>
           <div className="col-md-8 ">
             <div className="card-body">
-              <h4 className="card-title absolute top-10 text-gray-700 ">
+              <h4 className="card-title absolute top-10 text-gray-700 capitalize">
                 {/* @{guide.user.username} */}
                 {guide.user.firstname}
                 

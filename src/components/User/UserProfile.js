@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import UserEdit from "../User/UserEdit";
+import { MdEmail } from "@react-icons/all-files/md/MdEmail";
+import { MdSmartphone} from "@react-icons/all-files/md/MdSmartphone";
 
 const UserProfile = () => {
     const user = useSelector((state) => state.user);
@@ -45,37 +47,37 @@ const UserProfile = () => {
           />
           <div className="px-6 py-2  text-center">
             <div className="absolute my-2 left-3/4">
-            fullname{" "}
+              Fullname
               <p className=" font-semibold text-xl mb-3">{user.fullname}</p>
             </div>
 
             <div className="my-1">
-            username{" "}
+            Username{" "}
               <p className=" font-semibold text-xl mb-3">
                 @{user.username}
               </p>
             
             </div>
             <div className="absolute my-3 left-3/4">
-              e-mail{" "}
-              <p className=" font-semibold text-xl mb-3">{user.email}</p>
+            
+              <p className=" font-semibold text-xl mt-8 -ml-28"><MdEmail size={25} className=" inline" /> {user.email}</p>
             </div>
             {user.phone && (
               <div className="my-4">
-                phone
-                <p className=" font-semibold text-xl mb-3">
-                  {user.phone}
+                
+                <p className=" font-semibold text-xl mt-16 ">
+                <MdSmartphone size={25} className=" inline"/> {user.phone}
                 </p>
               </div>
             )}
-            {user.gender && (
-              <div className="absolute left-3/4 ml-9   top-56 mt-2  ">
-                gender
+            {/* {user.gender && (
+              <div className="absolute left-1/2 -ml-7  top-52 mt-2  ">
+                Gender
                 <p className=" font-semibold text-xl mb-3">
                   {user.gender}
                 </p>
               </div>
-            )}
+            )} */}
           </div>
          
         </div>
