@@ -3,6 +3,18 @@ import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
 import { newBooking } from "../../store/actions/bookingActions";
+import { MdEmail } from "@react-icons/all-files/md/MdEmail";
+import { MdSmartphone } from "@react-icons/all-files/md/MdSmartphone";
+import { HiUserGroup } from "@react-icons/all-files/hi/HiUserGroup";
+import { ImLocation2 } from "@react-icons/all-files/im/ImLocation2";
+import { AiFillDollarCircle } from "@react-icons/all-files/ai/AiFillDollarCircle";
+
+//pics
+import one from "../../pics/1.jpg";
+import two from "../../pics/2.jpg";
+import three from "../../pics/3.jpg";
+import four from "../../pics/4.jpg";
+import five from "../../pics/5.jpg";
 
 const GuideDetail = () => {
   const dispatch = useDispatch();
@@ -29,77 +41,92 @@ const GuideDetail = () => {
       )
     );
   };
+
   return (
     <>
       <div className="card  flex flex-row profile-card ">
-        <div className="rounded overflow-hidden shadow-lg w-96 border-yellow-400  border-1 ml-4 mt-3 card1-p ">
+        <div className="rounded overflow-hidden shadow-md w-96  border-1 ml-6 mt-3 card1-p  ">
           <img
-            className=" w-96 h-56 rounded mx-auto "
+            className="  w-60 h-60 mx-auto rounded-full  border-1 border-black mt-4"
             src={guide.user.image}
             alt="Mountain"
           />
-          <div className="px-6 py-4 text-center">
+          <div className="px-6 py-2 text-center">
             <div>
-              username:{" "}
+              Username{" "}
               <p className=" font-semibold text-xl mb-3">
                 @{guide.user.username}
               </p>
             </div>
 
             <div>
-              fullname:{" "}
-              <p className=" font-semibold text-xl mb-3">
-                {guide.user.fullname}
-              </p>
+              Fullname{" "}
+              <p className=" font-semibold text-xl mb-3">{`${guide.user.firstname}  ${guide.user.lastname}`}</p>
             </div>
             <div>
-              e-mail:{" "}
-              <p className=" font-semibold text-xl mb-3">{guide.user.email}</p>
+              
+              <p className=" font-semibold text-xl mb-3"><MdEmail size={20} className="inline" /> {guide.user.email}</p>
             </div>
             {guide.user.phone && (
               <div>
-                phone:
+                
                 <p className=" font-semibold text-xl mb-3">
-                  {guide.user.phone}
+                <MdSmartphone size={20} className="inline" /> {guide.user.phone}
                 </p>
               </div>
             )}
             {guide.user.gender && (
               <div>
-                gender:
-                <p className=" font-semibold text-xl mb-3">
-                  {guide.user.gender}
-                </p>
+                Gender
+                <p className=" font-semibold text-xl ">{guide.user.gender}</p>
               </div>
             )}
-            {user ? (
-              <button
-                className="btn btn-warning w-36 mt-2"
-                onClick={() => handleBooking()}
-              >
-                BOOK
-              </button>
-            ) : (
-              <button
-                className="btn btn-warning w-36 mt-2"
-                onClick={() => history.push("/signin")}
-              >
-                BOOK
-              </button>
-            )}
           </div>
+          {user ? (
+            <button
+              className="btn btn-warning w-56 -mt-5 ml-20"
+              onClick={() => handleBooking()}
+            >
+              BOOK
+            </button>
+          ) : (
+            <button
+              className="btn btn-warning w-56 -mt-5 ml-20"
+              onClick={() => history.push("/signin")}
+            >
+              BOOK
+            </button>
+          )}
         </div>
-        {/* card2 */}
-        {(guide.city || guide.price || guide.maxsize || guide.rating) && (
+
+        {/* slider TODO */}
+
+        <div className="slider-cont">
+          <section className="auto-slider">
+            <div id="slider">
+              <figure>
+                <img src={one} alt="istanbul1" className=" h-80" />
+                <img src={two} alt="istanbul2" />
+                <img src={three} alt="istanbul3" />
+                <img src={four} alt="istanbul4" className=" h-80" />
+                <img src={five} alt="istanbul5" className=" h-80" />
+              </figure>
+              <div className="indicator"></div>
+            </div>
+          </section>
+        </div>
+
+        {guide && (guide.price || guide.maxsize || guide.rating) && (
           <div
-            className="rounded overflow-hidden shadow-lg border-yellow-400  border-1 ml-4 mt-3 guide-card
+            className=" absolute rounded overflow-hidden shadow-md   border-1 ml-4 mt-3 guide-card
      w-44 text-center  "
           >
             <div className="px-6 py-4 ">
-              {guide.city.name && (
+              {guide.city && guide.city.name && (
                 <div>
-                  city:
+                  City
                   <p className=" font-semibold text-xl mb-2">
+                    <ImLocation2 size={22} className="inline mb-1" />
                     {guide.city.name}
                   </p>
                 </div>
@@ -107,21 +134,27 @@ const GuideDetail = () => {
 
               {guide.price && (
                 <div>
-                  price/person:
-                  <p className=" font-semibold text-xl mb-2">{guide.price} $</p>
+                  Price/person
+                  <p className=" font-semibold text-xl mb-2">
+                    <AiFillDollarCircle size={20} className=" inline mb-1" />{" "}
+                    {guide.price}{" "}
+                  </p>
                 </div>
               )}
 
               {guide.maxsize && (
                 <div>
-                  max group size:
-                  <p className=" font-semibold text-xl mb-2">{guide.maxsize}</p>
+                  Max group size
+                  <p className=" font-semibold text-xl mb-2">
+                    <HiUserGroup size={20} className=" inline mb-1" />{" "}
+                    {guide.maxsize}
+                  </p>
                 </div>
               )}
 
               {guide.rating && (
                 <div>
-                  your rating:
+                  Your rating
                   <p className=" font-semibold text-xl mb-2">{guide.rating}</p>
                 </div>
               )}
@@ -131,11 +164,13 @@ const GuideDetail = () => {
 
         {/* card 3 */}
         {guide && guide.description && (
-          <div className="rounded overflow-hidden shadow-lg border-yellow-400  border-1 ml-4 mt-3 guide-card text-center bio pt-4  ">
+          <div className=" absolute rounded overflow-hidden shadow-md  border-1 ml-4 mt-3 text-justify bio pt-4  ">
             {guide.description && (
               <span>
-                discription:
-                <p className="  text-xl mb-2 px-6 ">{guide.description}</p>
+                <span className=" ml-56 capitalize font-bold">description</span>
+                <p className="  text-xl mb-2 pr-8 pl-56 des-text mt-2 ">
+                  {guide.description}
+                </p>
               </span>
             )}
           </div>

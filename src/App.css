@@ -89,16 +89,7 @@
   /* background-color:rgba(255, 255, 255, 0.363); */
 }
 
-.guides {
-  left: 55%;
-  border-bottom: none;
-  width: 700px;
-  margin-top: 0.25%;
-  min-height: 720px;
-  max-height: 720px;
-  overflow-y: scroll;
-  border-left: 1px double goldenrod;
-}
+
 ::-webkit-scrollbar {
   width: 0;
 }
@@ -120,6 +111,8 @@
   left: 32%;
   border-radius: 10px;
   width: 510px !important;
+  box-shadow: 4px 4px 200px black;
+  /* bottom: 100px */
   
 
 }
@@ -127,6 +120,7 @@
 .booking-form {
   left: 32%;
   border-radius: 10px;
+  box-shadow: 4px 4px 200px black;
 }
 /* 
 body{
@@ -164,4 +158,104 @@ body{
   height: 140px;
   flex-direction: row !important;
   justify-content: space-evenly;
+}
+
+
+
+/* slider--------------------- */
+
+
+
+.auto-slider {
+  position: absolute;
+  left:40.2%;
+  top:10px;
+  box-sizing: content-box;
+  display: inline-block;
+  padding: 10px 10px 20px;
+  background: #fff;
+  /* max-width: 1014px;
+  min-width: 1014px; */
+  width: 750px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 4px;
+  height: 235px ;
+  /* box-shadow: 1px 1px 5px orange; */
+
+}
+
+div#slider {
+  overflow: hidden;
+}
+div#slider figure img {
+  width: 20%;
+  float: left;
+}
+div#slider figure {
+  position: relative;
+  width: 500%;
+  margin: 0;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  animation: 25s sliding ease infinite;
+}
+
+@keyframes sliding {
+  0% {
+    left: 0%;
+  }
+  20% {
+    left: -100%;
+  }
+  40% {
+    left: -200%;
+  }
+  60% {
+    left: -300%;
+  }
+  80% {
+    left: -400%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+@keyframes indicating {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0;
+  }
+}
+
+.guides {
+  left: 70%;
+  border-bottom: none;
+  width: 731px;
+  margin-top: 0.25%;
+  /* min-height: 600px;
+  max-height: 600px; */
+  height: 658px;
+  overflow-y: scroll;
+  border-right: 3px solid gold;
+  padding-top: 75px;
+}
+
+
+.mapbox{
+
+ left:47.6%;
+ top: 8%;
+width: 700px;
+}
+
+/* here & guidelist line 9 */
+.personal-card{
+
+  border-width: 0px!important;
+  background-color: rgba(255, 255, 255, 0.007)!important;
 }

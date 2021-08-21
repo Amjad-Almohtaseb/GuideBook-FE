@@ -6,18 +6,20 @@ import GuideItem from "./GuideItem";
 const GuideList = () => {
   const foundGuides = useSelector((state) => state.guides.foundguides);
   const guideList = foundGuides.map((guide) => (
-    <GuideItem guide={guide} key={guide._id} />
+    // <GuideItem guide={guide} key={guide._id} />
+   <> <GuideItem guide={guide} key={guide._id} /> <hr className=" w-3/4 mx-auto"/></>
+
   ));
   return (
     <div className="">
 
-      <div className=" guides absolute">{guideList}</div>
+      <div className=" guides">{guideList}</div>
 
-      <div className="" >
-        <section className="h-96">
+
+        <div className="absolute mapbox">
           <Map />
-        </section>
-      </div>
+        </div>
+
 
     </div>
   );

@@ -6,6 +6,8 @@ import "react-day-picker/lib/style.css";
 import DatePicker from "react-multi-date-picker";
 import { updateGuide } from "../../store/actions/guideActions";
 
+
+
 const GuideEdit = ({ guide }) => {
   //to get this format "yyyy-mm-dd" from calendar
   let array;
@@ -77,7 +79,7 @@ const GuideEdit = ({ guide }) => {
   return (
     <>
       <div
-        className="  flex items-center md:border-2 rounded-full py-2 md:shadow-sm  w-80 absolute bg-white cursor-pointer guide-btn"
+        className="  flex items-center md:border-2 rounded-full py-2 md:shadow-sm  w-80 absolute bg-white cursor-pointer guide-btn "
         onClick={() => setShow(true)}
       >
         <span className=" flex-grow pl-5 bg-transparent outline-none text-lg text-gray-600 ">
@@ -90,7 +92,7 @@ const GuideEdit = ({ guide }) => {
       </div>
       {show && (
         <form onSubmit={handleSubmit}>
-          <div className=" absolute top-16 bg-gray-800 guide-form ml-20 p-2 z-10  border-yellow-400 border-2 border-double ">
+          <div className=" absolute top-8 bg-gray-800 guide-form ml-20 p-2 z-10  border-yellow-400 border-2 border-double ">
             <div className=" ml-36">
               <label className=" font-bold text-white "> Your City </label> <br/>
               <select
@@ -172,7 +174,7 @@ const GuideEdit = ({ guide }) => {
               type="submit"
               className=" bg-yellow-500 text-white  font-bold py-2 px-4 rounded-full ml-32 w-24 "
             >
-              EDIT
+              SAVE
             </button>
           </div>
         </form>
