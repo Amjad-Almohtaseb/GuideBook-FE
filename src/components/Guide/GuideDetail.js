@@ -27,7 +27,7 @@ const GuideDetail = () => {
   const guideSlug = useParams().guideSlug;
   if (guideLoading) return <Spinner />;
   const guide = guides.find((guide) => guide.user.slug === guideSlug);
-  console.log(searchInfo);
+
   const handleBooking = () => {
     dispatch(
       newBooking(
@@ -64,14 +64,15 @@ const GuideDetail = () => {
               <p className=" font-semibold text-xl mb-3">{`${guide.user.firstname}  ${guide.user.lastname}`}</p>
             </div>
             <div>
-              
-              <p className=" font-semibold text-xl mb-3"><MdEmail size={20} className="inline" /> {guide.user.email}</p>
+              <p className=" font-semibold text-xl mb-3">
+                <MdEmail size={20} className="inline" /> {guide.user.email}
+              </p>
             </div>
             {guide.user.phone && (
               <div>
-                
                 <p className=" font-semibold text-xl mb-3">
-                <MdSmartphone size={20} className="inline" /> {guide.user.phone}
+                  <MdSmartphone size={20} className="inline" />{" "}
+                  {guide.user.phone}
                 </p>
               </div>
             )}
@@ -118,7 +119,7 @@ const GuideDetail = () => {
 
         {guide && (guide.price || guide.maxsize || guide.rating) && (
           <div
-            className=" absolute rounded overflow-hidden shadow-md   border-1 ml-4 mt-3 guide-card
+            className=" z-20 absolute rounded overflow-hidden shadow-md   border-1 ml-4 mt-3 guide-card
      w-44 text-center  "
           >
             <div className="px-6 py-4 ">
@@ -149,13 +150,6 @@ const GuideDetail = () => {
                     <HiUserGroup size={20} className=" inline mb-1" />{" "}
                     {guide.maxsize}
                   </p>
-                </div>
-              )}
-
-              {guide.rating && (
-                <div>
-                  Your rating
-                  <p className=" font-semibold text-xl mb-2">{guide.rating}</p>
                 </div>
               )}
             </div>
