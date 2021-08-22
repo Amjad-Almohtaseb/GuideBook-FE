@@ -1,14 +1,19 @@
-
 import React, { useState } from "react";
-import { FaArrowCircleRight } from "@react-icons/all-files/fa/FaArrowCircleRight";
 import { useDispatch, useSelector } from "react-redux";
+import { updateGuide } from "../../store/actions/guideActions";
 import "react-day-picker/lib/style.css";
 import DatePicker from "react-multi-date-picker";
-import { updateGuide } from "../../store/actions/guideActions";
 
+//icons
+import { FaArrowCircleRight } from "@react-icons/all-files/fa/FaArrowCircleRight";
+import {ImLocation2} from "@react-icons/all-files/im/ImLocation2"
+//Mapbox
+import ReactMapGL , { Marker} from "react-map-gl";
+import { MapKey } from "../Map/MapKey";
 
 
 const GuideEdit = ({ guide }) => {
+  
   //to get this format "yyyy-mm-dd" from calendar
   let array;
   const arrayOfDate = (values) => {
@@ -50,8 +55,15 @@ const GuideEdit = ({ guide }) => {
     maxsize: guide.maxsize,
     description: guide.description,
     notAvailabeDates: guide.notAvailabeDates,
+    location: guide.location
   });
-
+  const [viewport, setViewport] = useState({
+    width: "500px",
+    height: "450px",
+    latitude: 41.015137,
+    longitude: 28.878359,
+    zoom: 11,
+  });
   const handleChange = (event) => {
     setGuideInfo({ ...guideInfo, [event.target.name]: event.target.value });
   };
@@ -60,24 +72,16 @@ const GuideEdit = ({ guide }) => {
     setGuideInfo({ ...guideInfo, notAvailabeDates: arrayOfDate(r) });
   };
 
-  const resetForm = () => {
-    setGuideInfo({
-      city: "",
-      price: null,
-      maxsize: null,
-      notAvailabeDates: [],
-      description: "",
-    });
-  };
-
+  const handleMap=(event)=>{
+    
+    setGuideInfo({...guideInfo, location:event.lngLat})
+  }
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(updateGuide(guideInfo, guideId));
     setShow(false);
   };
-  
-  
-
+console.log(guideInfo)
   return (
     <>
       <div
@@ -94,90 +98,123 @@ const GuideEdit = ({ guide }) => {
       </div>
       {show && (
         <form onSubmit={handleSubmit}>
-          <div className=" absolute top-8 bg-gray-800 guide-form ml-20 p-2 z-10  border-yellow-400 border-2 border-double ">
-            <div className=" ml-36">
-              <label className=" font-bold text-white "> Your City </label> <br/>
-              <select
-                name="city"
-                className=" w-44 "
-                onChange={handleChange}
-                value={guideInfo.city}
-                // required
-              >
-                <option disabled="disabled" selected="selected" >
-                  Choose The City
-                </option>
-                {cities.map((city) => (
-                  <option name={city.name} value={city._id}>
-                    {city.name}
+          <div className=" absolute -top-4 bg-gray-800 guide-form  p-2 z-10  border-yellow-400 border-2 border-double ">
+            <div className=" flex flex-row justify-evenly flex-wrap ">
+              <span>
+                <label className=" font-bold text-white "> Your City </label>{" "}
+                <br />
+                <select
+                  name="city"
+                  className=" w-44 "
+                  onChange={handleChange}
+                  value={guideInfo.city}
+                  // required
+                >
+                  <option disabled="disabled" selected="selected">
+                    Choose The City
                   </option>
-                ))}
-              </select>
-            </div>
-            <hr className=" bg-yellow-400" />
-            <div className=" ml-36">
-              <label className=" font-bold text-white "> Price/Person </label>
-              <br />
-              <input
-                type="number"
-                name="price"
-                value={guideInfo.price}
-                onChange={handleChange}
-                min={1}
-                required
-              />
-            </div>
-            <hr className=" bg-yellow-400" />
-            <div className=" ml-36">
-              <label className=" font-bold text-white "> Max Group Size </label>
-              <br />
-              <input
-                type="number"
-                name="maxsize"
-                value={guideInfo.maxsize}
-                onChange={handleChange}
-                min={1}
-                required
-              />
-            </div>
-            <hr className=" bg-yellow-400" />
-            <div className=" ml-36">
-              <label className=" font-bold text-white "> Your Holidays </label><br/>
-              <DatePicker
-                multiple
-                onChange={handleCalendar} //{setValues}
-                minDate={new Date()}
-                value={guideInfo.notAvailabeDates}
-                
-              />
+                  {cities.map((city) => (
+                    <option name={city.name} value={city._id}>
+                      {city.name}
+                    </option>
+                  ))}
+                </select>
+              </span>
+              <span>
+                <label className=" font-bold text-white "> Price/Person </label>
+                <br />
+                <input
+                  type="number"
+                  name="price"
+                  value={guideInfo.price}
+                  onChange={handleChange}
+                  min={1}
+                  required
+                />
+              </span>
+              <span>
+                <label className=" font-bold text-white ">
+                  {" "}
+                  Max Group Size{" "}
+                </label>
+                <br />
+                <input
+                  type="number"
+                  name="maxsize"
+                  value={guideInfo.maxsize}
+                  onChange={handleChange}
+                  min={1}
+                  required
+                />
+              </span>
+              <span>
+                <label className=" font-bold text-white ">
+                  {" "}
+                  Your Holidays{" "}
+                </label>
+                <br />
+                <DatePicker
+                  multiple
+                  onChange={handleCalendar} //{setValues}
+                  minDate={new Date()}
+                  value={guideInfo.notAvailabeDates}
+                />
+              </span>
             </div>
             <hr className=" bg-yellow-400" />
 
-            <div className=" ml-36">
-              <label className=" font-bold text-white " > Description </label>
-              <br />
-              <textarea
-                name="description"
-                rows="4"
-                cols="30"
-                onChange={handleChange}
-                value={guideInfo.description}
-              />
+            <div className=" flex flex-row justify-evenly">
+              <span>
+                <ReactMapGL
+                  mapStyle="mapbox://styles/ibrashaheen/cksgk86h25bxw17uqom0h83s3"
+                  mapboxApiAccessToken={MapKey}
+                  onClick={handleMap} //very important (solution key)
+                  {...viewport}
+                  onViewportChange={(nextViewport) => setViewport(nextViewport)}
+                  
+                >
+                  
+                    <Marker //TO DOOOOOOOOOOOOOOOOOOOOOO
+            longitude={guideInfo.location[0]}
+            
+            latitude={guideInfo.location[1]}
+            offsetLeft={-20}
+            offsetTop={-10}
+          >
+            <p className=" cursor-pointer text-2xl animate-pulse  "
+           
+            ><ImLocation2 color="red" size={35}/>‏</p>
+          </Marker>
+                </ReactMapGL>
+              </span>
+              <span className=" my-auto">
+                <label className=" font-bold text-white "> Description </label>
+                <br />
+                <textarea
+                  name="description"
+                  rows="6"
+                  cols="35"
+                  onChange={handleChange}
+                  value={guideInfo.description}
+                />
+              </span>
             </div>
             <hr className=" bg-yellow-400" />
-            
-            <button
-              className="  bg-red-600 font-bold py-2 px-4 rounded-full mb-3 ml-20 text-white "
-              onClick={() => setShow(false)}
-            >
-              CANCLE
-            </button>
-            <button
-              type="submit"
-              className=" bg-yellow-500 text-white  font-bold py-2 px-4 rounded-full ml-32 w-24 "
-            >
-              SAVE
-            </button>
+            <span className=" flex flex-row justify-evenly items-center">
+              <button
+                className="  bg-red-600 font-bold py-2 px-4 rounded-full mb-3 w-36  text-white "
+                onClick={() => setShow(false)}
+              >
+                CANCLE
+              </button>
+              <button
+                type="submit"
+                className=" bg-yellow-500 text-white mb-3  font-bold py-2 px-4 rounded-full  w-36 "
+              >
+                SAVE
+              </button>
+            </span>
+            {/* <GuidesMap/> */}
           </div>
         </form>
       )}

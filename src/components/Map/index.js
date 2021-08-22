@@ -2,52 +2,29 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import React, { useState } from "react";
 import { MapKey } from "./MapKey";
 import getCenter from "geolib/es/getCenter";
+import { useSelector } from "react-redux";
 
-const Map = () => {
+const Map = ({foundGuides}) => {
   const [selectedLocation, setSelectedLocation] = useState({});
+  const cities = useSelector(state => state.cities.cities)
+  const searchInfo = useSelector(state => state.guides.searchInfo)
+  const cityLocation= cities.find(city=> city._id === searchInfo.city).location
+  console.log(searchInfo)
+  console.log(cityLocation)
+  
+  // const cityLocation = foundGuides[0].city.location
 
-  const guidesLocation = [
-    {
-      latitude: 41.00824,
-      longitude: 28.978359,
-      title: "Amjad",
-      img: "https://cdn5.vectorstock.com/i/1000x1000/34/94/traveler-or-tourist-avatar-icon-image-vector-15543494.jpg",
-    },
-    {
-      latitude: 41.01824,
-      longitude: 28.948359,
-      title: "Ibraheem",
-      img: "https://cdn5.vectorstock.com/i/1000x1000/34/94/traveler-or-tourist-avatar-icon-image-vector-15543494.jpg",
-    },
-    {
-      latitude: 41.02824,
-      longitude: 28.878359,
-      title: "Ahmad",
-      img: "https://cdn5.vectorstock.com/i/1000x1000/34/94/traveler-or-tourist-avatar-icon-image-vector-15543494.jpg",
-    },
-    {
-      latitude: 41.03824,
-      longitude: 28.828359,
-      title: "Laila",
-      img: "https://cdn5.vectorstock.com/i/1000x1000/34/94/traveler-or-tourist-avatar-icon-image-vector-15543494.jpg",
-    },
-    {
-      latitude: 41.05824,
-      longitude: 28.898359,
-      title: "Coded",
-      img: "https://cdn5.vectorstock.com/i/1000x1000/34/94/traveler-or-tourist-avatar-icon-image-vector-15543494.jpg",
-    },
-    {
-      latitude: 41.08824,
-      longitude: 28.928359,
-      title: "moayad",
-      img: "https://cdn5.vectorstock.com/i/1000x1000/34/94/traveler-or-tourist-avatar-icon-image-vector-15543494.jpg",
-    },
-  ];
 
-  const locations = guidesLocation.map((guide) => ({
-    latitude: guide.latitude,
-    longitude: guide.longitude,
+  // const cityLocation = foundGuides.map((guide) => ({
+  //   latitude: guide.city.location[1],
+  //   longitude: guide.city.location[0],
+  // }));
+
+
+
+  const locations = foundGuides.map((guide) => ({
+    latitude: guide.location[1],
+    longitude: guide.location[0],
   }));
 
   const center = getCenter(locations);
@@ -56,41 +33,41 @@ const Map = () => {
   const [viewport, setViewport] = useState({
     width: "115%",
     height: "663px",
-    latitude: center.latitude,
-    longitude: center.longitude,
+    latitude: center.latitude || cityLocation[1],
+    longitude: center.longitude || cityLocation[0],
     zoom: 11,
   });
   return (
     <ReactMapGL
       mapStyle="mapbox://styles/ibrashaheen/cksgk86h25bxw17uqom0h83s3"
       mapboxApiAccessToken={MapKey}
-       onClick={(event)=>console.log(event.lngLat)} //very important (solution key)
+      // onClick={(event)=>console.log(event.lngLat)} //very important (solution key)
       {...viewport}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
-      {guidesLocation.map((pen) => (
-        <div key={pen.latitud}>
+      {foundGuides.map((pen) => (
+        <div key={pen.location[1]}>
           <Marker
-            longitude={pen.longitude}
+            longitude={pen.location[0]}
             
-            latitude={pen.latitude}
+            latitude={pen.location[1]}
             offsetLeft={-20}
             offsetTop={-10}
           >
-            <p className=" cursor-pointer text-2xl animate-bounce"
-            onClick={()=> setSelectedLocation(pen)}
-            >🔰</p>
+            <p className=" cursor-pointer text-2xl animate-bounce bg-white h-10 w-12 rounded-full"
+            onClick={()=> setSelectedLocation(pen.location)}
+            >${pen.price}</p>
           </Marker>
 
-          {selectedLocation.longitude === pen.longitude && (
+          {selectedLocation[0] === pen.location[0] && ( //return it 
             <Popup
               onClose={() => setSelectedLocation({})}
               closeOnClick={true}
-              longitude={pen.longitude}
-              latitude={pen.latitude}
+              longitude={pen.location[0]}
+              latitude={pen.location[1]}
             >
-              <img src={pen.img} alt=""  className=" h-16 w-16"/>
-              <p>{pen.title}</p>
+              <img src={pen.user.image} alt=""  className=" h-16 w-16"/>
+              <p>{pen.user.fullname}</p>
             </Popup>
           )}
         </div>

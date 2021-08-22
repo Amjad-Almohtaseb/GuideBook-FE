@@ -17,7 +17,7 @@ const GuideList = () => {
 
 
         <div className="absolute mapbox">
-          <Map />
+          <Map foundGuides={foundGuides} />
         </div>
 
 

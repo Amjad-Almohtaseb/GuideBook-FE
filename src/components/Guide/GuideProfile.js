@@ -15,7 +15,9 @@ const GuideProfile = () => {
   const guides = useSelector((state) => state.guides.guides);
   const guide = guides.find((guide) => guide.user._id === user._id);
   const bookings = useSelector((state) => state.bookings.bookings);
-  const booking = bookings.filter((book) => book.guide._id === guide._id);
+  let booking;
+  if(bookings){
+   booking = bookings.filter((book) => book.guide._id === guide._id);}
   // console.log(bookingtable)
   let today = new Date().toISOString().substr(0, 10);
 
