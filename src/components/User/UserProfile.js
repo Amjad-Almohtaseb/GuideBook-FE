@@ -1,16 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UserEdit from "../User/UserEdit";
 import { MdEmail } from "@react-icons/all-files/md/MdEmail";
 import { MdSmartphone } from "@react-icons/all-files/md/MdSmartphone";
 import Rating from "../Rating";
+import { deleteBooking } from "../../store/actions/bookingActions";
+
 
 const UserProfile = () => {
+  const dispatch = useDispatch()
   const user = useSelector((state) => state.user);
   console.log(user);
   const guides = useSelector((state) => state.guides.guides);
   const bookings = useSelector((state) => state.bookings.bookings);
   const booking = bookings.filter((book) => book.user._id === user._id);
+  console.log(guides)
 
   let today = new Date().toISOString().substr(0, 10);
   const bookingtable = booking.map((book) => (
@@ -22,7 +26,7 @@ const UserProfile = () => {
         <td>{book.endDate}</td>
         <td>{book.groupSize}</td>
         <td>${book.guide.price * book.groupSize}</td>
-
+        
         {today > book.endDate ? (
           <>
             <td className=" text-green-500 uppercase">completed</td>
@@ -36,6 +40,7 @@ const UserProfile = () => {
             <td>
               <Rating guideId={book.guide._id} />
             </td>
+            <td><span className="text-red-600 uppercase cursor-pointer" onClick={()=>dispatch(deleteBooking(book._id))}>cancle</span></td>
             {/* <td>not yet</td> */}
           </>
         ) : (
@@ -70,7 +75,7 @@ const UserProfile = () => {
             <p className=" font-semibold text-xl mb-3">@{user.username}</p>
           </div>
           <div className="absolute my-3 left-3/4">
-            <p className=" font-semibold text-xl mt-8 -ml-28">
+            <p className=" font-semibold text-xl mt-8">
               <MdEmail size={25} className=" inline" /> {user.email}
             </p>
           </div>
@@ -105,6 +110,7 @@ const UserProfile = () => {
                 <th scope="col">status</th>
 
                 <th scope="col">rate your guide</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>{bookingtable}</tbody>

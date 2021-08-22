@@ -83,6 +83,7 @@
 .guide-btn {
   top: 86% !important;
   left: 76%;
+  box-shadow: 1px 1px 5px #fca311;
 }
 .card1-p {
   max-height: 87.5% !important;

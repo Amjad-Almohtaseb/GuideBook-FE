@@ -1,4 +1,4 @@
-import { FETCH_BOOKING, NEW_BOOKING } from "../actions/types";
+import { DELETE_BOOKING, FETCH_BOOKING, NEW_BOOKING } from "../actions/types";
 
 const initialState = {
   bookings: [],
@@ -18,6 +18,14 @@ const bookingReducer = (state = initialState, action) => {
       return {
         ...state,
         bookings: action.payload,
+      };
+      case DELETE_BOOKING:
+      const bookingToKeep = state.bookings.filter(
+        (book) => book.id !== action.payload.bookId
+      );
+      return {
+        ...state,
+        bookings: bookingToKeep,
       };
 
     default:
