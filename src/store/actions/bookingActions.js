@@ -1,4 +1,4 @@
-import { NEW_BOOKING, FETCH_BOOKING } from "./types";
+import { NEW_BOOKING, FETCH_BOOKING, DELETE_BOOKING } from "./types";
 import instance from "./instance";
 export const fetchBooking = () => {
   return async (dispatch) => {
@@ -31,3 +31,21 @@ export const newBooking = (bookingInfo, history) => {
     }
   };
 };
+
+export const deleteBooking = (bookId) => {
+  console.log(bookId)
+  return async(dispatch)=>{
+  try {
+      await instance.delete(`/booking/${bookId}`)
+      dispatch({
+          type: DELETE_BOOKING,
+          payload: {
+              bookId:bookId,
+          }
+      })
+      dispatch(fetchBooking())
+  } catch (error) {
+      console.log(error.message)
+  }
+
+}}

@@ -30,8 +30,8 @@ const BookingSummary = () => {
     subject: "Booking Details ✈️",
     from: { name: "Guides Book", email: "ahmadabuawed@gmail.com" },
     to: [
-      { name:`${summary.guide.user.fullname}`, email:`${summary.guide.user.email}` },
-      { name: `${summary.user.fullname}`, email:`${summary.user.email}` },
+      { name:`${summary.guide.user.fullname}`, email:`ahmadabuawed@gmail.com` },
+      { name: `${summary.user.fullname}`, email:`engibraheem1995@gmail.com` },
     ],
     // text:"",
     html: `<center >
@@ -85,7 +85,7 @@ const BookingSummary = () => {
   
   //we tryed SgMail.sendMultiple(msg)
   const mail = () =>{
-    // SgMail.send(msg).then((response) => console.log("email send ...")).catch((error) => console.log(error.message));
+    SgMail.send(msg).then((response) => console.log("email send ...")).catch((error) => console.log(error.message));
     history.push("/")
     console.log(msg)
   }

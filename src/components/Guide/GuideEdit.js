@@ -75,11 +75,13 @@ const GuideEdit = ({ guide }) => {
     dispatch(updateGuide(guideInfo, guideId));
     setShow(false);
   };
+  
+  
 
   return (
     <>
       <div
-        className="  flex items-center md:border-2 rounded-full py-2 md:shadow-sm  w-80 absolute bg-white cursor-pointer guide-btn "
+        className="  flex items-center md:border-2 rounded-full py-2 w-80 absolute bg-white cursor-pointer guide-btn "
         onClick={() => setShow(true)}
       >
         <span className=" flex-grow pl-5 bg-transparent outline-none text-lg text-gray-600 ">
@@ -163,7 +165,7 @@ const GuideEdit = ({ guide }) => {
               />
             </div>
             <hr className=" bg-yellow-400" />
-
+            
             <button
               className="  bg-red-600 font-bold py-2 px-4 rounded-full mb-3 ml-20 text-white "
               onClick={() => setShow(false)}

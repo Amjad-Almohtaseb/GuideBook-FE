@@ -64,6 +64,7 @@ const Map = () => {
     <ReactMapGL
       mapStyle="mapbox://styles/ibrashaheen/cksgk86h25bxw17uqom0h83s3"
       mapboxApiAccessToken={MapKey}
+       onClick={(event)=>console.log(event.lngLat)} //very important (solution key)
       {...viewport}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
@@ -71,6 +72,7 @@ const Map = () => {
         <div key={pen.latitud}>
           <Marker
             longitude={pen.longitude}
+            
             latitude={pen.latitude}
             offsetLeft={-20}
             offsetTop={-10}

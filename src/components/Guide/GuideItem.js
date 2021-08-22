@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const GuideItem = ({ guide }) => {
   let avg = Math.floor(
-    guide.rating.reduce((a, b) => a + b) / guide.rating.length
+    // guide.rating.reduce((a, b) => a + b) / guide.rating.length
   );
   const viewRating = () => {
     switch (avg) {

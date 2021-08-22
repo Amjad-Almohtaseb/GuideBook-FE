@@ -17,3 +17,4 @@ export const FETCH_CITIES = "FETCH_CITIES";
 //booking
 export const FETCH_BOOKING = "FETCH_BOOKING";
 export const NEW_BOOKING = "NEW_BOOKING";
+export const DELETE_BOOKING="DELETE_BOOKING"
