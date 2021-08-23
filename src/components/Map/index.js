@@ -1,5 +1,5 @@
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MapKey } from "./MapKey";
 import getCenter from "geolib/es/getCenter";
 import { useSelector } from "react-redux";
@@ -9,32 +9,30 @@ const Map = ({foundGuides}) => {
   const cities = useSelector(state => state.cities.cities)
   const searchInfo = useSelector(state => state.guides.searchInfo)
   const cityLocation= cities.find(city=> city._id === searchInfo.city).location
-  console.log(searchInfo)
-  console.log(cityLocation)
-  
-  // const cityLocation = foundGuides[0].city.location
 
 
-  // const cityLocation = foundGuides.map((guide) => ({
-  //   latitude: guide.city.location[1],
-  //   longitude: guide.city.location[0],
-  // }));
+  let locations;
+  let center;
 
-
-
-  const locations = foundGuides.map((guide) => ({
+  if(foundGuides){
+  locations = foundGuides.map((guide) => ({
+    longitude: guide.location[0] ,
     latitude: guide.location[1],
-    longitude: guide.location[0],
   }));
+   center = getCenter(locations);
+   console.log(center);
+  }
 
-  const center = getCenter(locations);
+  useEffect(() => {
+    setViewport({...viewport,longitude:center.longitude,latitude:center.latitude})
+  }, [])
 
   // for city
   const [viewport, setViewport] = useState({
     width: "115%",
     height: "663px",
-    latitude: center.latitude || cityLocation[1],
-    longitude: center.longitude || cityLocation[0],
+    longitude: center.longitude,
+    latitude: center.latitude,
     zoom: 11,
   });
   return (
@@ -54,19 +52,19 @@ const Map = ({foundGuides}) => {
             offsetLeft={-20}
             offsetTop={-10}
           >
-            <p className=" cursor-pointer text-2xl animate-bounce bg-white h-10 w-12 rounded-full"
+            <p className=" cursor-pointer text-xl animate-bounce bg-yellow-300 h-8 w-10 rounded-full"
             onClick={()=> setSelectedLocation(pen.location)}
             >${pen.price}</p>
           </Marker>
 
           {selectedLocation[0] === pen.location[0] && ( //return it 
-            <Popup
+            <Popup className=" z-10"
               onClose={() => setSelectedLocation({})}
               closeOnClick={true}
               longitude={pen.location[0]}
               latitude={pen.location[1]}
             >
-              <img src={pen.user.image} alt=""  className=" h-16 w-16"/>
+              <img src={pen.user.image} alt=""  className=" h-20 w-full m-0 "/>
               <p>{pen.user.fullname}</p>
             </Popup>
           )}

@@ -19,6 +19,7 @@ export const fetchGuides = () => {
 export const updateGuide = (updatedGuide, guideId) => {
   return async (dispatch) => {
     try {
+      console.log(updatedGuide)
       let res = await instance.put(`/guide/${guideId}`, updatedGuide);
       dispatch({
         type: UPDATE_GUIDE,
@@ -26,6 +27,7 @@ export const updateGuide = (updatedGuide, guideId) => {
           updatedGuide: res.data,
         },
       });
+      dispatch(fetchGuides())
     } catch (error) {
       console.log(error.message);
     }
