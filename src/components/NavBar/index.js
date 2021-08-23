@@ -2,12 +2,14 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RiLogoutBoxRLine } from "@react-icons/all-files/ri/RiLogoutBoxRLine";
+import {AiOutlineHome} from "@react-icons/all-files/ai/AiOutlineHome"
 // import { GrFormEdit } from "@react-icons/all-files/gr/GrFormEdit";
 
 // NavLink tobe used //
 
 // Actions
 import { signout } from "../../store/actions/authActions";
+
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -23,12 +25,21 @@ const Navbar = () => {
       style={{ backgroundColor: "#fca311" }}
       className="navbar shadow-lg text-neutral-content rounded-box nav-txt fixed"
     >
-      <Link to="/" className="flex-1 px-2 mx-2">
-        <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav">
+     
+        <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav w-40">
           {/* <img className="w-10 h-10" src="https://static.thenounproject.com/png/2291745-200.png" alt="logo" /> */}
-          Tourist Guide
+          Guide Book 
+        </span>
+     
+      <span>
+      <Link to="/" className="flex-1 px-2 mx-2">
+        <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav absolute left-32 top-2 ">
+          {/* <img className="w-10 h-10" src="https://static.thenounproject.com/png/2291745-200.png" alt="logo" /> */}
+          <AiOutlineHome size={25} />
         </span>
       </Link>
+      </span>
+     
       <div className="flex-none hidden px-2 mx-2 lg:flex">
         <div className="flex items-stretch">
           {!user && (

@@ -71,6 +71,7 @@ const BookingForm = () => {
           dates: dateRange(strStartDate, strEndDate),
           city: cityId,
           maxsize: groupSize,
+          country:countryId,
         },
         history
       )
@@ -141,7 +142,7 @@ const BookingForm = () => {
             className="  bg-red-600 text-black font-bold py-2 px-4 rounded-full mb-3 ml-28 "
             onClick={handleClose}
           >
-            Cancle{" "}
+            CANCEL{" "}
           </button>
           <button
             type="submit"

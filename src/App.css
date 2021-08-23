@@ -1,5 +1,7 @@
 .nav-txt {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
+   min-height: 70px;
+   /* position: fixed !important; */
 }
 .link {
   text-decoration: none;
@@ -250,7 +252,7 @@ div#slider figure {
 .mapbox{
 
  left:47.6%;
- top: 8%;
+ top: 9.81%;
 width: 700px;
 }
 
@@ -259,4 +261,22 @@ width: 700px;
 
   border-width: 0px!important;
   background-color: rgba(255, 255, 255, 0.007)!important;
+}
+
+.cancel-form{
+  box-shadow: 5px 5px 50px black;
+  font-weight: bold !important;
+  text-align: center;
+  border-radius: 10px;
+}
+.back-btn{
+  background-color: rgb(74, 207, 74) !important;
+  color: white !important;
+}
+
+.guide-map{
+  cursor:cell !important;
+}
+.search-in-list{
+  top:10.5px !important;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import UserEdit from "../User/UserEdit";
 import { MdEmail } from "@react-icons/all-files/md/MdEmail";
@@ -15,7 +15,13 @@ const UserProfile = () => {
   const bookings = useSelector((state) => state.bookings.bookings);
   const booking = bookings.filter((book) => book.user._id === user._id);
   console.log(guides)
+const [show,setShow]=useState(false);
+const[id,setId]=useState()
 
+const cancelBooking=(bookId)=>{
+  setShow(true);
+  setId(bookId);
+}
   let today = new Date().toISOString().substr(0, 10);
   const bookingtable = booking.map((book) => (
     <>
@@ -40,8 +46,9 @@ const UserProfile = () => {
             <td>
               <Rating guideId={book.guide._id} />
             </td>
-            <td><span className="text-red-600 uppercase cursor-pointer" onClick={()=>dispatch(deleteBooking(book._id))}>cancle</span></td>
+            <td><span className="text-red-600 uppercase cursor-pointer" onClick={()=>cancelBooking(book._id)}>CANCEL BOOKING</span></td>
             {/* <td>not yet</td> */}
+            
           </>
         ) : (
           <>
@@ -117,8 +124,20 @@ const UserProfile = () => {
           </table>
         </div>
       )}
+    { show &&
+  <div className="z-30 w-80 h-54 bg-gray-800 absolute left-96 ml-60 top-60 text-white p-10 cancel-form">
+    <p className=" capitalize ">are you sure you want to cancel this booking?</p>
+    <span className="flex flex-row justify-evenly">
+
+    <button className="btn back-btn uppercase w-20" onClick={()=>setShow(false)}>back</button>
+    <button className="btn btn-danger uppercase w-20" onClick={()=>dispatch(deleteBooking(id))&&setShow(false)}>yes</button>
+    </span>
+
+  </div>
+}
     </div>
   );
 };
 
 export default UserProfile;
+// 

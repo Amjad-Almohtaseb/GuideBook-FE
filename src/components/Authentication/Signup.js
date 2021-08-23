@@ -60,7 +60,7 @@ const Signup = () => {
             <span role="alert">lastname is required</span>
           )}
           <input
-            placeholder="enter your email"
+            placeholder="example@gmail.com"
             id="email"
             type="email"
             className="form-control my-2 h-12 "
@@ -91,7 +91,7 @@ const Signup = () => {
             <span role="alert">username is required</span>
           )}
           <input
-            placeholder="enter password"
+            placeholder="********"
             id="password"
             type="password"
             className="form-control my-2 h-12 "
