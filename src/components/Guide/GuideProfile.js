@@ -119,7 +119,7 @@ const GuideProfile = () => {
         </div>}
 
         {/* card2 */}
-        {guide && (guide.price || guide.maxsize>1 || guide.rating) && (
+        {guide && (guide.price || guide.maxsize>1 || guide.rating || guide.rating>1) && (
           <div
             className=" absolute rounded overflow-hidden shadow-md   border-1 ml-4 mt-3 guide-card
      w-44 text-center  "
@@ -151,7 +151,7 @@ const GuideProfile = () => {
                 </div>
               )}
 
-              {guide.rating && (
+              {guide.rating>1 && (
                 <div>
                   Your rating
                   <p className=" font-semibold text-xl mb-2">{guide.rating}</p>
