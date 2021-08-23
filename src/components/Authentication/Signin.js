@@ -39,7 +39,7 @@ const Signin = () => {
           <h4 className="text-color">Signin</h4>
 
           <input
-            placeholder="enter username"
+            placeholder="enter your username"
             id="username"
             type="text"
             className="form-control my-2 h-12 "
@@ -50,7 +50,7 @@ const Signin = () => {
           )}
 
           <input
-            placeholder="enter password"
+            placeholder="********"
             id="password"
             // type={password ? "password" : "text"}
             type="password"

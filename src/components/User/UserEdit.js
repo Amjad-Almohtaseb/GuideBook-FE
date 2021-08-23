@@ -71,7 +71,7 @@ const UserEdit = () => {
               className="  bg-red-600 text-white font-bold py-2 px-4 rounded-full mb-3 ml-20 "
               onClick={() => setShow(false)}
             >
-              CANCLE
+              CANCEL
             </button>
             <button
               type="submit"
