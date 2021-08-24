@@ -9,6 +9,14 @@ import { AiFillDollarCircle } from "@react-icons/all-files/ai/AiFillDollarCircle
 import { HiUserGroup } from "@react-icons/all-files/hi/HiUserGroup";
 import { ImLocation2 } from "@react-icons/all-files/im/ImLocation2";
 
+//memberships
+import bronze from "../../pics/bronze1.jpg"
+import silver from "../../pics/silver2.jpg"
+import golden from "../../pics/golden3.jpg"
+import platinum from "../../pics/platinum4.jpg"
+
+
+
 const GuideProfile = () => {
  
   const user = useSelector((state) => state.user);
@@ -44,14 +52,37 @@ const GuideProfile = () => {
     </>
   ));
 
+
+  const membership = () => {
+    let src;
+   if(booking.length>=2&&booking.length<4){
+       src = silver
+   } else if(booking.length>=4&&booking.length<6){
+      src = golden
+   }
+   else if(booking.length>=6){
+    src = platinum
+ }
+   else{
+      src = bronze
+   }
+   return src;
+  };
+
+
   const guideLoading = useSelector((state) => state.guides.loading);
   if (guideLoading) return <Spinner />;
+
+
+
 
   return (
     <>
       <div className="card  flex flex-row profile-card ">
         
         <div className="rounded overflow-hidden shadow-md w-96  border-1 ml-6 mt-3 card1-p  ">
+
+        <img src={membership()} alt="membership" className="guide-membership" />
         <UserEdit  />
           <img
             className="  w-60 h-60 mx-auto rounded-full  border-1 border-black"
@@ -93,7 +124,7 @@ const GuideProfile = () => {
           </div>
          
         </div>
-        {booking.length===0 ? <div className="z-30 font-bold text-yellow-500 text-4xl absolute left-1/2 top-96"> You Don't Have Bookings Yet </div> 
+        {booking.length===0 ? <div className="z-30 font-bold text-gray-300 text-4xl absolute left-1/2 top-96 "> You Don't Have Bookings Yet </div> 
 
         :
         <div className=" guide-table text-center mx-12 mt-3 ">

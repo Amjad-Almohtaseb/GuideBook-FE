@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { FaUserEdit } from "@react-icons/all-files/fa/FaUserEdit";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../store/actions/authActions";
+import { MdSmartphone } from "@react-icons/all-files/md/MdSmartphone";
+
 
 const UserEdit = () => {
   const dispatch = useDispatch();
@@ -32,29 +34,20 @@ const UserEdit = () => {
       />
       {show && (
         <form onSubmit={handleSubmit}>
-          <div className=" absolute top-16  bg-gray-800 booking-form ml-20 p-2 z-10  border-yellow-400 border-2 border-double">
+          <div className=" absolute top-16  bg-gray-800 user-form ml-20 p-2 z-10  border-yellow-400 border-2 border-double">
             <div className=" ml-36">
-              <label className=" font-bold text-white "> Edit Picture </label>
-              <br />
+              <br/>
+              <label className=" font-bold text-white mr-2 mb-2 mt-3 inline"> Picture </label>
+
               <input type="file" name="image" onChange={handleImage} />
             </div>
             <hr className=" bg-yellow-400" />
+
             <div className=" ml-36">
-              <label className=" font-bold text-white">Your Phone Number </label>
-              <br />
-              <input
-                placeholder="+962-000000000"
-                type="tel"
-                name="phone"
-                className=" border-1 w-44"
-                onChange={handleChange}
-              />
-            </div>
-            <hr className=" bg-yellow-400" />
-            <div className=" ml-36">
+            <label className=" font-bold text-white mr-2 my-2"> Gender </label>
               <select
                 name="gender"
-                className=" w-44 "
+                className=" w-28 pl-1 "
                 required
                 onChange={handleChange}
               >
@@ -65,17 +58,36 @@ const UserEdit = () => {
                 <option value="female">Female</option>
               </select>
             </div>
+
+
+           
+            <hr className=" bg-yellow-400" />
+
+            <div className=" ml-36">
+              <label className=" font-bold text-white mr-2 my-2">
+                Phone
+                 </label>
+
+              <input
+                placeholder="+962-000000000"
+                type="tel"
+                name="phone"
+                className=" border-1 w-36 pl-1 "
+                onChange={handleChange}
+              />
+            </div>
+
             <hr className=" bg-yellow-400" />
 
             <button
-              className="  bg-red-600 text-white font-bold py-2 px-4 rounded-full mb-3 ml-20 "
+              className="  bg-red-600 text-white font-bold py-2 px-4 rounded-full mb-3 ml-28 z-50 "
               onClick={() => setShow(false)}
             >
               CANCEL
             </button>
             <button
               type="submit"
-              className=" bg-yellow-500 text-white font-bold py-2 px-4 rounded-full ml-20 w-24 "
+              className=" bg-yellow-500 text-white font-bold py-2 px-4 rounded-full ml-20 w-28 "
             >
               SAVE
             </button>

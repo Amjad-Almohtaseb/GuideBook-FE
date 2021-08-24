@@ -126,15 +126,15 @@ const GuideEdit = ({ guide }) => {
       )}
 
       {show && (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className=" z-50">
           <div className=" absolute -top-4 bg-gray-800 guide-form  p-2 z-10  border-yellow-400 border-2 border-double ">
-            <div className=" flex flex-row justify-evenly flex-wrap ">
+            <div className=" flex flex-row justify-evenly flex-wrap pt-3 pb-2">
               <span>
-                <label className=" font-bold text-white "> Your City </label>{" "}
-                <br />
+                <label className=" font-bold text-white "> Your City </label> &nbsp;
+               
                 <select
                   name="city"
-                  className=" w-44 "
+                  className=" w-28 "
                   onChange={handleChange}
                   value={guideInfo.city}
                   // required
@@ -150,9 +150,10 @@ const GuideEdit = ({ guide }) => {
                 </select>
               </span>
               <span>
-                <label className=" font-bold text-white "> Price/Person </label>
-                <br />
+                <label className=" font-bold text-white "> Price Per Person &nbsp; </label>
+
                 <input
+                className="w-10 pl-1"
                   type="number"
                   name="price"
                   value={guideInfo.price}
@@ -163,11 +164,12 @@ const GuideEdit = ({ guide }) => {
               </span>
               <span>
                 <label className=" font-bold text-white ">
-                  {" "}
-                  Max Group Size{" "}
+
+                  Max Group Size &nbsp;
                 </label>
-                <br />
+
                 <input
+                className="w-10 pl-1"
                   type="number"
                   name="maxsize"
                   value={guideInfo.maxsize}
@@ -179,14 +181,15 @@ const GuideEdit = ({ guide }) => {
               <span>
                 <label className=" font-bold text-white ">
                   {" "}
-                  Your Holidays{" "}
+                  Your Holidays &nbsp;
                 </label>
-                <br />
+
                 <DatePicker
                   multiple
                   onChange={handleCalendar} //{setValues}
                   minDate={new Date()}
                   value={guideInfo.notAvailabeDates}
+                 
                 />
               </span>
             </div>
@@ -194,7 +197,7 @@ const GuideEdit = ({ guide }) => {
 
             <div className=" flex flex-row justify-evenly">
               {guideInfo.city && (
-                <span>
+                <span title="Pin Your Zone 📍">
                   <ReactMapGL
                     mapStyle="mapbox://styles/ibrashaheen/cksgk86h25bxw17uqom0h83s3"
                     mapboxApiAccessToken={MapKey}
@@ -203,6 +206,8 @@ const GuideEdit = ({ guide }) => {
                     onViewportChange={(nextViewport) =>
                       setViewport(nextViewport)
                     }
+            
+
                   >
                     <Marker //TO DOOOOOOOOOOOOOOOOOOOOOO
                       longitude={guideInfo.location[0] || 0}
