@@ -43,6 +43,8 @@ const BookingForm = () => {
     endDate: endDate,
     key: "selection",
   };
+  console.log(selectionRange.startDate);
+  console.log(selectionRange.endDate);
 
   const handleCountry = (event) => {
     setCountryId(event.target.value);
@@ -71,7 +73,9 @@ const BookingForm = () => {
           dates: dateRange(strStartDate, strEndDate),
           city: cityId,
           maxsize: groupSize,
-          country:countryId,
+          country: countryId,
+          firstDate: selectionRange.startDate,
+          lastDate: selectionRange.endDate,
         },
         history
       )
