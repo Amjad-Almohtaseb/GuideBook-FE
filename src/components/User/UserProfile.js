@@ -6,6 +6,13 @@ import { MdSmartphone } from "@react-icons/all-files/md/MdSmartphone";
 import Rating from "../Rating";
 import { deleteBooking } from "../../store/actions/bookingActions";
 
+//memberships
+import bronze from "../../pics/bronze1.jpg"
+import silver from "../../pics/silver2.jpg"
+import golden from "../../pics/golden3.jpg"
+import platinum from "../../pics/platinum4.jpg"
+
+
 
 const UserProfile = () => {
   const dispatch = useDispatch()
@@ -47,7 +54,7 @@ const cancelBooking=(bookId)=>{
             {/* <td>
               <Rating guideId={book.guide._id} />
             </td> */}
-            <td><span className="text-red-600 uppercase cursor-pointer" onClick={()=>cancelBooking(book._id)}>CANCEL BOOKING</span></td>
+            <td><span className="text-red-600 uppercase cursor-pointer btn btn-danger" onClick={()=>cancelBooking(book._id)}>CANCEL</span></td>
             {/* <td>not yet</td> */}
             
           </>
@@ -63,39 +70,63 @@ const cancelBooking=(bookId)=>{
     </>
   ));
 
+  //memberships
+
+  const membership = () => {
+    let src;
+   if(booking.length>=2&&booking.length<4){
+       src = silver
+   } else if(booking.length>=4&&booking.length<6){
+      src = golden
+   }
+   else if(booking.length>=6){
+    src = platinum
+ }
+   else{
+      src = bronze
+   }
+   return src;
+  };
+
+
+
   return (
     <div className="card  flex flex-row profile-card ">
       <div className="rounded overflow-hidden shadow-md  mx-auto border-1 ml-6 mt-3 card1-p user-card-p ">
+        {/* membership */}
+      <img src={membership()} alt="membership" className="membership" />
+
         <UserEdit />
         <img
           className="  w-60 h-60 mx-auto rounded-full absolute left-56  border-1 border-black"
           src={user.image}
           alt="Mountain"
         />
-        <div className="px-6 py-2  text-center">
-          <div className="absolute my-2 left-3/4">
-            Fullname
+        <div className=" pt-2 pl-96 ml-28  text-left">
+          <div >
+          <span className=" text-sm"> Fullname</span>
+            
             <p className=" font-semibold text-xl mb-3">{user.fullname}</p>
           </div>
 
-          <div className="my-1">
-            Username{" "}
+          <div >
+          <span className=" text-sm"> Username</span>
             <p className=" font-semibold text-xl mb-3">@{user.username}</p>
           </div>
-          <div className="absolute my-3 left-3/4">
-            <p className=" font-semibold text-xl mt-8">
+          <div className="">
+            <p className=" font-semibold text-xl">
               <MdEmail size={25} className=" inline" /> {user.email}
             </p>
           </div>
           {user.phone && (
-            <div className="my-4">
-              <p className=" font-semibold text-xl mt-16 ">
+            <div className="">
+              <p className=" font-semibold text-xl ">
                 <MdSmartphone size={25} className=" inline" /> {user.phone}
               </p>
             </div>
           )}
           {/* {user.gender && (
-              <div className="absolute left-1/2 -ml-7  top-52 mt-2  ">
+              <div className="">
                 Gender
                 <p className=" font-semibold text-xl mb-3">
                   {user.gender}
@@ -104,9 +135,11 @@ const cancelBooking=(bookId)=>{
             )} */}
         </div>
       </div>
-      {booking.length !== 0 && (
+      {booking.length=== 0 ? <div className=" font-bold text-gray-300 text-4xl absolute left-96 ml-32 top-80 "> You Don't Have Bookings Yet </div> 
+
+      : (
         <div className=" user-table absolute text-center mx-12  ">
-          <table className="table mx-2.5 mt-1 ">
+          <table className="table mx-2.5 ">
             <thead className="  text-white bg-gray-700 capitalize">
               <tr>
                 <th scope="col">tourest name</th>
@@ -116,15 +149,14 @@ const cancelBooking=(bookId)=>{
                 <th scope="col">group size</th>
                 <th scope="col">total price</th>
                 <th scope="col">status</th>
-                   {/* TODO */}
-                {/* <th scope="col">rate your guide</th> */}
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>{bookingtable}</tbody>
           </table>
         </div>
-      )}
+      )} 
+      
     { show &&
   <div className="z-30 w-80 h-54 bg-gray-800 absolute left-96 ml-60 top-60 text-white p-10 cancel-form">
     <p className=" capitalize ">are you sure you want to cancel this booking?</p>

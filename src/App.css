@@ -127,6 +127,16 @@
   border-radius: 10px;
   box-shadow: 4px 4px 200px black;
 }
+
+.user-form {
+  left: 32%;
+  border-radius: 10px;
+  box-shadow: 4px 4px 200px black;
+   padding-right:0px;
+   width: 523px;
+}
+
+
 /* 
 body{
 
@@ -284,3 +294,23 @@ width: 700px;
 }
 
 
+.slider-cont{
+  position: absolute;
+  top:52%;
+  left:38%
+}
+
+.membership{
+position: absolute;
+height: 200px;
+left:75%;
+top:11%;
+}
+
+
+.guide-membership{
+  position: absolute;
+  height: 95px;
+  left:32.5%;
+  top:34.5%;
+  }
