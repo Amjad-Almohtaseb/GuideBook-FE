@@ -36,16 +36,17 @@ const cancelBooking=(bookId)=>{
         {today > book.endDate ? (
           <>
             <td className=" text-green-500 uppercase">completed</td>
-            <td>
+            {/* TODO */}
+            {/* <td>
               <Rating guideId={book.guide._id} />
-            </td>
+            </td> */}
           </>
         ) : today < book.startingDate ? (
           <>
             <td className="text-yellow-400 uppercase">scheduled</td>
-            <td>
+            {/* <td>
               <Rating guideId={book.guide._id} />
-            </td>
+            </td> */}
             <td><span className="text-red-600 uppercase cursor-pointer" onClick={()=>cancelBooking(book._id)}>CANCEL BOOKING</span></td>
             {/* <td>not yet</td> */}
             
@@ -115,8 +116,8 @@ const cancelBooking=(bookId)=>{
                 <th scope="col">group size</th>
                 <th scope="col">total price</th>
                 <th scope="col">status</th>
-
-                <th scope="col">rate your guide</th>
+                   {/* TODO */}
+                {/* <th scope="col">rate your guide</th> */}
                 <th scope="col"></th>
               </tr>
             </thead>

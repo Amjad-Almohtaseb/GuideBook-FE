@@ -25,7 +25,8 @@ const Navbar = () => {
       style={{ backgroundColor: "#fca311" }}
       className="navbar shadow-lg text-neutral-content rounded-box nav-txt fixed"
     >
-     
+
+
         <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav w-40">
           {/* <img className="w-10 h-10" src="https://static.thenounproject.com/png/2291745-200.png" alt="logo" /> */}
           Guide Book 
@@ -33,9 +34,9 @@ const Navbar = () => {
      
       <span>
       <Link to="/" className="flex-1 px-2 mx-2">
-        <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav absolute left-32 top-2 ">
+        <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav absolute left-36 top-4 ">
           {/* <img className="w-10 h-10" src="https://static.thenounproject.com/png/2291745-200.png" alt="logo" /> */}
-          <AiOutlineHome size={25} />
+          {/* <AiOutlineHome size={25} /> */} Home
         </span>
       </Link>
       </span>
@@ -46,12 +47,10 @@ const Navbar = () => {
             <>
               <Link to={{ pathname: "/signup", state: { type: "tourguide" } }}>
                 <span className="btn btn-ghost btn-sm text-nav">
-                  register as a guide
+                  Become a guide
                 </span>
               </Link>
-              {/* <Link to={{ pathname: "/signup", state: { type: "user" } }}>
-                <span className="btn btn-ghost btn-sm text-nav">signup</span>
-              </Link> */}
+
               <Link to="/signin">
                 <span className="btn btn-ghost btn-sm text-nav">signin</span>
               </Link>

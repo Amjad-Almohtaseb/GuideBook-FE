@@ -72,7 +72,7 @@ const Map = ({ foundGuides }) => {
               longitude={pen.location[0]}
               latitude={pen.location[1]}
             >
-              <img src={pen.user.image} alt="" className=" h-20 w-full m-0 " />
+              <img src={pen.user.image} alt="" className=" h-20 w-24 m-0 " />
               <p>{pen.user.fullname}</p>
             </Popup>
           )}

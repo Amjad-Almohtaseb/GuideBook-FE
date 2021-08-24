@@ -84,10 +84,12 @@ const BookingForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      
       <div
         className="book-btn  flex items-center md:border-2 rounded-full py-2 md:shadow-sm w-64 absolute bg-white top-60 cursor-pointer "
         onClick={handleShow}
       >
+       
         <span className=" flex-grow pl-5 bg-transparent outline-none text-lg text-gray-600 ">
           Start your search
         </span>
@@ -95,6 +97,8 @@ const BookingForm = () => {
         <SearchIcon className="hidden md:inline-flex h-8 bg-yellow-500 text-white rounded-full p-2  md:mx-2 " />
       </div>
       {show && (
+        <>
+         {/* <b>Where to go ?</b> */}
         <div className=" absolute top-16 bg-white booking-form p-2">
           <select className=" w-56" onChange={handleCountry} required>
             <option disabled="disabled" selected="selected">
@@ -155,7 +159,7 @@ const BookingForm = () => {
             Search{" "}
           </button>
         </div>
-      )}
+      </>)}
     </form>
   );
 };

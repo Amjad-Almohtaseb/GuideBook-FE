@@ -10,10 +10,15 @@ import GuideList from "../Guide/GuideList";
 import GuideDetail from "../Guide/GuideDetail";
 import BookingSummary from "../Booking/BookingSummary";
 import UserProfile from "../User/UserProfile";
+import Rating from "../Rating";
 
 const Routes = () => {
   return (
     <Switch>
+<Route path="/rating">
+        <Rating />
+      </Route>
+
       <Route path="/bookings">
         <BookingSummary />
       </Route>

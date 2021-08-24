@@ -18,7 +18,8 @@ const GuideItem = ({ guide }) => {
       case 5:
         return <h5>⭐⭐⭐⭐⭐</h5>;
       default:
-        return <h5>⭐⭐⭐</h5>;
+        // new
+        return <h6>⭐⭐⭐⭐⭐</h6>;
     }
   };
   console.log(avg);
