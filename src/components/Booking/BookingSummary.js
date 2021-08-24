@@ -9,11 +9,6 @@ import {MdEmail} from "@react-icons/all-files/md/MdEmail"
 import {MdSmartphone} from "@react-icons/all-files/md/MdSmartphone"
 import { useHistory } from 'react-router'
 
-import { API_KEY } from "../Booking/BookKey";
-const SgMail = require("@sendgrid/mail");
-// import SgMail from "@sendgrid/mail";
-SgMail.setApiKey(API_KEY);
-
 
 
 const BookingSummary = () => {
@@ -26,70 +21,7 @@ const BookingSummary = () => {
   const summary = booking[booking.length-1]
 
 
-  let msg = {
-    subject: "Booking Details ✈️",
-    from: { name: "Guides Book", email: "ahmadabuawed@gmail.com" },
-    to: [
-      { name:`${summary.guide.user.fullname}`, email:`ahmadabuawed@gmail.com` },
-      { name: `${summary.user.fullname}`, email:`engibraheem1995@gmail.com` },
-    ],
-    // text:"",
-    html: `<center >
-    <legend><h2 style="font-family: monospace;">New Booking Details</h2></legend>
-    <table style="    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);">
-    <thead>
-        <tr style="    background-color: #009879;
-        color: #ffffff;
-        text-align: left;">
-            <th style="    background-color: #009879;
-            color: #ffffff; padding: 12px 15px;
-             text-align: center;">Tourist Name</th>
-
-            <th style="    background-color: #009879;
-            color: #ffffff; text-align: center;
-             padding: 12px 15px;">Guide Name</th>
-
-             <th style="    background-color: #009879;
-             color: #ffffff ; text-align: center;
-              padding: 12px 15px;">Duration</th>
-
-              <th style="    background-color: #009879;
-              color: #ffffff ; text-align: center;
-               padding: 12px 15px;">Group Size</th>
-
-               <th style="    background-color: #009879;
-               color: #ffffff ; text-align: center;
-                padding: 12px 15px;">Total Price</th>
-        </tr>
-    </thead>
-    <tbody style="border-bottom: 1px solid #dddddd;">
-        <tr style="border-bottom: 1px solid #dddddd;">
-            <td style="padding: 12px 15px; text-align: center;">${summary.user.fullname}</td>
-            <td style="padding: 12px 15px; text-align: center;">${summary.guide.user.fullname}</td>
-          <td style="padding: 12px 15px; text-align: center;">${summary.startingDate} to ${summary.endDate}</td>
-            <td style="padding: 12px 15px; text-align: center;">${summary.groupSize}</td>
-            <td style="padding: 12px 15px; text-align: center;">${summary.groupSize * summary.guide.price}</td>
-
-        </tr>
-        
-    </tbody>
-    </table>
-    <p style="font-size: large; color: black; text-shadow: 2px 2px 10px green"> Enjoy your trip </p>
-    </center>`,
-  };
-  
-  //we tryed SgMail.sendMultiple(msg)
-  const mail = () =>{
-    SgMail.send(msg).then((response) => console.log("email send ...")).catch((error) => console.log(error.message));
-    history.push("/")
-    console.log(msg)
-  }
-
+ 
 
     return (
       <>
@@ -201,7 +133,7 @@ const BookingSummary = () => {
          <p><AiFillDollarCircle className=" inline"/> {summary.groupSize * summary.guide.price}</p>
        </div>
        <div>
-         <button className="btn btn-warning mt-8 w-40" onClick={mail}>DONE</button>
+         <button className="btn btn-warning mt-8 w-40" onClick={()=> history.push(`/user/${summary.user.slug}`)}>DONE</button>
        </div>
       </div>
       </>

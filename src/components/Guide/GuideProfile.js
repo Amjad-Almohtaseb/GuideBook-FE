@@ -93,10 +93,12 @@ const GuideProfile = () => {
           </div>
          
         </div>
-        {booking.length!==0 &&
+        {booking.length===0 ? <div className="z-30 font-bold text-yellow-500 text-4xl absolute left-1/2 top-96"> You Don't Have Bookings Yet </div> 
+
+        :
         <div className=" guide-table text-center mx-12 mt-3 ">
           <table className="table mx-2.5 mt-1 ">
-            <thead className="  text-white bg-gray-700 capitalize">
+            <thead className="  text-white bg-gray-700 capitalize table-hd">
               <tr>
              
                 <th scope="col">tourest name</th>
@@ -111,15 +113,15 @@ const GuideProfile = () => {
             </thead>
             <tbody>
 
-              
               {bookingtable}
              
             </tbody>
           </table>
         </div>}
 
+
         {/* card2 */}
-        {guide && (guide.price || guide.maxsize>1 || guide.rating || guide.rating>1) && (
+        {guide && (guide.price || guide.maxsize>1 ||  guide.rating>1) && (
           <div
             className=" absolute rounded overflow-hidden shadow-md   border-1 ml-4 mt-3 guide-card
      w-44 text-center  "

@@ -32,8 +32,8 @@ const GuideList = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [startDate, setStartDate] = useState(searchInfo.firstDate);
-  const [endDate, setEndDate] = useState(searchInfo.lastDate);
+  const [startDate, setStartDate] = useState(new Date(searchInfo.firstDate));
+  const [endDate, setEndDate] = useState(new Date(searchInfo.lastDate));
   const [groupSize, setGroupSize] = useState(searchInfo.maxsize);
   // console.log(typeof(new Date()))
   console.log(searchInfo);
