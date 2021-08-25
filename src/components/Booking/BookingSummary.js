@@ -20,7 +20,7 @@ const BookingSummary = () => {
   const booking = bookings.filter((book)=> book.user._id === user._id)
   const summary = booking[booking.length-1]
 
-
+console.log(summary);
  
 
     return (
@@ -130,7 +130,7 @@ const BookingSummary = () => {
        </div>
        <div >
          <h5 className=" uppercase">total price</h5><br/>
-         <p><AiFillDollarCircle className=" inline"/> {summary.groupSize * summary.guide.price}</p>
+         <p><AiFillDollarCircle className=" inline"/> {summary.groupSize * summary.guide.price * summary.choosenDates.length}</p>
        </div>
        <div>
          <button className="btn btn-warning mt-8 w-40" onClick={()=> history.push(`/user/${summary.user.slug}`)}>DONE</button>

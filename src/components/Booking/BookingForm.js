@@ -18,8 +18,11 @@ const BookingForm = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  // const [startDate, setStartDate] = useState(new Date());
+  // const [endDate, setEndDate] = useState(new Date());
+
+  const [startDate, setStartDate] = useState(new Date("2021-08-02"));
+  const [endDate, setEndDate] = useState(new Date("2021-08-02"));
   const [groupSize, setGroupSize] = useState(1);
 
   const [countryId, setCountryId] = useState();
@@ -30,14 +33,16 @@ const BookingForm = () => {
     setEndDate(ranges.selection.endDate);
   };
 
+
+
   let strStartDate =
     startDate.toISOString().substr(0, 8) +
-    (+startDate.toISOString().substr(0, 10).slice(8) + 1).toString();
+    (+startDate.toISOString().substr(0, 10).slice(8)+1 ).toString();
 
   let strEndDate =
     endDate.toISOString().substr(0, 8) +
-    (+endDate.toISOString().substr(0, 10).slice(8) + 1).toString();
-
+    (+endDate.toISOString().substr(0, 10).slice(8) +1).toString();
+console.log(strStartDate,strEndDate)
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,

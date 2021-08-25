@@ -36,7 +36,7 @@ const Map = ({ foundGuides }) => {
   // for city
   const [viewport, setViewport] = useState({
     width: "115%",
-    height: "663px",
+    height: "649.65px",
     longitude: 35.1795933806353,
     latitude: 39.0604813685019,
     zoom: 8,
@@ -73,7 +73,8 @@ const Map = ({ foundGuides }) => {
               longitude={pen.location[0]}
               latitude={pen.location[1]}
             >
-              <Link to={`/guides/${pen.user.slug}`}>
+              <Link to={`/guides/${pen.user.slug}`}
+              className=" no-underline">
                 <img src={pen.user.image} alt="" className=" h-20 w-24 m-0 " />
                 <p>{pen.user.fullname}</p>
               </Link>

@@ -20,13 +20,14 @@ const GuideItem = ({ guide }) => {
         return <h5>⭐⭐⭐⭐⭐</h5>;
       default:
         // new
-        return <h6>⭐⭐⭐⭐⭐</h6>;
+        return <div className="new-guide">new</div>;
     }
   };
   console.log(avg);
   return (
     <Link to={`/guides/${guide.user.slug}`}>
-      <div className="card  absolute flex  max-w-xl p-3 mx-auto personal-card ">
+      <div className="card  absolute flex  max-w-xl p-3 mx-auto personal-card">
+        
         <div className="row no-gutters">
           <div className="col-md-4">
             <img
