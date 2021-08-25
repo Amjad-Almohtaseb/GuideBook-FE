@@ -45,7 +45,7 @@ const GuideDetail = () => {
   return (
     <>
       <div className="card  flex flex-row profile-card ">
-        <div className="rounded overflow-hidden shadow-md w-96  border-1 ml-6 mt-3 card1-p  ">
+        <div className="rounded overflow-hidden shadow-md w-96  border-1 ml-6 mt-3 card1-p bg-gray-800 text-white  ">
           <img
             className="  w-60 h-60 mx-auto rounded-full  border-1 border-black mt-4"
             src={guide.user.image}
@@ -120,7 +120,7 @@ const GuideDetail = () => {
         {guide && (guide.price || guide.maxsize || guide.rating) && (
           <div
             className=" z-20 absolute rounded overflow-hidden shadow-md   border-1 ml-4 mt-3 guide-card
-     w-44 text-center  "
+     w-44 text-center  bg-gray-800 text-white "
           >
             <div className="px-6 py-4 ">
               {guide.city && guide.city.name && (

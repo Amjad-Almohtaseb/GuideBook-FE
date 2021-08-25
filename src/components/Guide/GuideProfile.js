@@ -80,9 +80,9 @@ const GuideProfile = () => {
     <>
       <div className="card  flex flex-row profile-card ">
         
-        <div className="rounded overflow-hidden shadow-md w-96  border-1 ml-6 mt-3 card1-p  ">
+        <div className="rounded overflow-hidden shadow-md w-96  border-1 ml-6 mt-3 card1-p  bg-gray-800 text-white ">
 
-        <img src={membership()} alt="membership" className="guide-membership" />
+        <img src={membership()} alt="membership" className="guide-membership z-50 " />
         <UserEdit  />
           <img
             className="  w-60 h-60 mx-auto rounded-full  border-1 border-black"
@@ -152,16 +152,16 @@ const GuideProfile = () => {
 
 
         {/* card2 */}
-        {guide && (guide.price || guide.maxsize>1 ||  guide.rating>1) && (
+        {guide && (guide.price || guide.maxsize>1 ) && (
           <div
             className=" absolute rounded overflow-hidden shadow-md   border-1 ml-4 mt-3 guide-card
-     w-44 text-center  "
+     w-44 text-center bg-gray-800 text-white "
           >
             <div className="px-6 py-4 ">
               {guide.city && guide.city.name && (
                 <div>
                   City
-                  <p className=" font-semibold text-xl mb-2">
+                  <p className=" font-semibold text-xl mb-8">
                     <ImLocation2 size={22} className="inline mb-1"/>
                      {guide.city.name}
                   </p>
@@ -172,7 +172,7 @@ const GuideProfile = () => {
                 <div>
                   Price/person
                   
-                  <p className=" font-semibold text-xl mb-2"><AiFillDollarCircle size={20} className=" inline mb-1"/> {guide.price} </p>
+                  <p className=" font-semibold text-xl mb-8"><AiFillDollarCircle size={20} className=" inline mb-1"/> {guide.price} </p>
                 </div>
               )}
 
@@ -184,12 +184,7 @@ const GuideProfile = () => {
                 </div>
               )}
 
-              {guide.rating>1 && (
-                <div>
-                  Your rating
-                  <p className=" font-semibold text-xl mb-2">{guide.rating}</p>
-                </div>
-              )}
+              
             </div>
           </div>
         )}
@@ -199,8 +194,8 @@ const GuideProfile = () => {
           <div className=" absolute rounded overflow-hidden shadow-md  border-1 ml-4 mt-3 text-justify bio pt-4  ">
             {guide.description && (
               <span>
-               <span className=" ml-56 capitalize font-bold">description</span> 
-                <p className="  text-xl mb-2 pr-8 pl-56 des-text mt-2 ">{guide.description}</p>
+               <span className=" ml-56 capitalize font-bold text-2xl">description</span> 
+                <p className="  text-xl mb-2 pr-8 pl-56 des-text mt-10 ">{guide.description}</p>
               </span>
             )}
           </div>

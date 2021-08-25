@@ -2,13 +2,16 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FaStar } from "react-icons/fa";
 import { updateGuide } from "../../store/actions/guideActions";
+import { useHistory, useParams } from "react-router";
 
 const colors = {
   orange: "#FFBA5A",
   grey: "#a9a9a9",
 };
+function Rating() {
+  const history = useHistory();
+  const guideId = useParams().guideId;
 
-function Rating({ guideId }) {
   const dispatch = useDispatch();
 
   const [hoverValue, setHoverValue] = useState(undefined);
@@ -17,6 +20,7 @@ function Rating({ guideId }) {
 
   const handleClick = (value) => {
     dispatch(updateGuide({ rating: value }, guideId));
+    history.push("/");
   };
 
   const handleMouseOver = (newHoverValue) => {

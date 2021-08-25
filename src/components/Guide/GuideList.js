@@ -18,7 +18,8 @@ const GuideList = () => {
       {" "}
       <GuideItem guide={guide} key={guide._id} />{" "}
       <hr className=" w-3/4 mx-auto" />
-    </>
+      </>
+    
   ));
 
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const GuideList = () => {
   const cities = useSelector((state) => state.cities.cities);
   const searchInfo = useSelector((state) => state.guides.searchInfo);
 
-  const cityName = cities.find((city) => city._id === searchInfo.city);
+  const cityName = cities.find((city) => city._id === searchInfo.city).name;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -37,6 +38,8 @@ const GuideList = () => {
   const [groupSize, setGroupSize] = useState(searchInfo.maxsize);
   // console.log(typeof(new Date()))
   console.log(searchInfo);
+  console.log(cityName);
+
   const [countryId, setCountryId] = useState(searchInfo.country);
   const [cityId, setCityId] = useState(searchInfo.city);
 
@@ -99,11 +102,12 @@ const GuideList = () => {
     <div className="">
       <form onSubmit={handleSubmit}>
         <div
-          className="book-btn  flex items-center md:border-2 rounded-full py-2 md:shadow-sm w-64 absolute bg-white cursor-pointer search-in-list "
+          className="book-btn  flex items-center md:border-2 rounded-full py-2 md:shadow-sm absolute bg-white cursor-pointer search-in-list -ml-20 "
           onClick={handleShow}
         >
           <span className=" flex-grow pl-5 bg-transparent outline-none text-lg text-gray-600 ">
-            Start your search
+            {/* here */}
+            {`${cityName} | ${searchInfo.dates[0]} to ${searchInfo.dates[searchInfo.dates.length-1]} | ${searchInfo.maxsize}`} {searchInfo.maxsize===1?"tourist":"tourists"}
           </span>
 
           <SearchIcon className="hidden md:inline-flex h-8 bg-yellow-500 text-white rounded-full p-2  md:mx-2 " />
