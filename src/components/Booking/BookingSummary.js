@@ -2,6 +2,10 @@ import React, { useEffect } from 'react'
 
 import {  useSelector } from 'react-redux'
 
+//alert function
+import { message } from '../../utlis'
+
+
 //icons
 import {AiFillDollarCircle} from "@react-icons/all-files/ai/AiFillDollarCircle"
 import {SiGooglecalendar} from "@react-icons/all-files/si/SiGooglecalendar"
@@ -21,7 +25,11 @@ const BookingSummary = () => {
   const summary = booking[booking.length-1]
 
 console.log(summary);
- 
+ const handleClick = ()=>{
+
+   message("info", "Check Your Mailbox", 2500);
+  history.push(`/user/${summary.user.slug}`)
+ }
 
     return (
       <>
@@ -133,7 +141,7 @@ console.log(summary);
          <p><AiFillDollarCircle className=" inline"/> {summary.groupSize * summary.guide.price * summary.choosenDates.length}</p>
        </div>
        <div>
-         <button className="btn btn-warning mt-8 w-40" onClick={()=> history.push(`/user/${summary.user.slug}`)}>DONE</button>
+         <button className="btn btn-warning mt-8 w-40" onClick={handleClick} >DONE</button>
        </div>
       </div>
       </>

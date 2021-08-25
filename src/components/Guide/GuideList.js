@@ -184,8 +184,8 @@ const GuideList = () => {
           </div>
         )}
       </form>
-      <div className=" guides">{guideList}</div>
-
+      <div className=" guides">{guideList}
+        {foundGuides.length===0 && <div className="capitalize text-center text-2xl mt-40 font-bold">unfortunately no available guides in these dates !</div>}</div>
       <div className="absolute mapbox">
         <Map foundGuides={foundGuides} />
       </div>

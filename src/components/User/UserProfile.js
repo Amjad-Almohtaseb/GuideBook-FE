@@ -93,7 +93,7 @@ console.log(bookings);
 
         <UserEdit />
         <img
-          className="  w-60 h-60 mx-auto rounded-full absolute left-56  border-1 border-black"
+          className="  w-60 h-60 mx-auto mt-4 rounded-full absolute left-40  border-1 border-black"
           src={user.image}
           alt="Mountain"
         />
@@ -120,14 +120,14 @@ console.log(bookings);
               </p>
             </div>
           )}
-          {/* {user.gender && (
+          {user.gender && (
               <div className="">
                 Gender
                 <p className=" font-semibold text-xl mb-3">
                   {user.gender}
                 </p>
               </div>
-            )} */}
+            )}
         </div>
       </div>
       {booking.length=== 0 ? <div className=" font-bold text-gray-300 text-4xl absolute left-96 ml-32 top-80 "> You Don't Have Bookings Yet </div> 

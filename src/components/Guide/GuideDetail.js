@@ -10,11 +10,19 @@ import { ImLocation2 } from "@react-icons/all-files/im/ImLocation2";
 import { AiFillDollarCircle } from "@react-icons/all-files/ai/AiFillDollarCircle";
 
 //pics
+//Istanbul
 import one from "../../pics/1.jpg";
 import two from "../../pics/2.jpg";
 import three from "../../pics/3.jpg";
 import four from "../../pics/4.jpg";
 import five from "../../pics/5.jpg";
+//Roma
+import roma1 from "../../pics/roma1.jpg"
+import roma2 from "../../pics/roma2.jpg"
+import roma3 from "../../pics/roma3.jpg"
+import roma4 from "../../pics/roma4.jpg"
+import roma5 from "../../pics/roma5.jpg"
+
 
 const GuideDetail = () => {
   const dispatch = useDispatch();
@@ -28,6 +36,29 @@ const GuideDetail = () => {
   if (guideLoading) return <Spinner />;
   const guide = guides.find((guide) => guide.user.slug === guideSlug);
 
+  
+  let avg = Math.floor(
+    guide.rating.length !== 0 &&
+      guide.rating.reduce((a, b) => a + b) / guide.rating.length
+  );
+  const viewRating = () => {
+    switch (avg) {
+      case 1:
+        return <h5>⭐</h5>;
+      case 2:
+        return <h5>⭐⭐</h5>;
+      case 3:
+        return <h5>⭐⭐⭐</h5>;
+      case 4:
+        return <h5>⭐⭐⭐⭐</h5>;
+      case 5:
+        return <h5>⭐⭐⭐⭐⭐</h5>;
+      default:
+        // new
+        return <div className="new-guide">new</div>;
+    }
+  };
+  console.log(avg);
   const handleBooking = () => {
     dispatch(
       newBooking(
@@ -101,17 +132,26 @@ const GuideDetail = () => {
         </div>
 
         {/* slider TODO */}
-
+        
         <div className="slider-cont">
           <section className="auto-slider">
             <div id="slider">
-              <figure>
-                <img src={one} alt="istanbul1" className=" h-80" />
-                <img src={two} alt="istanbul2" />
-                <img src={three} alt="istanbul3" />
-                <img src={four} alt="istanbul4" className=" h-80" />
-                <img src={five} alt="istanbul5" className=" h-80" />
-              </figure>
+             { guide.city.name==="Roma"?
+             
+             <figure>
+                <img src={roma1} alt="roma1" className=" h-80" />
+                <img src={roma2} alt="roma2" className=" h-80"/>
+                <img src={roma3} alt="roma3" className=" h-80" />
+                <img src={roma4} alt="roma4" className=" h-80" />
+                <img src={roma5} alt="roma5" className=" h-80" />
+              </figure>:
+               <figure>
+               <img src={one} alt="istanbul1" className=" h-80" />
+               <img src={two} alt="istanbul2" />
+               <img src={three} alt="istanbul3" />
+               <img src={four} alt="istanbul4" className=" h-80" />
+               <img src={five} alt="istanbul5" className=" h-80" />
+             </figure>}
               <div className="indicator"></div>
             </div>
           </section>
@@ -152,6 +192,13 @@ const GuideDetail = () => {
                   </p>
                 </div>
               )}
+               <h6 className="card-title mt-4  text-white">
+                Rating
+              </h6>
+
+              <p className="card-text  text-blue-600">
+                {viewRating()}
+              </p>
             </div>
           </div>
         )}
