@@ -34,7 +34,7 @@ const UserEdit = () => {
       />
       {show && (
         <form onSubmit={handleSubmit}>
-          <div className=" absolute top-16  bg-gray-800 user-form ml-20 p-2 z-10  border-yellow-400 border-2 border-double">
+          <div className=" absolute top-16 text-black bg-gray-800 user-form ml-20 p-2 z-10  border-yellow-400 border-2 border-double">
             <div className=" ml-36">
               <br/>
               <label className=" font-bold text-white mr-2 mb-2 mt-3 inline"> Picture </label>

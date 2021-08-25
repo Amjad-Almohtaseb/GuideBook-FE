@@ -38,30 +38,25 @@ const cancelBooking=(bookId)=>{
         <td>{book.startingDate}</td>
         <td>{book.endDate}</td>
         <td>{book.groupSize}</td>
-        <td>${book.guide.price * book.groupSize}</td>
+        <td>${book.guide.price * book.groupSize * book.choosenDates.length}</td>
         
         {today > book.endDate ? (
           <>
             <td className=" text-green-500 uppercase">completed</td>
-            {/* TODO */}
-            {/* <td>
-              <Rating guideId={book.guide._id} />
-            </td> */}
+            <td> <button className=" uppercase  btn btn-danger  " disabled>CANCEL</button></td>
+
           </>
         ) : today < book.startingDate ? (
           <>
             <td className="text-yellow-400 uppercase">scheduled</td>
-            {/* <td>
-              <Rating guideId={book.guide._id} />
-            </td> */}
+
             <td><span className="text-red-600 uppercase cursor-pointer btn btn-danger" onClick={()=>cancelBooking(book._id)}>CANCEL</span></td>
-            {/* <td>not yet</td> */}
             
           </>
         ) : (
           <>
             <td className=" text-purple-500 uppercase">in progress</td>
-            <td>not yet</td>
+            <td><button className=" uppercase  btn btn-danger " disabled>CANCEL</button></td>
           </>
         )}
 
@@ -71,7 +66,7 @@ const cancelBooking=(bookId)=>{
   ));
 
   //memberships
-
+console.log(bookings);
   const membership = () => {
     let src;
    if(booking.length>=2&&booking.length<4){

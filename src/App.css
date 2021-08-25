@@ -1,7 +1,7 @@
 .nav-txt {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
-   min-height: 70px;
-   /* position: fixed !important; */
+  min-height: 70px;
+  /* position: fixed !important; */
 }
 .link {
   text-decoration: none;
@@ -50,8 +50,6 @@
   left: 41.5%;
 }
 
-
-
 .bg-card {
   margin: 0px;
   width: 100%;
@@ -63,9 +61,8 @@
   margin: 0px;
   width: 100%;
   height: 651px;
-  background-color: white!important;
+  background-color: white !important;
 }
-
 
 .bio {
   width: 67.55%;
@@ -73,7 +70,7 @@
   max-width: 67.55%;
   overflow-wrap: break-word;
   letter-spacing: 1px;
-  left:28.4%;
+  left: 28.4%;
   bottom: 49.8%;
 }
 
@@ -87,34 +84,30 @@
   /* background-color:rgba(255, 255, 255, 0.363); */
 }
 
-
 ::-webkit-scrollbar {
   width: 0;
 }
 
-.guide-table{
+.guide-table {
   max-height: 37.5%;
   background-color: white;
   overflow-y: scroll;
   width: 68%;
   position: absolute;
-  top:57.2%;
-  left:25.8%;
-
+  top: 57.2%;
+  left: 25.8%;
 }
-.des-text{
+.des-text {
   max-height: 250px;
   overflow-y: scroll;
 }
 
-.guide-form{
+.guide-form {
   left: 17%;
   border-radius: 10px;
   width: 1000px !important;
   box-shadow: 4px 4px 200px black;
   /* bottom: 100px */
-  
-
 }
 
 .booking-form {
@@ -127,59 +120,50 @@
   left: 32%;
   border-radius: 10px;
   box-shadow: 4px 4px 200px black;
-   padding-right:0px;
-   width: 523px;
+  padding-right: 0px;
+  width: 523px;
 }
-
 
 /* 
 body{
 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
 } */
-.user-card-p{
+.user-card-p {
   width: 95%;
   height: 87%;
 }
-.user-table{
+.user-table {
   max-height: 37.5%;
   background-color: white;
   overflow-y: scroll;
   top: 50%;
   width: 94%;
- 
-
-  
 }
-.guide-card-summary{
+.guide-card-summary {
   /* box-shadow:0px 0px 0px 3px gray inset; */
   left: 25%;
-  top:50px;
-  
+  top: 50px;
 }
-.tourist-card-summary{
+.tourist-card-summary {
   left: 51%;
-  bottom:205.8px;
+  bottom: 205.8px;
 }
-.done-card-summary{
+.done-card-summary {
   width: 784px;
-  bottom:190px;
-  left:25%;
+  bottom: 190px;
+  left: 25%;
   height: 140px;
   flex-direction: row !important;
   justify-content: space-evenly;
 }
 
-
-
 /* slider--------------------- */
-
-
 
 .auto-slider {
   position: absolute;
-  left:40.2%;
-  top:10px;
+  left: 40.2%;
+  top: 10px;
   box-sizing: content-box;
   display: inline-block;
   padding: 10px 10px 20px;
@@ -190,9 +174,8 @@ body{
   margin: 0 auto;
   overflow: hidden;
   border-radius: 4px;
-  height: 235px ;
+  height: 235px;
   /* box-shadow: 1px 1px 5px orange; */
-
 }
 
 div#slider {
@@ -249,74 +232,84 @@ div#slider figure {
   margin-top: 0.25%;
   /* min-height: 600px;
   max-height: 600px; */
-  height: 658px;
+  height: 645px;
   overflow-y: scroll;
   border-right: 3px solid gold;
   padding-top: 75px;
 }
 
-
-.mapbox{
-
- left:47.6%;
- top: 9.81%;
-width: 700px;
+.mapbox {
+  left: 47.6%;
+  top: 9.81%;
+  width: 700px;
 }
 
-/* here & guidelist line 9 */
-.personal-card{
 
-  border-width: 0px!important;
-  background-color: rgba(255, 255, 255, 0.007)!important;
-}
 
-.cancel-form{
+.cancel-form {
   box-shadow: 5px 5px 50px black;
   font-weight: bold !important;
   text-align: center;
   border-radius: 10px;
 }
-.back-btn{
+.back-btn {
   background-color: rgb(74, 207, 74) !important;
   color: white !important;
 }
 
-.guide-map{
-  cursor:cell !important;
+.guide-map {
+  cursor: cell !important;
 }
-.search-in-list{
-  top:10.5px !important;
+.search-in-list {
+  top: 10.5px !important;
 }
 
-
-.slider-cont{
+.slider-cont {
   position: absolute;
-  top:52%;
-  left:38%
+  top: 52%;
+  left: 38%;
 }
 
-.membership{
-position: absolute;
-height: 200px;
-left:75%;
-top:11%;
+.membership {
+  position: absolute;
+  height: 200px;
+  left: 75%;
+  top: 11%;
 }
 
+.guide-card {
+  width: 72%;
+  height: 47.6%;
+  left: 28.4%;
+  bottom: 49.8%;
+}
 
-  .guide-card {
-    width: 72%;
-    height: 47.6%;
-    left:28.4%;
-    bottom: 49.8%;
-  }
-
-  
-.guide-membership{
+.guide-membership {
   position: absolute;
   height: 95px;
   /* left:32.5%; */
-  left:90%;
+  left: 90%;
   /* top:34.5%; */
-  bottom:82.5%
-  
-  }
+  bottom: 82.5%;
+}
+
+
+/* here & guidelist line 9 */
+.personal-card {
+  border-width: 0px !important;
+  background-color: rgba(255, 255, 255, 0.007) !important;
+}
+
+
+
+.new-guide {
+  background-color: #14213d;
+  color: white;
+  width: 50px;
+  font-size: 14pt;
+  font-weight: bold;
+  padding-left: 7px;
+  padding-bottom: 3px;
+  border-radius: 7px;
+  margin-right: 42px;
+}

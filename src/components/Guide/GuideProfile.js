@@ -38,7 +38,7 @@ const GuideProfile = () => {
       <td>{book.startingDate}</td>
       <td>{book.endDate}</td>
       <td>{book.groupSize}</td>
-      <td>${book.guide.price * book.groupSize}</td>
+      <td>${book.guide.price * book.groupSize * book.choosenDates.length}</td>
       {today > book.endDate ? (
         <td className=" text-green-500 uppercase" >completed</td>
       ) : today < book.startingDate ? (
