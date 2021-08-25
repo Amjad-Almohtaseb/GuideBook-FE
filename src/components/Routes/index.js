@@ -15,7 +15,7 @@ import Rating from "../Rating";
 const Routes = () => {
   return (
     <Switch>
-<Route path="/rating">
+     <Route path="/rating/:guideId">
         <Rating />
       </Route>
 

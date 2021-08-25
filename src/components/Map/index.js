@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { MapKey } from "./MapKey";
 import getCenter from "geolib/es/getCenter";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Map = ({ foundGuides }) => {
   const [selectedLocation, setSelectedLocation] = useState({});
@@ -68,12 +69,14 @@ const Map = ({ foundGuides }) => {
             <Popup
               className=" z-10"
               onClose={() => setSelectedLocation({})}
-              closeOnClick={true}
+              closeOnClick={false}
               longitude={pen.location[0]}
               latitude={pen.location[1]}
             >
-              <img src={pen.user.image} alt="" className=" h-20 w-24 m-0 " />
-              <p>{pen.user.fullname}</p>
+              <Link to={`/guides/${pen.user.slug}`}>
+                <img src={pen.user.image} alt="" className=" h-20 w-24 m-0 " />
+                <p>{pen.user.fullname}</p>
+              </Link>
             </Popup>
           )}
         </div>

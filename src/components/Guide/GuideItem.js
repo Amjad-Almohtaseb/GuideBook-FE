@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 const GuideItem = ({ guide }) => {
   let avg = Math.floor(
-    // guide.rating.reduce((a, b) => a + b) / guide.rating.length
+    guide.rating.length !== 0 &&
+      guide.rating.reduce((a, b) => a + b) / guide.rating.length
   );
   const viewRating = () => {
     switch (avg) {
@@ -25,7 +26,7 @@ const GuideItem = ({ guide }) => {
   console.log(avg);
   return (
     <Link to={`/guides/${guide.user.slug}`}>
-      <div className="card  absolute flex  max-w-xl p-3 mx-auto personal-card">
+      <div className="card  absolute flex  max-w-xl p-3 mx-auto personal-card ">
         <div className="row no-gutters">
           <div className="col-md-4">
             <img
