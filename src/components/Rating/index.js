@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { FaStar } from "react-icons/fa";
 import { updateGuide } from "../../store/actions/guideActions";
 import { useHistory, useParams } from "react-router";
+import rating from "../../pics/rating.png"
 
 const colors = {
   orange: "#FFBA5A",
@@ -32,26 +33,34 @@ function Rating() {
   };
 
   return (
+    <div >
+      <span className="feedback">
+
+      <p >CUSTOMER FEEDBACK</p>
+      </span>
     <div style={styles.container}>
       <div style={styles.stars}>
         {stars.map((_, index) => {
           return (
             <FaStar
-              key={index}
-              size={24}
-              onClick={() => handleClick(index + 1)}
-              onMouseOver={() => handleMouseOver(index + 1)}
-              onMouseLeave={() => handleMouseLeave(index + 1)}
-              color={hoverValue > index ? colors.orange : colors.grey}
-              style={{
-                marginRight: 10,
-                cursor: "pointer",
-              }}
+            key={index}
+            size={40}
+            onClick={() => handleClick(index + 1)}
+            onMouseOver={() => handleMouseOver(index + 1)}
+            onMouseLeave={() => handleMouseLeave(index + 1)}
+            color={hoverValue > index ? colors.orange : colors.grey}
+            style={{
+              marginRight: 10,
+              cursor: "pointer",
+            }}
             />
-          );
-        })}
+            );
+          })}
       </div>
     </div>
+    
+    <img src={rating} alt="rating-image"/>
+          </div>
   );
 }
 
@@ -60,25 +69,18 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    position:"absolute",
+    top:"50%",
+    left:"65%",
+    
   },
   stars: {
     display: "flex",
     flexDirection: "row",
+    
+    
   },
-  textarea: {
-    border: "1px solid #a9a9a9",
-    borderRadius: 5,
-    padding: 10,
-    margin: "20px 0",
-    minHeight: 100,
-    width: 300,
-  },
-  button: {
-    border: "1px solid #a9a9a9",
-    borderRadius: 5,
-    width: 300,
-    padding: 10,
-  },
+
 };
 
 export default Rating;
