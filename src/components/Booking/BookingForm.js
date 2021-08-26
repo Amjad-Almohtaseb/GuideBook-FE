@@ -91,21 +91,21 @@ console.log(strStartDate,strEndDate)
     <form onSubmit={handleSubmit}>
       
       <div
-        className="book-btn  flex items-center md:border-2 rounded-full py-2 md:shadow-sm w-64 absolute bg-white top-60 cursor-pointer "
+        className="book-btn pl-2 flex items-center md:border-2 rounded-full py-2 md:shadow-sm w-96 absolute top-60 cursor-pointer "
         onClick={handleShow}
       >
        
-        <span className=" flex-grow pl-5 bg-transparent outline-none text-lg text-gray-600 ">
+        <span className=" flex-grow pl-5 bg-transparent outline-none text-lg font-semibold  text-gray-600 ">
           Start your search
         </span>
 
-        <SearchIcon className="hidden md:inline-flex h-8 bg-yellow-500 text-white rounded-full p-2  md:mx-2 " />
+        <SearchIcon  className="hidden md:inline-flex h-9 bg-yellow-500 text-white rounded-full p-2  md:mx-2 " />
       </div>
       {show && (
         <>
+        <b className="z-50 absolute top-4 left-96  block mb-3 text-3xl ml-72 text-yellow-500">Where to go ?</b> 
          
-        <div className=" absolute top-16 bg-white booking-form p-2">
-        {/* <b className=" block mb-3 text-xl ml-52 text-yellow-500">Where to go ?</b>  */}
+        <div className=" z-40 absolute top-16 bg-white booking-form p-2">
           <select className=" w-56" onChange={handleCountry} required>
             <option disabled="disabled" selected="selected">
               Choose the country *
