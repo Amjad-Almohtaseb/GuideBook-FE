@@ -2,10 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const GuideItem = ({ guide }) => {
-  let avg = Math.floor(
-    guide.rating.length !== 0 &&
-      guide.rating.reduce((a, b) => a + b) / guide.rating.length
-  );
+  let avg = guide.avgOfRating;
   const viewRating = () => {
     switch (avg) {
       case 1:

@@ -23,7 +23,9 @@ const Signin = () => {
   if (userLoading) return <Spinner />;
 
   const onSubmit = (data) => {
-    const userType = users.find((user) => user.username === data.username).type;
+    const user = users.find((user) => user.username === data.username);
+    let userType;
+    if (user) userType = user.type;
     if (userType === "user") data.type = "user";
     else data.type = "guide";
     dispatch(signin(data, history));

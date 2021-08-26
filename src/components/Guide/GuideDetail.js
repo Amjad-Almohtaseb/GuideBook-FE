@@ -37,10 +37,7 @@ const GuideDetail = () => {
   const guide = guides.find((guide) => guide.user.slug === guideSlug);
 
   
-  let avg = Math.floor(
-    guide.rating.length !== 0 &&
-      guide.rating.reduce((a, b) => a + b) / guide.rating.length
-  );
+  let avg = guide.avgOfRating;
   const viewRating = () => {
     switch (avg) {
       case 1:

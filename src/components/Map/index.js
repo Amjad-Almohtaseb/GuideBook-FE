@@ -35,7 +35,7 @@ const Map = ({ foundGuides }) => {
 
   // for city
   const [viewport, setViewport] = useState({
-    width: "115%",
+    width: "100%",
     height: "649.65px",
     longitude: 35.1795933806353,
     latitude: 39.0604813685019,
@@ -58,10 +58,12 @@ const Map = ({ foundGuides }) => {
             offsetTop={-10}
           >
             <p
-              className=" cursor-pointer text-xl animate-bounce bg-yellow-300 h-8 w-10 rounded-full"
+              // className=" cursor-pointer text-xl animate-bounce bg-yellow-300 h-8 w-10 rounded-full"
               onClick={() => setSelectedLocation(pen.location)}
             >
-              ${pen.price}
+              <div className="pin"></div>
+              
+              <div className="pulse text-yellow-300 font-bold text-4xl"><span className=" absolute -ml-4 mb-20">${pen.price}</span> </div>
             </p>
           </Marker>
 
@@ -73,10 +75,11 @@ const Map = ({ foundGuides }) => {
               longitude={pen.location[0]}
               latitude={pen.location[1]}
             >
-              <Link to={`/guides/${pen.user.slug}`}
-              className=" no-underline">
-                <img src={pen.user.image} alt="" className=" h-20 w-24 m-0 " />
-                <p>{pen.user.fullname}</p>
+              <Link to={`/guides/${pen.user.slug}`} className=" no-underline">
+                <img src={pen.user.image} alt="" className=" h-40 w-40 m-0 " />
+                <p className="text-gray-900 font-semibold text-center">
+                  {pen.user.fullname}
+                </p>
               </Link>
             </Popup>
           )}
