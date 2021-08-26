@@ -5,8 +5,14 @@ import Routes from "./components/Routes";
 function App() {
   return (
     <>
-      <Navbar className="fixed" />
+     
+      <span id="nav">
+        
+      <Navbar />
+      </span>
+      
       <Routes />
+      
     </>
   );
 }

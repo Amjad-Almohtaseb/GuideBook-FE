@@ -38,7 +38,7 @@ const GuideItem = ({ guide }) => {
           </div>
           <div className="col-md-8 ">
             <div className="card-body">
-              <h4 className="card-title absolute top-10 text-gray-700 capitalize">
+              <h4 className="card-title absolute top-10 text-gray-900 capitalize">
                 {/* @{guide.user.username} */}
                 {guide.user.firstname}
               </h4>
@@ -47,14 +47,14 @@ const GuideItem = ({ guide }) => {
                 <h4>${guide.price}/person</h4>
               </p>
               <hr className=" relative right-3 top-16" />
-              <h6 className="card-title absolute bottom-10 text-gray-700">
+              <h6 className="card-title absolute bottom-10 text-gray-900">
                 Max group size
               </h6>
-              <h5 className="card-title left-64 absolute bottom-2 text-gray-700">
+              <h5 className="card-title left-64 absolute bottom-2 text-gray-900">
                 {guide.maxsize}
               </h5>
 
-              <h6 className="card-title absolute bottom-10 text-gray-700 left-3/4  ml-9">
+              <h6 className="card-title absolute bottom-10 text-gray-900 left-3/4  ml-9">
                 Rating
               </h6>
 

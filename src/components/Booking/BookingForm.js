@@ -152,16 +152,16 @@ console.log(strStartDate,strEndDate)
           </div>
 
           <button
-            className="  bg-red-600 text-black font-bold py-2 px-4 rounded-full mb-3 ml-28 "
+            className="  bg-red-600 text-white font-bold py-2 px-4 rounded-full mb-3 ml-28 "
             onClick={handleClose}
           >
             CANCEL{" "}
           </button>
           <button
             type="submit"
-            className=" bg-yellow-500 text-black font-bold py-2 px-4 rounded-full ml-40 "
+            className=" bg-yellow-500 text-white font-bold py-2 px-4 rounded-full ml-40 "
           >
-            Search{" "}
+            SEARCH{" "}
           </button>
         </div>
       </>)}

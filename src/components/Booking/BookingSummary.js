@@ -32,10 +32,10 @@ console.log(summary);
  }
 
     return (
-      <>
-      <h2 className="ml-96 -mb-8 mt-4">Booking Summary</h2>
+      <div className="big-card-summary">
+      <br/><h2 className=" absolute left-1/4 ml-60">Booking Summary</h2><br/>
         {/* guide info */}
-         <div className="card h-64  absolute flex   w-96 p-3 guide-card-summary">
+         <div className="card h-80  absolute flex   w-96 p-3 guide-card-summary">
         <div className="row no-gutters">
         <div className="col-md-4">
             <h3
@@ -70,7 +70,7 @@ console.log(summary);
               </h5>
 
             
-              <p className="card-text absolute left-10 top-52 text-gray-700">
+              <p className="card-text absolute left-10 top-56 text-gray-700">
 
                 <h5><MdEmail className=" inline"/> {summary.guide.user.email}</h5>
               </p>
@@ -82,7 +82,7 @@ console.log(summary);
         </div>
       </div>
       {/* tourist guide */}
-      <div className="card h-64 absolute   flex   w-96 p-3 tourist-card-summary">
+      <div className="card h-80 absolute   flex   w-96 p-3 tourist-card-summary">
         <div className="row no-gutters">
         <div className="col-md-4">
             <h3
@@ -117,7 +117,7 @@ console.log(summary);
               </h5>
 
             
-              <p className="card-text absolute left-10 top-52 text-gray-700">
+              <p className="card-text absolute left-10 top-56 text-gray-700">
 
                 <h5><MdEmail className=" inline"/> {summary.user.email}</h5>
               </p>
@@ -131,20 +131,20 @@ console.log(summary);
 
         {/* done card */}
         
-        <div className="card  absolute   flex    p-3 done-card-summary">
+        <div className="card  absolute   flex  bg-gray-900 text-white   p-3 done-card-summary">
        <div >
         <h5 className="uppercase"> booking duration</h5><br/>
-         <p><SiGooglecalendar className=" inline"/> {summary.startingDate} to {summary.endDate}</p>
+         <p className="text-xl"><SiGooglecalendar className=" inline"/> {summary.startingDate} to {summary.endDate}</p>
        </div>
        <div >
          <h5 className=" uppercase">total price</h5><br/>
-         <p><AiFillDollarCircle className=" inline"/> {summary.groupSize * summary.guide.price * summary.choosenDates.length}</p>
+         <p className="text-xl"><AiFillDollarCircle className=" inline"/> {summary.groupSize * summary.guide.price * summary.choosenDates.length}</p>
        </div>
        <div>
-         <button className="btn btn-warning mt-8 w-40" onClick={handleClick} >DONE</button>
+         <button className="btn done-btn mt-8 w-40 text-white" onClick={handleClick} >DONE</button>
        </div>
       </div>
-      </>
+      </div>
     )
 }
 

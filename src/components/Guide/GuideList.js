@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BookingForm from "../Booking/BookingForm";
 import Map from "../Map";
 import GuideItem from "./GuideItem";
@@ -9,52 +9,71 @@ import { DateRangePicker } from "react-date-range";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { searchGuide } from "../../store/actions/guideActions";
+import { Spinner } from "react-bootstrap";
 
 const GuideList = () => {
   const foundGuides = useSelector((state) => state.guides.foundguides);
   const guideList = foundGuides.map((guide) => (
-    // <GuideItem guide={guide} key={guide._id} />
+    
     <>
-      {" "}
+     
       <GuideItem guide={guide} key={guide._id} />{" "}
       <hr className=" w-3/4 mx-auto" />
       </>
     
   ));
-
+    const cityLoading = useSelector(state => state.cities.loading)
   const dispatch = useDispatch();
   const history = useHistory();
   const countries = useSelector((state) => state.countries.countries);
   const cities = useSelector((state) => state.cities.cities);
   const searchInfo = useSelector((state) => state.guides.searchInfo);
-
-  const cityName = cities.find((city) => city._id === searchInfo.city).name;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [price,setPrice]=useState(false);
+  const [rating,setRating]=useState(false);
+  useEffect(() => {
+    foundGuides.sort((a, b) => (a.price > b.price ? 1 : -1))
+  }, [price])
 
+  
+  // let avg = Math.floor(
+  //   foundGuides.map((guide=> guide.rating.length !== 0 &&
+  //     guide.rating.reduce((a, b) => (parseInt(a) + parseInt(b))) / guide.rating.length))
+  // );
+   
+ 
+
+
+
+  useEffect(() => {
+    foundGuides.sort((a, b) => (a.price > b.price ? 1 : -1))
+  }, [rating])
   const [startDate, setStartDate] = useState(new Date(searchInfo.firstDate));
   const [endDate, setEndDate] = useState(new Date(searchInfo.lastDate));
   const [groupSize, setGroupSize] = useState(searchInfo.maxsize);
-  // console.log(typeof(new Date()))
-  console.log(searchInfo);
-  console.log(cityName);
 
+  console.log(searchInfo);
+  console.log(foundGuides)
+  
   const [countryId, setCountryId] = useState(searchInfo.country);
   const [cityId, setCityId] = useState(searchInfo.city);
-
+  if(cityLoading) return <Spinner/>
+  const cityName = cities.find((city) => city._id === searchInfo.city).name;
+  
   const handleSelect = (ranges) => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
   };
-
+  
   let strStartDate =
-    startDate.toISOString().substr(0, 8) +
-    (+startDate.toISOString().substr(0, 10).slice(8) + 1).toString();
-
+  startDate.toISOString().substr(0, 8) +
+  (+startDate.toISOString().substr(0, 10).slice(8) + 1).toString();
+  
   let strEndDate =
-    endDate.toISOString().substr(0, 8) +
-    (+endDate.toISOString().substr(0, 10).slice(8) + 1).toString();
+  endDate.toISOString().substr(0, 8) +
+  (+endDate.toISOString().substr(0, 10).slice(8) + 1).toString();
 
   const selectionRange = {
     startDate: startDate,
@@ -97,7 +116,7 @@ const GuideList = () => {
     );
     setShow(false);
   };
-
+ 
   return (
     <div className="">
       <form onSubmit={handleSubmit}>
@@ -184,6 +203,8 @@ const GuideList = () => {
           </div>
         )}
       </form>
+      <button onClick={()=>setPrice(true)}> price </button>
+      <button onClick={()=> setRating(true)}> rating </button>
       <div className=" guides">{guideList}
         {foundGuides.length===0 && <div className="capitalize text-center text-2xl mt-40 font-bold">unfortunately no available guides in these dates !</div>}</div>
       <div className="absolute mapbox">
