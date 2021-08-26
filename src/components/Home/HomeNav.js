@@ -11,7 +11,7 @@ import {SiGoogleearth} from "@react-icons/all-files/si/SiGoogleearth"
 import { signout } from "../../store/actions/authActions";
 
 
-const Navbar = () => {
+const HomeNav = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.user);
@@ -22,14 +22,14 @@ const Navbar = () => {
 
   return (
     <div
-      style={{ backgroundColor: "#fca311" }}
-      className="navbar shadow-lg nav-txt fixed"
+    //   style={{ backgroundColor: "#fca311" }}
+      className="navbar  nav-txt "
     >
         <span>
 
-        <SiGoogleearth size={35} className="logo-icon "/>
+        <SiGoogleearth size={35} color="orange" className="logo-icon "/>
         </span>
-        <span className="  logo">
+        <span className=" text-white  logo">
           Guide Book 
         </span>
      
@@ -42,41 +42,36 @@ const Navbar = () => {
                
       <span>
       <Link to="/" >
-        <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav2 absolute right-80 top-3  ">
+        <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav absolute right-80 top-3  ">
           Home
         </span>
       </Link>
       </span>
               <Link to={{ pathname: "/signup", state: { type: "tourguide" } }}>
-                <span className="btn btn-ghost btn-sm text-nav2">
+                <span className="btn btn-ghost btn-sm text-nav">
                   Become a guide
                 </span>
               </Link>
 
               <Link to="/signin">
-                <span className="btn btn-ghost btn-sm text-nav2">login</span>
+                <span className="btn btn-ghost btn-sm text-nav">login</span>
               </Link>
             </>
           )}
          {user&&user.type==="user"&&<Link to={`/user/${user.slug}`}>
          <span>
       <Link to="/" >
-        <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav2 absolute right-44 top-3  ">
+        <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav absolute right-44 top-3  ">
           Home
         </span>
       </Link>
       </span>
-         <span className="btn btn-ghost btn-sm text-nav2">
+         <span className="btn btn-ghost btn-sm text-nav">
                  My Profile
                 </span>
          </Link>}
          {user&&user.type==="guide"&&<Link to="/guideprofile">
-         <Link to="/" >
-        <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav2 absolute right-44 top-3  ">
-          Home
-        </span>
-      </Link>
-         <span className="btn btn-ghost btn-sm text-nav2">
+         <span className="btn btn-ghost btn-sm text-nav">
                  My Profile
                 </span>
          </Link>}
@@ -85,7 +80,7 @@ const Navbar = () => {
               onClick={handleSignout}
               className="btn btn-ghost btn-sm rounded-btn"
             >
-              <RiLogoutBoxRLine size={25} className="mt-1" />
+              <RiLogoutBoxRLine size={25} style={{strokeWidth: 1.5}} color="white" className="mt-1" />
             </Link>
           )}
         </div>
@@ -94,7 +89,7 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default HomeNav;
 
 //must be instead of the comment above /********** */
 // {user && user.type === "user" && (

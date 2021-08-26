@@ -229,6 +229,7 @@ const GuideEdit = ({ guide }) => {
                 <label className=" font-semibold text-white "> Description </label>
                 <br />
                 <textarea
+                className="pl-2"
                   name="description"
                   rows="6"
                   cols="35"
