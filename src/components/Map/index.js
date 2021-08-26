@@ -9,9 +9,6 @@ const Map = ({ foundGuides }) => {
   const [selectedLocation, setSelectedLocation] = useState({});
   const cities = useSelector((state) => state.cities.cities);
   const searchInfo = useSelector((state) => state.guides.searchInfo);
-  // const cityLocation = cities.find(
-  //   (city) => city._id === searchInfo.city
-  // ).location;
 
   let locations;
   let center;
@@ -41,6 +38,27 @@ const Map = ({ foundGuides }) => {
     latitude: 39.0604813685019,
     zoom: 8,
   });
+
+  const viewRating = (avg) => {
+    switch (avg) {
+      case 1:
+        return <h6>⭐</h6>;
+      case 2:
+        return <h6>⭐⭐</h6>;
+      case 3:
+        return <h6>⭐⭐⭐</h6>;
+      case 4:
+        return <h6>⭐⭐⭐⭐</h6>;
+      case 5:
+        return <h6>⭐⭐⭐⭐⭐</h6>;
+      default:
+        // new
+        return <div className="new-guide ml-14 pr-1">new</div>;
+    }
+  };
+
+
+
   return (
     <ReactMapGL
       mapStyle="mapbox://styles/ibrashaheen/cksgk86h25bxw17uqom0h83s3"
@@ -58,7 +76,6 @@ const Map = ({ foundGuides }) => {
             offsetTop={-10}
           >
             <p
-              // className=" cursor-pointer text-xl animate-bounce bg-yellow-300 h-8 w-10 rounded-full"
               onClick={() => setSelectedLocation(pen.location)}
             >
               <div className="pin"></div>
@@ -77,9 +94,10 @@ const Map = ({ foundGuides }) => {
             >
               <Link to={`/guides/${pen.user.slug}`} className=" no-underline">
                 <img src={pen.user.image} alt="" className=" h-40 w-40 m-0 " />
-                <p className="text-gray-900 font-semibold text-center">
+                <p className="text-gray-900 font-semibold text-center mt-1">
                   {pen.user.fullname}
                 </p>
+                <span className=" text-center"> {viewRating(pen.avgOfRating)}</span>
               </Link>
             </Popup>
           )}

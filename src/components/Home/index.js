@@ -1,36 +1,3 @@
-// import React from "react";
-// import BookingForm from "../Booking/BookingForm";
-// import FavCities from "./FavCities";
-
-// import scrollTo from "gatsby-plugin-smoothscroll";
-
-// //icons
-// import {FaChevronCircleUp} from "@react-icons/all-files/fa/FaChevronCircleUp"
-
-// const Home = () => {
-//   return (
-//     <>
-//       <div className="card  image-full flex items-center ">
-//         <figure className="bg-image">
-//           <BookingForm />
-//         </figure>
-//       </div>
-
-//       <FavCities />
-//       <button
-//           type="button"
-//           className="absolute"
-//           onClick={() => scrollTo("#nav")}
-//           style={{marginLeft:"1450px"}}
-//         >
-//           <FaChevronCircleUp size={35} color={"#14213d"}/>
-//         </button>
-//     </>
-//   );
-// };
-
-// export default Home;
-
 import React from "react";
 import BookingForm from "../Booking/BookingForm";
 import FavCities from "./FavCities";
@@ -61,7 +28,7 @@ const Home = () => {
         </span>
         
           <BookingForm />
-          <div className=" absolute top-96 mt-40 w-full flex flex-row flex-wrap justify-evenly items-center">
+          <div className=" absolute top-96 mt-40  flex flex-row flex-wrap justify-evenly items-center  info-box">
           <div className="flex flex-col flex-wrap items-center text-white w-80 text-center ">
             <FaMapMarked size={60} color="orange"/>
           <h2 className="capitalize ">select destination</h2>

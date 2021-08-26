@@ -207,8 +207,8 @@ const GuideList = () => {
       </form>
       <div className="ml-20 pt-3 pb-1  ">
       <b className=" mr-3"> Sort by</b>
-      <button onClick={()=>setPrice(true)} className="btn btn-outline-dark"> price </button>
-      <button className="btn btn-outline-dark" onClick={()=> setRating(true)}> rating </button>
+      <button onClick={()=>setPrice(true)} className="btn btn-outline-dark"> Price </button>
+      <button className="btn btn-outline-dark ml-3" onClick={()=> setRating(true)}> Rating </button>
       </div>
       <div className=" guides">{guideList}
         {foundGuides.length===0 && <div className="capitalize text-center text-2xl mt-40 font-bold">unfortunately no available guides in this duration !</div>}</div>
