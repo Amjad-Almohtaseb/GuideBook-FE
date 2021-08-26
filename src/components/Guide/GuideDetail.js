@@ -123,7 +123,7 @@ const GuideDetail = () => {
             </button>
           ) : (
             <button
-              className="btn done-btn w-56 -mt-5 ml-20"
+              className="btn done-btn w-56 -mt-5 ml-20 "
               onClick={() => history.push("/signin")}
             >
               BOOK
@@ -157,7 +157,7 @@ const GuideDetail = () => {
           </section>
         </div>
 
-        {guide && (guide.price || guide.maxsize || guide.rating) && (
+        {guide && (guide.price || guide.maxsize) && (
           <div
             className=" z-20 absolute rounded overflow-hidden shadow-md   border-1 ml-4 mt-3 guide-card
      w-44 text-center  bg-gray-800 text-white "
@@ -192,6 +192,8 @@ const GuideDetail = () => {
                   </p>
                 </div>
               )}
+              {avg>0 &&
+                <>
                <h6 className="card-title mt-4  text-white">
                 Rating
               </h6>
@@ -199,6 +201,7 @@ const GuideDetail = () => {
               <p className="card-text  text-blue-600">
                 {viewRating()}
               </p>
+              </>}
             </div>
           </div>
         )}

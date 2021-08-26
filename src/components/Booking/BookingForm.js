@@ -103,8 +103,9 @@ console.log(strStartDate,strEndDate)
       </div>
       {show && (
         <>
-         {/* <b>Where to go ?</b> */}
+         
         <div className=" absolute top-16 bg-white booking-form p-2">
+        {/* <b className=" block mb-3 text-xl ml-52 text-yellow-500">Where to go ?</b>  */}
           <select className=" w-56" onChange={handleCountry} required>
             <option disabled="disabled" selected="selected">
               Choose the country *
@@ -159,7 +160,7 @@ console.log(strStartDate,strEndDate)
           </button>
           <button
             type="submit"
-            className=" bg-yellow-500 text-white font-bold py-2 px-4 rounded-full ml-40 "
+            className=" bg-yellow-500 text-white font-bold py-2 px-4 rounded-full ml-32 "
           >
             SEARCH{" "}
           </button>

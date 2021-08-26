@@ -148,8 +148,8 @@ body{
   left: 32%;
   border-radius: 10px;
   box-shadow: 4px 4px 200px black;
-  padding-right: 0px;
-  width: 523px;
+ 
+  width: 580px;
 }
 
 
@@ -260,10 +260,10 @@ div#slider figure {
   margin-top: 0.25%;
   /* min-height: 600px;
   max-height: 600px; */
-  height: 645px;
+  height: 594px;
   overflow-y: scroll;
   border-right: 3px solid #fca311;
-  padding-top: 75px;
+  padding-top: 15px;
 }
 
 .mapbox {
@@ -337,10 +337,9 @@ div#slider figure {
   width: 50px;
   font-size: 14pt;
   font-weight: bold;
-  padding-left: 7px;
+  padding-left: 4.5px;
   padding-bottom: 3px;
   border-radius: 7px;
-  margin-right: 42px;
 }
 
 .rating-page{
@@ -363,6 +362,7 @@ div#slider figure {
 
 .done-btn{
   background-color:#fca311 !important ;
+  color:white !important ;
 }
 
 .big-card-summary{

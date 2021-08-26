@@ -189,24 +189,27 @@ const GuideList = () => {
             </div>
 
             <button
-              className="  bg-red-600 text-black font-bold py-2 px-4 rounded-full mb-3 ml-28 "
+              className="  bg-red-600 text-white font-bold py-2 px-4 rounded-full mb-3 ml-28 "
               onClick={handleClose}
             >
               CANCEL{" "}
             </button>
             <button
               type="submit"
-              className=" bg-yellow-500 text-black font-bold py-2 px-4 rounded-full ml-40 "
+              className=" bg-yellow-500 text-white font-bold py-2 px-4 rounded-full ml-40 "
             >
-              Search{" "}
+              SEARCH
             </button>
           </div>
         )}
       </form>
-      <button onClick={()=>setPrice(true)}> price </button>
-      <button onClick={()=> setRating(true)}> rating </button>
+      <div className="ml-20 pt-3 pb-1  ">
+      <b className=" mr-3"> Sort by</b>
+      <button onClick={()=>setPrice(true)} className="btn btn-outline-dark"> price </button>
+      {/* <button onClick={()=> setRating(true)}> rating </button> */}
+      </div>
       <div className=" guides">{guideList}
-        {foundGuides.length===0 && <div className="capitalize text-center text-2xl mt-40 font-bold">unfortunately no available guides in these dates !</div>}</div>
+        {foundGuides.length===0 && <div className="capitalize text-center text-2xl mt-40 font-bold">unfortunately no available guides in this duration !</div>}</div>
       <div className="absolute mapbox">
         <Map foundGuides={foundGuides} />
       </div>
