@@ -47,7 +47,7 @@ const GuideEdit = ({ guide }) => {
   const guideId = guides.find((guide) => guide.user._id === user.id)._id;
 
   const [guideInfo, setGuideInfo] = useState({
-    city: guide.city ? guide.city._id : "61227fa85e50f60c58b5d913",
+    city: guide.city ? guide.city._id : "612768c8f33f6a16e4282fb5",
     price: guide.price,
     maxsize: guide.maxsize,
     description: guide.description,
@@ -75,8 +75,8 @@ const GuideEdit = ({ guide }) => {
     width: "500px",
     height: "450px",
     zoom: 11,
-    longitude: 28.97953,
-    latitude: 41.015137,
+    longitude: 32.866287,
+    latitude: 39.925533,
   });
 
   console.log(viewport.longitude);
@@ -106,7 +106,7 @@ const GuideEdit = ({ guide }) => {
           className="  flex items-center md:border-2 rounded-full py-2 w-80 absolute bg-white cursor-pointer guide-btn "
           onClick={() => setShow(true)}
         >
-          <span className=" flex-grow pl-5 bg-transparent outline-none text-lg text-gray-600  ">
+          <span className=" flex-grow pl-5 bg-transparent outline-none text-base text-gray-600  ">
             Edit Your Work Information
           </span>
 
@@ -117,7 +117,7 @@ const GuideEdit = ({ guide }) => {
           className="  flex items-center md:border-2 rounded-full py-2 w-80 absolute bg-white cursor-pointer guide-btn  animate-bounce"
           onClick={() => setShow(true)}
         >
-          <span className=" flex-grow pl-5 bg-transparent outline-none text-lg text-gray-600 ">
+          <span className=" flex-grow pl-5 bg-transparent outline-none text-base text-gray-600 ">
             Fill The Form To Start Your Job
           </span>
 
@@ -130,7 +130,7 @@ const GuideEdit = ({ guide }) => {
           <div className=" absolute -top-4 bg-gray-800 guide-form  p-2 z-10  border-yellow-400 border-2 border-double ">
             <div className=" flex flex-row justify-evenly flex-wrap pt-3 pb-2">
               <span>
-                <label className=" font-bold text-white "> Your City </label> &nbsp;
+                <label className=" font-semibold text-white "> Your City </label> &nbsp;
                
                 <select
                   name="city"
@@ -150,7 +150,7 @@ const GuideEdit = ({ guide }) => {
                 </select>
               </span>
               <span>
-                <label className=" font-bold text-white "> Price Per Person &nbsp; </label>
+                <label className=" font-semibold text-white "> Price Per Person &nbsp; </label>
 
                 <input
                 className="w-10 pl-1"
@@ -163,7 +163,7 @@ const GuideEdit = ({ guide }) => {
                 />
               </span>
               <span>
-                <label className=" font-bold text-white ">
+                <label className=" font-semibold text-white ">
 
                   Max Group Size &nbsp;
                 </label>
@@ -179,7 +179,7 @@ const GuideEdit = ({ guide }) => {
                 />
               </span>
               <span>
-                <label className=" font-bold text-white ">
+                <label className=" font-semibold text-white ">
                   {" "}
                   Your Holidays &nbsp;
                 </label>
@@ -226,7 +226,7 @@ const GuideEdit = ({ guide }) => {
               )}
 
               <span className=" my-auto">
-                <label className=" font-bold text-white "> Description </label>
+                <label className=" font-semibold text-white "> Description </label>
                 <br />
                 <textarea
                   name="description"

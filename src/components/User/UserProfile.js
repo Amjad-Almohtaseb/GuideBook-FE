@@ -130,7 +130,7 @@ console.log(bookings);
             )}
         </div>
       </div>
-      {booking.length=== 0 ? <div className=" font-bold text-gray-300 text-4xl absolute left-96 ml-32 top-80 "> You Don't Have Bookings Yet </div> 
+      {booking.length=== 0 ? <div className=" font-bold text-gray-300 text-4xl absolute left-96 ml-32 top-96 "> You Don't Have Bookings Yet </div> 
 
       : (
         <div className=" user-table absolute text-center mx-12  ">

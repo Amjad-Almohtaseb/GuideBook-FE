@@ -27,7 +27,7 @@ const Navbar = () => {
     >
         <span>
 
-        <SiGoogleearth size={35} className="logo-icon animate-spin"/>
+        <SiGoogleearth size={35} className="logo-icon "/>
         </span>
         <span className="  logo">
           Guide Book 
