@@ -35,6 +35,7 @@ const GuideList = () => {
   const [rating,setRating]=useState(false);
   useEffect(() => {
     foundGuides.sort((a, b) => (a.price > b.price ? 1 : -1))
+    setPrice(false)
   }, [price])
 
   
@@ -48,7 +49,8 @@ const GuideList = () => {
 
 
   useEffect(() => {
-    foundGuides.sort((a, b) => (a.price > b.price ? 1 : -1))
+    foundGuides.sort((a, b) => (a.avgOfRating < b.avgOfRating ? 1 : -1))
+    setRating(false)
   }, [rating])
   const [startDate, setStartDate] = useState(new Date(searchInfo.firstDate));
   const [endDate, setEndDate] = useState(new Date(searchInfo.lastDate));
@@ -206,11 +208,11 @@ const GuideList = () => {
       <div className="ml-20 pt-3 pb-1  ">
       <b className=" mr-3"> Sort by</b>
       <button onClick={()=>setPrice(true)} className="btn btn-outline-dark"> price </button>
-      {/* <button onClick={()=> setRating(true)}> rating </button> */}
+      <button className="btn btn-outline-dark" onClick={()=> setRating(true)}> rating </button>
       </div>
       <div className=" guides">{guideList}
         {foundGuides.length===0 && <div className="capitalize text-center text-2xl mt-40 font-bold">unfortunately no available guides in this duration !</div>}</div>
-      <div className="absolute mapbox">
+      <div className=" bg-blue-300  absolute mapbox">
         <Map foundGuides={foundGuides} />
       </div>
     </div>

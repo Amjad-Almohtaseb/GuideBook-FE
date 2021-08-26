@@ -95,7 +95,7 @@ console.log(strStartDate,strEndDate)
         onClick={handleShow}
       >
        
-        <span className=" flex-grow pl-5 bg-transparent outline-none text-lg font-semibold  text-gray-600 ">
+        <span className=" flex-grow pl-6 bg-transparent outline-none text-lg font-semibold  text-gray-600 ">
           Start your search
         </span>
 
