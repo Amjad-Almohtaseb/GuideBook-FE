@@ -206,7 +206,7 @@ const GuideEdit = ({ guide }) => {
                     onViewportChange={(nextViewport) =>
                       setViewport(nextViewport)
                     }
-            
+                      className=" border-1 border-yellow-400"
 
                   >
                     <Marker //TO DOOOOOOOOOOOOOOOOOOOOOO
