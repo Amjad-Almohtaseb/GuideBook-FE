@@ -108,7 +108,7 @@ const Signup = () => {
           <p>
             <Link
               style={{ color: "#14213d" }}
-              className="link-signup"
+              className="link-signup text-sm"
               to="/signin"
             >
               &nbsp; Already have an account ? signin

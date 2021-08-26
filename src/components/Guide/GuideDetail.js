@@ -116,14 +116,14 @@ const GuideDetail = () => {
           </div>
           {user ? (
             <button
-              className="btn btn-warning w-56 -mt-5 ml-20"
+              className="btn done-btn w-56 -mt-5 ml-20"
               onClick={() => handleBooking()}
             >
               BOOK
             </button>
           ) : (
             <button
-              className="btn btn-warning w-56 -mt-5 ml-20"
+              className="btn done-btn w-56 -mt-5 ml-20"
               onClick={() => history.push("/signin")}
             >
               BOOK

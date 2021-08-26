@@ -17,6 +17,7 @@
     "bootstrap": "^5.1.0",
     "daisyui": "^1.11.1",
     "date-fns": "^2.23.0",
+    "gatsby-plugin-smoothscroll": "^1.2.0",
     "geolib": "^3.3.1",
     "google-maps-react": "^2.0.6",
     "heroicons": "^1.0.2",

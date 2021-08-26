@@ -68,7 +68,7 @@ const Signin = () => {
           <p>
             <Link
               style={{ color: "#14213d" }}
-              className="link"
+              className="link text-sm"
               to={{ pathname: "/signup", state: { type: "user", counter: -2 } }}
             >
               &nbsp; Don't have an account? signup
