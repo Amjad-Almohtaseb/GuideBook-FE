@@ -7,6 +7,8 @@ import { DateRangePicker } from "react-date-range";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { searchGuide } from "../../store/actions/guideActions";
+import { format } from "date-fns/fp";
+
 
 const BookingForm = () => {
   const dispatch = useDispatch();
@@ -34,22 +36,17 @@ const BookingForm = () => {
   };
 
 
+  let strStartDate = format("yyyy-MM-dd", startDate);
 
-  let strStartDate =
-    startDate.toISOString().substr(0, 8) +
-    (+startDate.toISOString().substr(0, 10).slice(8)+1 ).toString();
+  let strEndDate = format("yyyy-MM-dd", endDate);
 
-  let strEndDate =
-    endDate.toISOString().substr(0, 8) +
-    (+endDate.toISOString().substr(0, 10).slice(8) +1).toString();
-console.log(strStartDate,strEndDate)
+
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,
     key: "selection",
   };
-  console.log(selectionRange.startDate);
-  console.log(selectionRange.endDate);
+
 
   const handleCountry = (event) => {
     setCountryId(event.target.value);

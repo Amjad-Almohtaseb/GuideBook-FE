@@ -382,11 +382,10 @@ div#slider figure {
   height: 620px;
 }
 
-/* .video-home{ */
-  /* height: 500px;
-  width: 500px;
-  z-index: 10 !important; */
-/* } */
+/* .video-home{
+  max-height: 10%;
+} */
+
 .overlay
 {
   position: absolute;
@@ -572,4 +571,10 @@ div#slider figure {
   width: 90% ;
   left:5%;
  
+}
+
+.top-card{
+
+  border-radius: 15px;
+height: 412px;
 }

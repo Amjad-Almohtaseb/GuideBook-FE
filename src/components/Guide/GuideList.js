@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { searchGuide } from "../../store/actions/guideActions";
 import { Spinner } from "react-bootstrap";
+import { format } from "date-fns/fp";
+
 
 const GuideList = () => {
   const foundGuides = useSelector((state) => state.guides.foundguides);
@@ -33,20 +35,13 @@ const GuideList = () => {
   const handleShow = () => setShow(true);
   const [price,setPrice]=useState(false);
   const [rating,setRating]=useState(false);
+
   useEffect(() => {
     foundGuides.sort((a, b) => (a.price > b.price ? 1 : -1))
     setPrice(false)
   }, [price])
 
   
-  // let avg = Math.floor(
-  //   foundGuides.map((guide=> guide.rating.length !== 0 &&
-  //     guide.rating.reduce((a, b) => (parseInt(a) + parseInt(b))) / guide.rating.length))
-  // );
-   
- 
-
-
 
   useEffect(() => {
     foundGuides.sort((a, b) => (a.avgOfRating < b.avgOfRating ? 1 : -1))
@@ -56,8 +51,7 @@ const GuideList = () => {
   const [endDate, setEndDate] = useState(new Date(searchInfo.lastDate));
   const [groupSize, setGroupSize] = useState(searchInfo.maxsize);
 
-  console.log(searchInfo);
-  console.log(foundGuides)
+
   
   const [countryId, setCountryId] = useState(searchInfo.country);
   const [cityId, setCityId] = useState(searchInfo.city);
@@ -69,13 +63,9 @@ const GuideList = () => {
     setEndDate(ranges.selection.endDate);
   };
   
-  let strStartDate =
-  startDate.toISOString().substr(0, 8) +
-  (+startDate.toISOString().substr(0, 10).slice(8) + 1).toString();
-  
-  let strEndDate =
-  endDate.toISOString().substr(0, 8) +
-  (+endDate.toISOString().substr(0, 10).slice(8) + 1).toString();
+  let strStartDate = format("yyyy-MM-dd", startDate);
+
+  let strEndDate = format("yyyy-MM-dd", endDate);
 
   const selectionRange = {
     startDate: startDate,
@@ -87,6 +77,7 @@ const GuideList = () => {
   const handleCountry = (event) => {
     setCountryId(event.target.value);
   };
+  
   // generate dates between startDate and endDate as an array then convert the format for this "yyyy-mm-dd"
   const dateRange = (startDate, endDate, steps = 1) => {
     const dateArray = [];
@@ -194,7 +185,7 @@ const GuideList = () => {
               className="  bg-red-600 text-white font-bold py-2 px-4 rounded-full mb-3 ml-28 "
               onClick={handleClose}
             >
-              CANCEL{" "}
+              CANCEL
             </button>
             <button
               type="submit"

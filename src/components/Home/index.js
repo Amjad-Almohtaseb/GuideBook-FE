@@ -1,6 +1,6 @@
 import React from "react";
 import BookingForm from "../Booking/BookingForm";
-import FavCities from "./FavCities";
+import TopGuides from "./TopGuides";
 
 import scrollTo from "gatsby-plugin-smoothscroll";
 
@@ -11,9 +11,26 @@ import HomeNav from "./HomeNav";
 import {FaMapMarked} from "@react-icons/all-files/fa/FaMapMarked"
 import {MdPersonPin} from "@react-icons/all-files/md/MdPersonPin"
 import {GiNewspaper} from "@react-icons/all-files/gi/GiNewspaper"
+import { useSelector } from "react-redux";
+
+
 const Home = () => {
 
-  
+  const guides = useSelector(state => state.guides.guides)
+ 
+const topGuide = guides.sort((a, b) => (a.avgOfRating < b.avgOfRating ? 1 : -1)).slice(0,3).map(guide=>(
+
+
+
+
+<TopGuides guide={guide} key={guide} /> 
+
+
+
+))
+
+
+
 
   return (
     
@@ -46,16 +63,23 @@ const Home = () => {
           </div>
           </div> 
 
+          {/* top guides */}
+          {/* <div className="card flex bg-card  ">
+          <h3 className=" ml-16  my-8 ">Top Guides</h3>
+          <div className="flex flex-row  justify-evenly">
+          {topGuide}
+          </div>
+          </div> */}
 
-      <FavCities />
-      <button
+          {/* go top btn */}
+      {/* <button
           type="button"
           className="absolute"
           onClick={() => scrollTo("#nav")}
           style={{marginLeft:"1450px"}}
         >
           <FaChevronCircleUp size={35} color={"orange"}/>
-        </button>
+        </button> */}
     </>
   );
 };

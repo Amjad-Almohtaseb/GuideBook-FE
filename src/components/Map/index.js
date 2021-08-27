@@ -61,7 +61,7 @@ const Map = ({ foundGuides }) => {
 
   return (
     <ReactMapGL
-      mapStyle="mapbox://styles/ibrashaheen/cksgk86h25bxw17uqom0h83s3"
+      mapStyle="mapbox://styles/ibrashaheen/cksuo05dc5cbt17qi3km6hx75"
       mapboxApiAccessToken={MapKey}
       // onClick={(event)=>console.log(event.lngLat)} //very important (solution key)
       {...viewport}
