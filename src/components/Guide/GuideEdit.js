@@ -189,7 +189,7 @@ const GuideEdit = ({ guide }) => {
                   onChange={handleCalendar} //{setValues}
                   minDate={new Date()}
                   value={guideInfo.notAvailabeDates}
-                 
+                  // format="dd/mm/yyyy"
                 />
               </span>
             </div>
@@ -199,7 +199,7 @@ const GuideEdit = ({ guide }) => {
               {guideInfo.city && (
                 <span title="Pin Your Zone 📍">
                   <ReactMapGL
-                    mapStyle="mapbox://styles/ibrashaheen/cksgk86h25bxw17uqom0h83s3"
+                    mapStyle="mapbox://styles/ibrashaheen/cksuo05dc5cbt17qi3km6hx75"
                     mapboxApiAccessToken={MapKey}
                     onClick={handleMap} //very important (solution key)
                     {...viewport}
