@@ -14,8 +14,16 @@ import { format } from "date-fns/fp";
 
 
 const GuideList = () => {
+  const user = useSelector(state => state.user)
   const foundGuides = useSelector((state) => state.guides.foundguides);
-  const guideList = foundGuides.map((guide) => (
+
+  let allGuides;
+  if(user)
+  allGuides =  foundGuides.filter(guide=>guide.user._id !== user._id)
+ else
+ allGuides =  foundGuides
+
+  const guideList =  allGuides.map((guide) => (
     
     <>
      
@@ -35,6 +43,7 @@ const GuideList = () => {
   const handleShow = () => setShow(true);
   const [price,setPrice]=useState(false);
   const [rating,setRating]=useState(false);
+
 
   useEffect(() => {
     foundGuides.sort((a, b) => (a.price > b.price ? 1 : -1))
