@@ -48,17 +48,17 @@ const topGuide = guides.sort((a, b) => (a.avgOfRating < b.avgOfRating ? 1 : -1))
           <div className=" absolute top-96 mt-40  flex flex-row flex-wrap justify-evenly items-center  info-box">
           <div className="flex flex-col flex-wrap items-center text-white w-80 text-center ">
             <FaMapMarked size={60} color="orange"/>
-          <h2 className="capitalize ">select destination</h2>
+          <p className="capitalize box-title">select destination</p>
           <h5> Discover experiences in the places you visit</h5>
           </div>
-          <div className="flex flex-col flex-wrap items-center text-white w-80 text-center ">
+          <div className="flex flex-col flex-wrap items-center text-white w-80 text-center ml-16 ">
             <MdPersonPin size={60} color="orange" />
-          <h2 className="capitalize">pick a guide</h2>
+          <p className="capitalize box-title">pick a guide</p>
           <h5> Book a local guide and make the most of your trip </h5>
           </div>
           <div className="flex flex-col flex-wrap items-center text-white w-96 text-center">
             <GiNewspaper size={60} color="orange" />
-          <h2 className="capitalize">book your experience</h2>
+          <p className="capitalize box-title">book your experience</p>
           <h5> Transform ordinary trips into extraordinary ones </h5>
           </div>
           </div> 

@@ -72,7 +72,7 @@ const UserEdit = () => {
                 placeholder="+962-00000000"
                 type="tel"
                 name="phone"
-                className=" border-1 w-36 pl-1 "
+                className=" border-1 w-36 pl-1 outline-none "
                 onChange={handleChange}
               />
             </div>
@@ -80,7 +80,7 @@ const UserEdit = () => {
             <hr className=" bg-yellow-400" />
 
             <button
-              className="  bg-red-600 text-white font-bold py-2 px-4 rounded-full mb-3 ml-36 z-50 "
+              className="  bg-red-600 text-white font-bold py-2 px-4 rounded-full mb-3 ml-36 z-50 mt-2 "
               onClick={() => setShow(false)}
             >
               CANCEL

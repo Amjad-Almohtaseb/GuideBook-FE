@@ -43,16 +43,18 @@ const GuideItem = ({ guide }) => {
                 <h4>${guide.price}/person</h4>
               </p>
               <hr className=" relative right-3 top-16" />
-              <h6 className="card-title absolute bottom-10 text-gray-900">
+              <h6 className="card-title absolute bottom-10 text-gray-900 top-32">
                 Max group size
               </h6>
-              <h5 className="card-title left-64 absolute bottom-2 text-gray-900">
+              <h5 className="card-title left-64 absolute bottom-2 text-gray-900 ml-4">
                 {guide.maxsize}
               </h5>
-
-              <span className="absolute flex flex-col  justify-items-start left-3/4  ml-5 top-32">
-                <h6 className="card-title  bottom-10 text-gray-900 ">Rating</h6>
-                <p>{viewRating()}</p>
+               
+               <span className="r-stars">
+              <span className=" flex flex-col  top-32  w-40">
+                <h6 className=" mx-auto card-title bottom-10 text-gray-900 ">Rating</h6>
+                <p className=" mx-auto">{viewRating()}</p>
+              </span>
               </span>
 
             </div>

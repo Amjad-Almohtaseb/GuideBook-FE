@@ -20,8 +20,6 @@ const BookingForm = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const [startDate, setStartDate] = useState(new Date());
-  // const [endDate, setEndDate] = useState(new Date());
 
   const [startDate, setStartDate] = useState(new Date("2021-08-02"));
   const [endDate, setEndDate] = useState(new Date("2021-08-02"));
@@ -51,6 +49,7 @@ const BookingForm = () => {
   const handleCountry = (event) => {
     setCountryId(event.target.value);
   };
+
   // generate dates between startDate and endDate as an array then convert the format for this "yyyy-mm-dd"
   const dateRange = (startDate, endDate, steps = 1) => {
     const dateArray = [];
@@ -100,7 +99,7 @@ const BookingForm = () => {
       </div>
       {show && (
         <>
-        <b className="z-50 absolute top-4 left-96  block mb-3 text-3xl ml-72 text-yellow-500">Where to go ?</b> 
+        <b className="z-50 absolute top-4 left-96  block mb-3 text-3xl  text-yellow-500  title-one">Where to go ?</b> 
          
         <div className=" z-40 absolute top-16 bg-white booking-form p-2">
           <select className=" w-56" onChange={handleCountry} required>
@@ -142,7 +141,7 @@ const BookingForm = () => {
             <UsersIcon className="h-5" />
             <input
               type="number"
-              className=" w-12 pl-2 text-lg outline-none text-yellow-500 "
+              className=" w-14 pl-2 text-lg outline-none text-yellow-500 "
               min={1}
               value={groupSize}
               onChange={(e) => setGroupSize(e.target.value)}
