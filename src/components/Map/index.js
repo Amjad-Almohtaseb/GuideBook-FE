@@ -80,7 +80,7 @@ const Map = ({ foundGuides }) => {
             >
               <div className="pin"></div>
               
-              <div className="pulse text-yellow-300 font-bold text-4xl"><span className=" absolute -ml-4 mb-20">${pen.price}</span> </div>
+              <div className="pulse text-yellow-300 font-bold text-4xl"><span className=" absolute -ml-4 mb-20 map-price ">${pen.price}</span> </div>
             </p>
           </Marker>
 

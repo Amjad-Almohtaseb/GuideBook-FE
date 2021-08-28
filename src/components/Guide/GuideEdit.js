@@ -153,13 +153,14 @@ const GuideEdit = ({ guide }) => {
                 <label className=" font-semibold text-white "> Price Per Person &nbsp; </label>
 
                 <input
-                className="w-10 pl-1"
+                className="w-10 pl-1 outline-none "
                   type="number"
                   name="price"
                   value={guideInfo.price}
                   onChange={handleChange}
                   min={1}
                   required
+                  
                 />
               </span>
               <span>
@@ -169,7 +170,7 @@ const GuideEdit = ({ guide }) => {
                 </label>
 
                 <input
-                className="w-10 pl-1"
+                className="w-10 pl-1 outline-none"
                   type="number"
                   name="maxsize"
                   value={guideInfo.maxsize}
