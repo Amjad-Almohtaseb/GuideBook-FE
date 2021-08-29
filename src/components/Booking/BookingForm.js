@@ -129,7 +129,7 @@ const BookingForm = () => {
           <div className="flex justify-center">
             <DateRangePicker
               ranges={[selectionRange]}
-              minDate={new Date()}
+              // minDate={new Date()}
               rangeColors={["#fca311"]}
               onChange={handleSelect}
               showMonthAndYearPickers={false}
