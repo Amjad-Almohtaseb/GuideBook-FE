@@ -23,15 +23,16 @@ const HomeNav = () => {
   return (
     <div
     //   style={{ backgroundColor: "#fca311" }}
-      className="navbar  nav-txt "
+      className="navbar  nav-txt"
     >
+       <Link to="/" >
         <span>
-
         <SiGoogleearth size={35} color="orange" className="logo-icon "/>
         </span>
         <span className=" text-white  logo">
           Guide Book 
         </span>
+        </Link>
      
      
      
@@ -40,13 +41,13 @@ const HomeNav = () => {
           {!user && (
             <>
                
-      <span>
+      {/* <span>
       <Link to="/" >
         <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav absolute right-80 top-3  ">
           Home
         </span>
       </Link>
-      </span>
+      </span> */}
               <Link to={{ pathname: "/signup", state: { type: "tourguide" } }}>
                 <span className="btn btn-ghost btn-sm text-nav">
                   Become a guide
@@ -54,7 +55,7 @@ const HomeNav = () => {
               </Link>
 
               <Link to="/signin">
-                <span className="btn btn-ghost btn-sm text-nav">login</span>
+                <span className="btn btn-ghost btn-sm text-nav">Signin</span>
               </Link>
             </>
           )}

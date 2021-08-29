@@ -55,7 +55,11 @@ const cancelBooking=(bookId)=>{
           </>
         ) : (
           <>
-            <td className=" text-purple-500 uppercase">in progress</td>
+            {/* <td className=" text-purple-500 uppercase">in progress</td> */}
+            <td className=" text-green-500 uppercase">completed</td>
+
+
+          
             <td><button className=" uppercase  btn btn-danger " disabled>CANCEL</button></td>
           </>
         )}
