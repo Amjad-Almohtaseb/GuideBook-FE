@@ -33,7 +33,7 @@ export const newBooking = (bookingInfo, history) => {
 };
 
 export const deleteBooking = (bookId) => {
-  console.log(bookId)
+
   return async(dispatch)=>{
   try {
       await instance.delete(`/booking/${bookId}`)

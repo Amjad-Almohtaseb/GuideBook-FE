@@ -35,7 +35,7 @@ const GuideItem = ({ guide }) => {
           <div className="col-md-8 ">
             <div className="card-body">
               <h4 className="card-title absolute top-10 text-gray-900 capitalize">
-                {/* @{guide.user.username} */}
+
                 {guide.user.firstname}
               </h4>
 

@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
-import { signin } from "../../store/actions/authActions";
-import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
+import { useForm } from "react-hook-form";
 import { Spinner } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+
+import { signin } from "../../store/actions/authActions";
 import { fetchUsers } from "../../store/actions/userActions";
 
 const Signin = () => {
@@ -37,6 +38,7 @@ const Signin = () => {
           <img
             className="w-16 h-16 mb-4 "
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwTjoR2VIWLrwQywsGICEPAZpd1AR4T6PWUG6h2OdX1ZiZcBq7Lgdy5hJHpXyUut6r6BY&usqp=CAU"
+            alt="logo"
           />
           <h4 className="text-color">Signin</h4>
 

@@ -13,7 +13,7 @@ export const signup = (userData, history, counter = -1) => {
 
       dispatch(setUser(res.data.token));
       if (userData.counter) counter = userData.counter;
-      if (userData.type === "user") javascript: history.go(counter);
+      if (userData.type === "user")  history.go(counter);
       if (userData.type === "guide") history.push("/guideprofile");
 
       // if (lastLocation) history.push(lastLocation);
@@ -35,7 +35,7 @@ export const signin = (userData, history) => {
     try {
       const res = await instance.post("/signin", userData);
       dispatch(setUser(res.data.token));
-      if (userData.type === "user") javascript: history.go(-1);
+      if (userData.type === "user") history.go(-1);
       if (userData.type === "guide") history.push("/guideprofile");
       message("success", "Welcome back!", 2500);
     } catch (error) {

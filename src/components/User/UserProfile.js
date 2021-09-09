@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import UserEdit from "../User/UserEdit";
+
+//icons
 import { MdEmail } from "@react-icons/all-files/md/MdEmail";
 import { MdSmartphone } from "@react-icons/all-files/md/MdSmartphone";
-import Rating from "../Rating";
+
+//components
+import UserEdit from "../User/UserEdit";
 import { deleteBooking } from "../../store/actions/bookingActions";
 
 //memberships
@@ -17,11 +20,10 @@ import platinum from "../../pics/platinum4.jpg"
 const UserProfile = () => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user);
-  console.log(user);
-  const guides = useSelector((state) => state.guides.guides);
+
   const bookings = useSelector((state) => state.bookings.bookings);
   const booking = bookings.filter((book) => book.user._id === user._id);
-  console.log(guides)
+
 const [show,setShow]=useState(false);
 const[id,setId]=useState()
 
@@ -55,11 +57,7 @@ const cancelBooking=(bookId)=>{
           </>
         ) : (
           <>
-            {/* <td className=" text-purple-500 uppercase">in progress</td> */}
-            <td className=" text-green-500 uppercase">completed</td>
-
-
-          
+            <td className=" text-purple-500 uppercase">in progress</td>
             <td><button className=" uppercase  btn btn-danger " disabled>CANCEL</button></td>
           </>
         )}
@@ -70,7 +68,7 @@ const cancelBooking=(bookId)=>{
   ));
 
   //memberships
-console.log(bookings);
+
   const membership = () => {
     let src;
    if(booking.length>=2&&booking.length<4){
@@ -99,7 +97,7 @@ console.log(bookings);
         <img
           className="  w-60 h-60 mx-auto mt-4 rounded-full absolute left-40  border-1 border-black"
           src={user.image}
-          alt="Mountain"
+          alt="avatar"
         />
         <div className=" pt-2 pl-96 ml-28  text-left">
           <div >

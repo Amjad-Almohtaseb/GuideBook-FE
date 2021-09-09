@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { FaUserEdit } from "@react-icons/all-files/fa/FaUserEdit";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../store/actions/authActions";
-import { MdSmartphone } from "@react-icons/all-files/md/MdSmartphone";
 
+import { updateUser } from "../../store/actions/authActions";
+
+import { FaUserEdit } from "@react-icons/all-files/fa/FaUserEdit";
 
 const UserEdit = () => {
   const dispatch = useDispatch();

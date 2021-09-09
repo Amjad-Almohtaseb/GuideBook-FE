@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { signup } from "../../store/actions/authActions";
 import { useForm } from "react-hook-form";
 import { Link, useLocation } from "react-router-dom";
+
+import { signup } from "../../store/actions/authActions";
 
 const Signup = () => {
 
@@ -15,7 +16,6 @@ const Signup = () => {
   } = useForm();
   const type = useLocation().state.type;
   const counter = useLocation().state.counter;
-  console.log(counter);
 
   const onSubmit = (data) => {
     if (counter) data.counter = counter;
@@ -31,6 +31,7 @@ const Signup = () => {
           <img
             className="w-16 h-16 mb-4 "
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwTjoR2VIWLrwQywsGICEPAZpd1AR4T6PWUG6h2OdX1ZiZcBq7Lgdy5hJHpXyUut6r6BY&usqp=CAU"
+            alt="logo"
           />
 
           {type === "user" ? (

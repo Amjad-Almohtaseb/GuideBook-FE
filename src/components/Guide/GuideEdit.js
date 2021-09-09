@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateGuide } from "../../store/actions/guideActions";
 import "react-day-picker/lib/style.css";
 import DatePicker from "react-multi-date-picker";
 
 //icons
-import { FaArrowCircleRight } from "@react-icons/all-files/fa/FaArrowCircleRight";
 import { ImLocation2 } from "@react-icons/all-files/im/ImLocation2";
+import { FaArrowCircleRight } from "@react-icons/all-files/fa/FaArrowCircleRight";
+
 //Mapbox
 import ReactMapGL, { Marker } from "react-map-gl";
 import { MapKey } from "../Map/MapKey";
+
+import { updateGuide } from "../../store/actions/guideActions";
 
 const GuideEdit = ({ guide }) => {
   //to get this format "yyyy-mm-dd" from calendar
@@ -55,13 +57,11 @@ const GuideEdit = ({ guide }) => {
     location: guide.location,
   });
 
-  //  console.log(cities)
-  //  console.log(guideInfo)
+
 
   const cityLngLat = cities.find(
     (city) => city._id === guideInfo.city
   ).location;
-  // console.log(cityLngLat)
 
   useEffect(() => {
     setViewport({
@@ -79,8 +79,6 @@ const GuideEdit = ({ guide }) => {
     latitude: 39.925533,
   });
 
-  console.log(viewport.longitude);
-  console.log(viewport.latitude);
 
   const handleChange = (event) => {
     setGuideInfo({ ...guideInfo, [event.target.name]: event.target.value });
