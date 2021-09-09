@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { SearchIcon, UsersIcon } from "@heroicons/react/solid";
-
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRangePicker } from "react-date-range";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { searchGuide } from "../../store/actions/guideActions";
 import { format } from "date-fns/fp";
 
+import { searchGuide } from "../../store/actions/guideActions";
 
 const BookingForm = () => {
   const dispatch = useDispatch();

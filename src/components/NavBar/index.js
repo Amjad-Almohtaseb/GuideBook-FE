@@ -42,13 +42,6 @@ const Navbar = () => {
           {!user && (
             <>
                
-      <span>
-      {/* <Link to="/" >
-        <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav2 absolute right-80 top-3  ">
-          Home
-        </span>
-      </Link> */}
-      </span>
               <Link to={{ pathname: "/signup", state: { type: "tourguide" } }}>
                 <span className="btn btn-ghost btn-sm text-nav2">
                   Become a guide
@@ -61,23 +54,13 @@ const Navbar = () => {
             </>
           )}
          {user&&user.type==="user"&&<Link to={`/user/${user.slug}`}>
-         <span>
-      {/* <Link to="/" >
-        <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav2 absolute right-44 top-3  ">
-          Home
-        </span>
-      </Link> */}
-      </span>
+
          <span className="btn btn-ghost btn-sm text-nav2">
                  My Profile
                 </span>
          </Link>}
          {user&&user.type==="guide"&&<Link to="/guideprofile">
-         {/* <Link to="/" >
-        <span className="text-3xl font-bold btn btn-ghost rounded-btn text-nav2 absolute right-44 top-3  ">
-          Home
-        </span>
-      </Link> */}
+
          <span className="btn btn-ghost btn-sm text-nav2">
                  My Profile
                 </span>

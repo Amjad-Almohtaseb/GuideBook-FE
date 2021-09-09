@@ -1,14 +1,12 @@
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import React, { useEffect, useState } from "react";
-import { MapKey } from "./MapKey";
-import getCenter from "geolib/es/getCenter";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import getCenter from "geolib/es/getCenter";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
+
+import { MapKey } from "./MapKey";
 
 const Map = ({ foundGuides }) => {
   const [selectedLocation, setSelectedLocation] = useState({});
-  const cities = useSelector((state) => state.cities.cities);
-  const searchInfo = useSelector((state) => state.guides.searchInfo);
 
   let locations;
   let center;

@@ -1,13 +1,17 @@
 import React from "react";
-import UserEdit from "../User/UserEdit";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Spinner } from "react-bootstrap";
-import GuideEdit from "./GuideEdit";
+
+// icons
 import { MdEmail } from "@react-icons/all-files/md/MdEmail";
 import { MdSmartphone} from "@react-icons/all-files/md/MdSmartphone";
-import { AiFillDollarCircle } from "@react-icons/all-files/ai/AiFillDollarCircle";
 import { HiUserGroup } from "@react-icons/all-files/hi/HiUserGroup";
 import { ImLocation2 } from "@react-icons/all-files/im/ImLocation2";
+import { AiFillDollarCircle } from "@react-icons/all-files/ai/AiFillDollarCircle";
+
+//components
+import GuideEdit from "./GuideEdit";
+import UserEdit from "../User/UserEdit";
 
 //memberships
 import bronze from "../../pics/bronze1.jpg"
@@ -26,7 +30,7 @@ const GuideProfile = () => {
   let booking;
   if(bookings){
    booking = bookings.filter((book) => book.guide._id === guide._id);}
-  // console.log(bookingtable)
+
   let today = new Date().toISOString().substr(0, 10);
 
   const bookingtable = booking.map((book) => (

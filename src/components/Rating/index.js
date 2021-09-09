@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { FaStar } from "react-icons/fa";
-import { updateGuide } from "../../store/actions/guideActions";
+import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router";
+
 import rating from "../../pics/rating.png"
+import { updateGuide } from "../../store/actions/guideActions";
 
 const colors = {
   orange: "#FFBA5A",
@@ -59,7 +60,7 @@ function Rating() {
       </div>
     </div>
     
-    <img src={rating} alt="rating-image"/>
+    <img src={rating} alt="rating"/>
           </div>
   );
 }

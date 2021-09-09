@@ -1,26 +1,29 @@
 import React from "react";
-import BookingForm from "../Booking/BookingForm";
-import TopGuides from "./TopGuides";
-
+// import { useSelector } from "react-redux";
 import scrollTo from "gatsby-plugin-smoothscroll";
 
 //icons
-import { FaChevronCircleUp } from "@react-icons/all-files/fa/FaChevronCircleUp";
-import home from "./home-video.mp4";
-import HomeNav from "./HomeNav";
 import { FaMapMarked } from "@react-icons/all-files/fa/FaMapMarked";
 import { MdPersonPin } from "@react-icons/all-files/md/MdPersonPin";
 import { GiNewspaper } from "@react-icons/all-files/gi/GiNewspaper";
-import { useSelector } from "react-redux";
+import { FaChevronCircleUp } from "@react-icons/all-files/fa/FaChevronCircleUp";
+
+//components
+import home from "./home-video.mp4";
 import Footer from "./Footer";
+import HomeNav from "./HomeNav";
+// import TopGuides from "./TopGuides";
+import BookingForm from "../Booking/BookingForm";
 
 const Home = () => {
-  const guides = useSelector((state) => state.guides.guides);
+  // const guides = useSelector((state) => state.guides.guides);
 
-  const topGuide = guides
-    .sort((a, b) => (a.avgOfRating < b.avgOfRating ? 1 : -1))
-    .slice(0, 3)
-    .map((guide) => <TopGuides guide={guide} key={guide} />);
+  // // We may add it later
+
+  // const topGuide = guides
+  //   .sort((a, b) => (a.avgOfRating < b.avgOfRating ? 1 : -1))
+  //   .slice(0, 3)
+  //   .map((guide) => <TopGuides guide={guide} key={guide} />);
 
   return (
     <>
@@ -53,6 +56,7 @@ const Home = () => {
       <Footer />
 
       {/* top guides */}
+
       {/* <div className="card flex bg-card  ">
           <h3 className=" ml-16  my-8 ">Top Guides</h3>
           <div className="flex flex-row  justify-evenly">

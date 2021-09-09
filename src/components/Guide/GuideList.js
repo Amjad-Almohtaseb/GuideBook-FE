@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
-import BookingForm from "../Booking/BookingForm";
-import Map from "../Map";
-import GuideItem from "./GuideItem";
 import { SearchIcon, UsersIcon } from "@heroicons/react/solid";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRangePicker } from "react-date-range";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { searchGuide } from "../../store/actions/guideActions";
 import { Spinner } from "react-bootstrap";
 import { format } from "date-fns/fp";
 
+import Map from "../Map";
+import GuideItem from "./GuideItem";
+import { searchGuide } from "../../store/actions/guideActions";
 
 const GuideList = () => {
   const user = useSelector(state => state.user)

@@ -16,7 +16,8 @@ import two from "../../pics/2.jpg";
 import three from "../../pics/3.jpg";
 import four from "../../pics/4.jpg";
 import five from "../../pics/5.jpg";
-//Roma
+
+//Rome
 import roma1 from "../../pics/roma1.jpg"
 import roma2 from "../../pics/roma2.jpg"
 import roma3 from "../../pics/roma3.jpg"

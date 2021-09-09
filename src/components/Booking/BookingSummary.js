@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-
+import React from 'react'
+import { useHistory } from 'react-router'
 import {  useSelector } from 'react-redux'
 
 //alert function
@@ -7,11 +7,10 @@ import { message } from '../../utlis'
 
 
 //icons
-import {AiFillDollarCircle} from "@react-icons/all-files/ai/AiFillDollarCircle"
-import {SiGooglecalendar} from "@react-icons/all-files/si/SiGooglecalendar"
 import {MdEmail} from "@react-icons/all-files/md/MdEmail"
 import {MdSmartphone} from "@react-icons/all-files/md/MdSmartphone"
-import { useHistory } from 'react-router'
+import {SiGooglecalendar} from "@react-icons/all-files/si/SiGooglecalendar"
+import {AiFillDollarCircle} from "@react-icons/all-files/ai/AiFillDollarCircle"
 
 
 
@@ -24,7 +23,6 @@ const BookingSummary = () => {
   const booking = bookings.filter((book)=> book.user._id === user._id)
   const summary = booking[booking.length-1]
 
-console.log(summary);
  const handleClick = ()=>{
 
    message("info", "Check Your Mailbox", 2500);
